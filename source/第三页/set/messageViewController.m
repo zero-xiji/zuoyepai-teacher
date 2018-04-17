@@ -16,15 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _isNull=true;
-    if(_isNull)
-    {
-        _label_isNull.text=@"暂无通知";
-    }
-    else
-    {
-        _label_isNull.text =@"通知";
-    }
     // Do any additional setup after loading the view.
 }
 
@@ -37,128 +28,95 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
-- (IBAction)add_message:(id)sender {
-    
-    //set the alert
-    if(![this_user_.THIS_USER_IS_LOGIN isEqual:@"1"])
+- (IBAction)reset_password:(id)sender {
+    if([this_user_.THIS_USER_IS_LOGIN isEqual: @"1"])
     {
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"尚未登录，请登录" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull old_password) {
+            old_password.placeholder=@"旧密码";
+            old_password.secureTextEntry=YES;
+        }];
+        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull new_password) {
+            new_password.placeholder=@"新密码";
+            new_password.secureTextEntry=YES;
+        }];
+        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull new_password_again) {
+            new_password_again.placeholder=@"再次输入密码";
+            new_password_again.secureTextEntry=YES;
+        }];
         [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }]];
-        [self presentViewController:alert animated:true completion:nil];
-    }
-    else
-    {
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"请输入要添加的通知" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addTextFieldWithConfigurationHandler:^(UITextField *textField){
-            textField.placeholder=@"通知的班级";
-        }];
-        [alert addTextFieldWithConfigurationHandler:^(UITextField *textField){
-            textField.placeholder=@"通知内容";
-            //textField.secureTextEntry=YES;
-        }];
-        UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
-        UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:Btn_cancle];
-        [alert addAction:Btn_yes];
-        //
-        //add this alert into the view
-        //
-        [self presentViewController:alert animated:true completion:nil];
-    }
-}
+            UITextField *old_password = alert.textFields.firstObject;
+            UITextField *new_password = alert.textFields[1];
+            UITextField *new_password_again = alert.textFields.lastObject;
+            if(![old_password.text isEqualToString:(this_user_.THIS_TEACHER_USER_PASSWORD)])
+            {
+                UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"原密码错误！" preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+                [self presentViewController:alert animated:true completion:nil];
+            }
+            else if(![new_password.text isEqualToString:( new_password_again.text )])
+            {
+                UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"两次输入的新密码不一致！" preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+                [self presentViewController:alert animated:true completion:nil];
+            }
+            else if(new_password.text.length<8)
+            {
+                UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"密码小于8位" preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+                [self presentViewController:alert animated:true completion:nil];
+            }
+            else
+            {
+                UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"确定要修改吗！" preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+                                  {
+                                      NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/user_update?table=teacher&user_name=%@&password=%@&touxiang=%@",this_user_.THIS_TEACHER_USER_NAME,new_password.text,this_user_.THIS_TEACHER_USER_TOUXIANG];
 
-- (IBAction)add_course:(id)sender {
-    //set the alert
-    if(![this_user_.THIS_USER_IS_LOGIN isEqual:@"1"])
-    {
-        _course_table_view.hidden=YES;
-        _course_view.hidden=NO;
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"尚未登录，请登录" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
+                                      
+                                      NSLog(@"new_password.text = %@",new_password.text);
+                                      
+                                      
+                                      NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
+                                      NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
+                                      NSURL *url =[NSURL URLWithString:urlstringEncode];
+                                      NSData *data_STUDENT= [NSData dataWithContentsOfURL:url];
+                                      NSString *set_text=[[NSString alloc]initWithData:data_STUDENT encoding:NSUTF8StringEncoding];
+                                      if([set_text isEqual:@"更改成功!"])
+                                      {
+                                          UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"更改成功!" preferredStyle:UIAlertControllerStyleAlert];
+                                          [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                              [self set_logout_user];
+                                              [self dismissViewControllerAnimated:YES completion:nil];
+                                          }]];
+                                          [self presentViewController:alert animated:true completion:nil];
+                                      }
+                                  }]];
+                [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+                [self presentViewController:alert animated:true completion:nil];
+                
+            }
         }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
         [self presentViewController:alert animated:true completion:nil];
     }
     else
     {
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"请输入要添加的课程" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addTextFieldWithConfigurationHandler:^(UITextField *textField){
-            textField.placeholder=@"课程名";
-        }];
-        UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            UITextField *add_course = alert.textFields.firstObject;
-            NSLog(@"%@",add_course.text);
-            [self add_course_url:add_course.text];
-        }];
-        UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:Btn_cancle];
-        [alert addAction:Btn_yes];
-        //
-        //add this alert into the view
-        //
-        [self presentViewController:alert animated:true completion:nil];
-    }
-}
-- (void)add_course_url:(NSString *)course_put_in
-{
-    
-    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/course?operate=add&user_id=%@&user_type=teacher&course_name=%@",this_user_.THIS_TEACHER_USER_ID,course_put_in];
-    NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
-    NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
-    NSURL *url =[NSURL URLWithString:urlstringEncode];
-//    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/course?operate=add&user_id=%@&user_type=teacher&course_name=%@",this_user_.THIS_TEACHER_USER_ID,course_put_in]];
-    NSData *data_teacher= [NSData dataWithContentsOfURL:url];
-    NSString *return_text=[[NSString alloc]initWithData:data_teacher encoding:NSUTF8StringEncoding];
-    if([return_text isEqual:@"add添加成功"])
-    {
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"添加成功！" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //[self dismissViewControllerAnimated:YES completion:nil];
-            _course_table_view.hidden=NO;
-            _course_view.hidden=YES;
-        }]];
-        [self presentViewController:alert animated:true completion:nil];
-    }
-}
-
-- (IBAction)add_my_course:(id)sender {
-    //set the alert
-    if(![this_user_.THIS_USER_IS_LOGIN isEqual:@"1"])
-    {
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"尚未登录，请登录" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"尚未登录！" preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self dismissViewControllerAnimated:YES completion:nil];
         }]];
         [self presentViewController:alert animated:true completion:nil];
     }
-    else
-    {
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"请输入要添加的作业" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addTextFieldWithConfigurationHandler:^(UITextField *textField){
-            textField.placeholder=@"班级名";
-        }];
-        [alert addTextFieldWithConfigurationHandler:^(UITextField *textField){
-            textField.placeholder=@"作业内容";
-            //textField.secureTextEntry=YES;
-        }];
-        UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-            
-        }];
-        UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:Btn_cancle];
-        [alert addAction:Btn_yes];
-        //
-        //add this alert into the view
-        //
-        [self presentViewController:alert animated:true completion:nil];
-    }
-    
 }
--(void)add_course_click:(id)sender
+-(void)set_logout_user
 {
-    
+    this_user_.THIS_USER_IS_LOGIN=@"0";
+    this_user_.THIS_TEACHER_USER_NAME=nil;
+    this_user_.THIS_TEACHER_USER_ID=nil;
+    this_user_.THIS_TEACHER_USER_PASSWORD=nil;
+    this_user_.THIS_TEACHER_USER_TOUXIANG=nil;
+    this_user_.THIS_USER_BOLONG_TO_SCHOOL_ID=nil;
+    this_user_.THIS_USER_BOLONG_TO_SCHOOL_NAME=nil;
 }
 @end

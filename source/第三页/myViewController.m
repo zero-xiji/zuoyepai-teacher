@@ -55,10 +55,13 @@ int count_how_many_time_appear=0;
 //    NSLog(@"this is view will appear %d",count_how_many_time_appear);
 }
 - (IBAction)btn_logout:(id)sender {
-    
     if([this_user_.THIS_USER_IS_LOGIN isEqual: @"1"])
     {
-        NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/logout?table=teacher&user_name=%@&password=%@",this_user_.THIS_TEACHER_USER_NAME,this_user_.THIS_TEACHER_USER_PASSWORD]];
+        NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/logout?table=teacher&user_name=%@&password=%@",this_user_.THIS_TEACHER_USER_NAME,this_user_.THIS_TEACHER_USER_PASSWORD];
+        NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
+        NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
+        NSURL *url =[NSURL URLWithString:urlstringEncode];
+//        NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/logout?table=teacher&user_name=%@&password=%@",this_user_.THIS_TEACHER_USER_NAME,this_user_.THIS_TEACHER_USER_PASSWORD]];
         NSData *data= [NSData dataWithContentsOfURL:url];
         NSString *is_logout=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         if([is_logout isEqual:@"退出成功!"])
@@ -94,8 +97,10 @@ int count_how_many_time_appear=0;
 }
 
 - (IBAction)about_us:(id)sender {
+    
 }
 
 - (IBAction)safaty:(id)sender {
+    
 }
 @end

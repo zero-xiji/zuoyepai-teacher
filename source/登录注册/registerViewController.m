@@ -32,7 +32,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated
 {
-    _now_touxiang=[_touxiang.image accessibilityIdentifier];
+    _now_touxiang=@"0.jpg";
 }
 
 //点击空白处的手势要实现的方法
@@ -52,13 +52,13 @@
     {
         _tips.text=@"用户名、密码、就读学校不能为空！";
     }
-    else if([_password.text length]<8)
-    {
-        _tips.text=@"密码必须大于8位";
-    }
     else if([_username.text length]==0)
     {
         _tips.text=@"请输入用户名";
+    }
+    else if([_password.text length]<8||[_password2.text length]<8)
+    {
+        _tips.text=@"密码必须大于8位";
     }
     else if(![_password.text isEqual:_password2.text])
     {
@@ -77,7 +77,7 @@
         NSString *set_text=[[NSString alloc]initWithData:data_teacher encoding:NSUTF8StringEncoding];
         if([set_text isEqual:@"注册成功!"])
         {
-            UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:set_text preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"注册成功,等待管理员审核!" preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [self dismissViewControllerAnimated:YES completion:nil];
             }]];

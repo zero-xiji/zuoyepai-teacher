@@ -10,14 +10,7 @@
 
 @interface messageViewController : ViewController
 - (IBAction)back:(id)sender;
-@property (strong, nonatomic) IBOutlet UILabel *label_isNull;
-- (IBAction)add_message:(id)sender;
+- (IBAction)reset_password:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *message_view;
-- (IBAction)add_course:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *my_course_view;
-- (IBAction)add_my_course:(id)sender;
-@property (weak, nonatomic) IBOutlet UIView *course_view;
-@property (weak, nonatomic) IBOutlet UITableView *course_table_view;
-
-@property Boolean isNull;
 @end

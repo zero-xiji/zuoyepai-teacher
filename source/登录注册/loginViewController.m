@@ -36,6 +36,7 @@ THIS_TEACHER_USER this_user_;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 //点击空白处的手势要实现的方法
 -(void)viewTapped:(UITapGestureRecognizer*)tap1
 {
@@ -59,7 +60,7 @@ THIS_TEACHER_USER this_user_;
         NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
         NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
         NSURL *url =[NSURL URLWithString:urlstringEncode];
-//        NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/login?table=teacher&user_name=%@&password=%@",_username.text,_password.text]];
+        //        NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/login?table=teacher&user_name=%@&password=%@",_username.text,_password.text]];
         //2.根据ＷＥＢ路径创建一个请求
         NSURLRequest *request=[NSURLRequest requestWithURL:url];
         NSData *data_teacher= [NSData dataWithContentsOfURL:url];
@@ -81,8 +82,7 @@ THIS_TEACHER_USER this_user_;
 - (IBAction)turn2register:(id)sender {
     _tips.text=@"";
 }
-- (IBAction)back:(id)sender
-{
+- (IBAction)back:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)setUser
@@ -99,4 +99,5 @@ THIS_TEACHER_USER this_user_;
     this_user_.THIS_TEACHER_USER_ID=[array objectAtIndex:4];
 }
 @end
+
 
