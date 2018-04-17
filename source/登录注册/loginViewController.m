@@ -55,7 +55,11 @@ THIS_TEACHER_USER this_user_;
         this_user_.THIS_TEACHER_USER_PASSWORD=_password.text;
         _tips.text=@"";
         //1.请求的网址：即请求的接口，
-        NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/login?table=teacher&user_name=%@&password=%@",_username.text,_password.text]];
+        NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/login?table=teacher&user_name=%@&password=%@",_username.text,_password.text];
+        NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
+        NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
+        NSURL *url =[NSURL URLWithString:urlstringEncode];
+//        NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/login?table=teacher&user_name=%@&password=%@",_username.text,_password.text]];
         //2.根据ＷＥＢ路径创建一个请求
         NSURLRequest *request=[NSURLRequest requestWithURL:url];
         NSData *data_teacher= [NSData dataWithContentsOfURL:url];

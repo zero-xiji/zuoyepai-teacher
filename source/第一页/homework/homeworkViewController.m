@@ -86,7 +86,11 @@ static THIS_HOMEWORK_MESSAGE this_homework_message;
 -(BOOL)url_to_delete_homework:(NSString *)homework_id_to_delete
 {
     BOOL is_success_delete=NO;
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myhomework?operate=delete&user_id=%@&put_id=%@",this_user_.THIS_TEACHER_USER_ID,homework_id_to_delete]];
+    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myhomework?operate=delete&user_id=%@&put_id=%@",this_user_.THIS_TEACHER_USER_ID,homework_id_to_delete];
+    NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
+    NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
+    NSURL *url =[NSURL URLWithString:urlstringEncode];
+//    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myhomework?operate=delete&user_id=%@&put_id=%@",this_user_.THIS_TEACHER_USER_ID,homework_id_to_delete]];
     NSData *data= [NSData dataWithContentsOfURL:url];
     NSString *return_text =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSArray *array = [return_text componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组
@@ -185,7 +189,11 @@ static THIS_HOMEWORK_MESSAGE this_homework_message;
 }
 -(void)add_homework_url:(NSString *)detail :(NSString *)submission_time
 {
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/teacher_homework?operate=add&submission_time=%@&detail=%@&put_id=%@",submission_time,detail,select_class_cell.THIS_CLASS_ID]];
+    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/teacher_homework?operate=add&submission_time=%@&detail=%@&put_id=%@",submission_time,detail,select_class_cell.THIS_CLASS_ID];
+    NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
+    NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
+    NSURL *url =[NSURL URLWithString:urlstringEncode];
+//    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/teacher_homework?operate=add&submission_time=%@&detail=%@&put_id=%@",submission_time,detail,select_class_cell.THIS_CLASS_ID]];
     NSData *data_student= [NSData dataWithContentsOfURL:url];
     NSString *return_text=[[NSString alloc]initWithData:data_student encoding:NSUTF8StringEncoding];
     NSArray *array = [return_text componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组

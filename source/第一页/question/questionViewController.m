@@ -67,7 +67,7 @@ static NSInteger question_type;
     NSString *question_Detail=_question_detail.text;
     NSString *question_Answer=_question_answer.text;
     NSString *question_Scores=_question_score.text;
-    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/add_question?homework_id=%@&question_detail=%@&question_answer=%@&question_score=%@",select_homework_cell.THIS_HOMEWORK_ID,question_Detail,question_Answer,question_Scores];
+    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/add_question?homework_id=%@&question_detail=%@&question_answer=%@&question_score=%@&question_type=%ld",select_homework_cell.THIS_HOMEWORK_ID,question_Detail,question_Answer,question_Scores,(long)question_type];
     NSLog(@"%@", urlString);
     NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
     NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
@@ -98,7 +98,6 @@ static NSInteger question_type;
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     question_type=row;
-    
 }
 
 

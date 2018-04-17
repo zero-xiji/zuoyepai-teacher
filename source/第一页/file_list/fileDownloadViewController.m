@@ -24,7 +24,11 @@
     //****************注*********************
     webView.navigationDelegate = self;
     [_main_view addSubview:webView];
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/download?file_name=%@",select_file_message.THIS_FILE_NAME]];
+    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/download?file_name=%@",select_file_message.THIS_FILE_NAME];
+    NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
+    NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
+    NSURL *url =[NSURL URLWithString:urlstringEncode];
+//    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/download?file_name=%@",select_file_message.THIS_FILE_NAME]];
     // 2.创建一个POST请求
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"POST";

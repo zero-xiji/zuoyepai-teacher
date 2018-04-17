@@ -207,8 +207,6 @@
 		265771A920764BB700AEF2F6 /* 第一页 */ = {
 			isa = PBXGroup;
 			children = (
-				268816312078BC4E005BD0E4 /* questionListViewController.h */,
-				268816322078BC4E005BD0E4 /* questionListViewController.m */,
 				F966980720847CE000FDDB89 /* question */,
 				26F91A3E207D064A005B619A /* file_list */,
 				26F91A34207D01F1005B619A /* student_list */,
@@ -400,6 +398,8 @@
 				F98F1F462084B3950051E2D4 /* questionTableViewCell.m */,
 				F98F1F4220847D430051E2D4 /* questionViewController.h */,
 				F98F1F4320847D430051E2D4 /* questionViewController.m */,
+				268816312078BC4E005BD0E4 /* questionListViewController.h */,
+				268816322078BC4E005BD0E4 /* questionListViewController.m */,
 			);
 			path = question;
 			sourceTree = "<group>";

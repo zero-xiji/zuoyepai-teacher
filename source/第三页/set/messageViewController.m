@@ -33,16 +33,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)back:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -113,7 +103,12 @@
 }
 - (void)add_course_url:(NSString *)course_put_in
 {
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/course?operate=add&user_id=%@&user_type=teacher&course_name=%@",this_user_.THIS_TEACHER_USER_ID,course_put_in]];
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/course?operate=add&user_id=%@&user_type=teacher&course_name=%@",this_user_.THIS_TEACHER_USER_ID,course_put_in];
+    NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
+    NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
+    NSURL *url =[NSURL URLWithString:urlstringEncode];
+//    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/course?operate=add&user_id=%@&user_type=teacher&course_name=%@",this_user_.THIS_TEACHER_USER_ID,course_put_in]];
     NSData *data_teacher= [NSData dataWithContentsOfURL:url];
     NSString *return_text=[[NSString alloc]initWithData:data_teacher encoding:NSUTF8StringEncoding];
     if([return_text isEqual:@"add添加成功"])

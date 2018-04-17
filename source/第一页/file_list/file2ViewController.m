@@ -57,7 +57,11 @@ static THIS_FILE_MESSAGE this_file_message;
 - (void)initdata
 {
     _file_dataSource =[NSMutableArray new];
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myfile?operate=teacher_select&user_id=%@",this_user_.THIS_TEACHER_USER_ID]];
+    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myfile?operate=teacher_select&user_id=%@",this_user_.THIS_TEACHER_USER_ID];
+    NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
+    NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
+    NSURL *url =[NSURL URLWithString:urlstringEncode];
+//    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myfile?operate=teacher_select&user_id=%@",this_user_.THIS_TEACHER_USER_ID]];
     //2.根据ＷＥＢ路径创建一个请求
     NSData *data= [NSData dataWithContentsOfURL:url];
     NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
@@ -98,64 +102,6 @@ static THIS_FILE_MESSAGE this_file_message;
     this_file_message.WHO_UPLOAD_THIS_FILE_ID=[file_detial objectAtIndex:1];
     this_file_message.WHO_UPLOAD_THIS_FILE_NAME=[file_detial objectAtIndex:2];
     this_file_message.THIS_FILE_NAME=[file_detial objectAtIndex:3];
-}
-
-
-//实现右滑动删除
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        my_courseTableViewCell *this_cell_select=(my_courseTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-        //alert to make sure user want to exit this class
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"确定要删除该课程及其对应班级吗？" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
-                          {
-                              //delete from database in mysql
-                              BOOL is_success_delete=[self url_to_delete_course:this_cell_select.model.course_name];
-                              if(is_success_delete)
-                              {
-                                  ///< delete this rows
-                                  [_file_dataSource removeObjectAtIndex:indexPath.row];
-                                  [_file_table deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                              }
-                          }]];
-        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
-        [self presentViewController:alert animated:true completion:nil];
-        
-    }
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
-}
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return @"删除该资料";
-}
--(BOOL)url_to_delete_course:(NSString *)course_name_to_exit
-{
-    BOOL is_success_delete=NO;
-//    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/course?operate=delete&user_id=%@&user_type=teacher&course_name=%@",this_user_.THIS_TEACHER_USER_ID,course_name_to_exit]];
-//    NSData *data= [NSData dataWithContentsOfURL:url];
-//    NSString *is_delete =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-//    //alert
-//    UIAlertController *alert;
-//    if([is_delete isEqual:@"删除成功"])
-//    {
-//        alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"删除成功" preferredStyle:UIAlertControllerStyleAlert];
-//        is_success_delete=YES;
-//    }
-//    else
-//    {
-//        alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"课程不存在" preferredStyle:UIAlertControllerStyleAlert];
-//        is_success_delete=NO;
-//    }
-//    UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
-//    [alert addAction:Btn_yes];
-//    [self presentViewController:alert animated:true completion:nil];
-    return is_success_delete;
 }
 
 

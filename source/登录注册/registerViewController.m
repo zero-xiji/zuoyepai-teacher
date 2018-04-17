@@ -69,7 +69,10 @@
     {
         _tips.text=@"";
         //1.请求的网址：即请求的接口，
-        NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/register?table=teacher&user_name=%@&password=%@&touxiang=%@&school_id=%@",_username.text,_password.text,_now_touxiang,_school.text]];
+        NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/register?table=teacher&user_name=%@&password=%@&touxiang=%@&school_id=%@",_username.text,_password.text,_now_touxiang,_school.text];
+        NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
+        NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
+        NSURL *url =[NSURL URLWithString:urlstringEncode];
         NSData *data_teacher= [NSData dataWithContentsOfURL:url];
         NSString *set_text=[[NSString alloc]initWithData:data_teacher encoding:NSUTF8StringEncoding];
         if([set_text isEqual:@"注册成功!"])

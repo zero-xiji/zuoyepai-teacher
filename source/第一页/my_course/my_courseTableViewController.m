@@ -148,6 +148,7 @@ static int is_first_appear;
 -(BOOL)url_to_delete_course:(NSString *)course_name_to_exit
 {
     BOOL is_success_delete=NO;
+    
     NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/course?operate=delete&user_id=%@&user_type=teacher&course_name=%@",this_user_.THIS_TEACHER_USER_ID,course_name_to_exit]];
     NSData *data= [NSData dataWithContentsOfURL:url];
     NSString *is_delete =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
