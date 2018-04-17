@@ -6,6 +6,7 @@
 //  Copyright © 2018年 zero. All rights reserved.
 //
 #import "struct_user.h"
+#import "user.h"
 #import <UIKit/UIKit.h>
 @interface loginViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *username;//账号
@@ -18,5 +19,5 @@
 @property (strong, nonatomic) IBOutlet UIImageView *touxiang;
 - (IBAction)back:(id)sender;
 @property NSUserDefaults *page;
-extern THIS_TEACHER_USER this_user_;
+extern user *this_user_;
 @end

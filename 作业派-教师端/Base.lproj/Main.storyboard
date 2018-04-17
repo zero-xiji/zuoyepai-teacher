@@ -32,7 +32,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="lPJ-4r-hXc" kind="relationship" relationship="viewControllers" id="gZz-Ke-bgM"/>
-                        <segue destination="TJr-qS-C9P" kind="relationship" relationship="viewControllers" id="O4c-z4-0Lo"/>
+                        <segue destination="Z62-4l-Gz8" kind="relationship" relationship="viewControllers" id="eIn-5L-pRa"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWW-lC-rGL" sceneMemberID="firstResponder"/>
@@ -289,7 +289,9 @@
                                         </state>
                                         <connections>
                                             <action selector="turn2register:" destination="ZaC-gQ-ljD" eventType="touchUpInside" id="vl6-ba-q2v"/>
-                                            <segue destination="VRm-kb-MOu" kind="showDetail" id="3dm-fs-px3"/>
+                                            <segue destination="VRm-kb-MOu" kind="popoverPresentation" popoverAnchorView="f2G-dA-cSA" id="1zj-Kd-0Se">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1578,6 +1580,22 @@
             </objects>
             <point key="canvasLocation" x="9050" y="-589"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="j8d-7W-Wa7">
+            <objects>
+                <navigationController id="Z62-4l-Gz8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="DJd-rv-vPL"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cmj-43-z5p">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="TJr-qS-C9P" kind="relationship" relationship="rootViewController" id="AOX-Kd-xIl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IFh-BC-dny" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3958" y="572"/>
+        </scene>
         <!--我-->
         <scene sceneID="8xh-FV-8ZP">
             <objects>
@@ -1591,7 +1609,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67F-Os-zLl">
-                                <rect key="frame" x="0.0" y="28" width="375" height="590"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="546"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2n-ci-fHW">
                                         <rect key="frame" x="0.0" y="15" width="375" height="178"/>
@@ -1623,7 +1641,9 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.58941566779999999" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="ZaC-gQ-ljD" kind="showDetail" id="zdV-Py-Dlu"/>
+                                                    <segue destination="ZaC-gQ-ljD" kind="popoverPresentation" popoverAnchorView="oS9-VN-rx5" id="rlZ-eP-cha">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1758,6 +1778,7 @@
                         <viewLayoutGuide key="safeArea" id="zbR-AA-EZM"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="我" image="我" id="Tkh-ia-hlu"/>
+                    <navigationItem key="navigationItem" id="Esw-sV-sdE"/>
                     <connections>
                         <outlet property="btn_login" destination="oS9-VN-rx5" id="D6H-jL-Caa"/>
                         <outlet property="l_school" destination="5sK-cx-qVd" id="bOz-mr-0gx"/>
@@ -1767,7 +1788,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2oz-Nt-yqs" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4689" y="572"/>
+            <point key="canvasLocation" x="4804" y="572"/>
         </scene>
         <!--question list-->
         <scene sceneID="b2y-Le-pWK">

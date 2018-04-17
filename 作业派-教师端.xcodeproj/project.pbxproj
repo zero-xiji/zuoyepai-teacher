@@ -33,6 +33,7 @@
 		26F91A4A207D071B005B619A /* file_in_classTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F91A45207D071B005B619A /* file_in_classTableViewCell.m */; };
 		26F91A4D207D2204005B619A /* homeworkDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F91A4C207D2204005B619A /* homeworkDownloadViewController.m */; };
 		DA199019204D3489006C694D /* course_1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA199018204D3489006C694D /* course_1ViewController.m */; };
+		DA26F16C208640990027A837 /* user.m in Sources */ = {isa = PBXBuildFile; fileRef = DA26F16B208640990027A837 /* user.m */; };
 		DA379F4520844530004882A6 /* student_in_class.m in Sources */ = {isa = PBXBuildFile; fileRef = DA379F4420844530004882A6 /* student_in_class.m */; };
 		DA5F0DDF203F32A600F45AED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5F0DDE203F32A600F45AED /* AppDelegate.m */; };
 		DA5F0DE2203F32A600F45AED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5F0DE1203F32A600F45AED /* ViewController.m */; };
@@ -120,6 +121,8 @@
 		26F91A4C207D2204005B619A /* homeworkDownloadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = homeworkDownloadViewController.m; sourceTree = "<group>"; };
 		DA199017204D3489006C694D /* course_1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = course_1ViewController.h; sourceTree = "<group>"; };
 		DA199018204D3489006C694D /* course_1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = course_1ViewController.m; sourceTree = "<group>"; };
+		DA26F16A208640990027A837 /* user.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
+		DA26F16B208640990027A837 /* user.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = user.m; sourceTree = "<group>"; };
 		DA379F4320844530004882A6 /* student_in_class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = student_in_class.h; sourceTree = "<group>"; };
 		DA379F4420844530004882A6 /* student_in_class.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = student_in_class.m; sourceTree = "<group>"; };
 		DA5F0DDA203F32A600F45AED /* 作业派-教师端.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "作业派-教师端.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -385,6 +388,8 @@
 				2618A5B42079DC36007504F6 /* registerViewController.m */,
 				DABCE4EF203FED4E006432B5 /* loginViewController.h */,
 				DABCE4F0203FED4E006432B5 /* loginViewController.m */,
+				DA26F16A208640990027A837 /* user.h */,
+				DA26F16B208640990027A837 /* user.m */,
 			);
 			path = "登录注册";
 			sourceTree = "<group>";
@@ -551,6 +556,7 @@
 				26F91A47207D071B005B619A /* file2ViewController.m in Sources */,
 				DABCE5222040212B006432B5 /* myViewController.m in Sources */,
 				26E74A152070F1F300529D32 /* my_courseTableViewCell.m in Sources */,
+				DA26F16C208640990027A837 /* user.m in Sources */,
 				268816332078BC4E005BD0E4 /* questionListViewController.m in Sources */,
 				26E74A112070F0F400529D32 /* my_course.m in Sources */,
 				26E74A182070F24000529D32 /* my_courseTableViewController.m in Sources */,
