@@ -83,8 +83,6 @@ static THIS_QUESTION_MESSAGE this_question_message;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-
 #pragma mark -UITableView 协议
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
