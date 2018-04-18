@@ -47,6 +47,9 @@
 		DABCE4F1203FED4E006432B5 /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABCE4F0203FED4E006432B5 /* loginViewController.m */; };
 		DABCE50220400764006432B5 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABCE50120400764006432B5 /* mainViewController.m */; };
 		DABCE5222040212B006432B5 /* myViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABCE5212040212B006432B5 /* myViewController.m */; };
+		DABE0948208706C300141546 /* studentQuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DABE0947208706C300141546 /* studentQuestionTableViewCell.m */; };
+		DABE094B208706EA00141546 /* student_question.m in Sources */ = {isa = PBXBuildFile; fileRef = DABE094A208706EA00141546 /* student_question.m */; };
+		DABE09522087084500141546 /* studentQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABE09512087084500141546 /* studentQuestionViewController.m */; };
 		F98F1F4420847D430051E2D4 /* questionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F98F1F4320847D430051E2D4 /* questionViewController.m */; };
 		F98F1F472084B3950051E2D4 /* questionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F98F1F462084B3950051E2D4 /* questionTableViewCell.m */; };
 		F98F1F4A2084B3C40051E2D4 /* question.m in Sources */ = {isa = PBXBuildFile; fileRef = F98F1F492084B3C40051E2D4 /* question.m */; };
@@ -151,6 +154,12 @@
 		DABCE50120400764006432B5 /* mainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
 		DABCE5202040212B006432B5 /* myViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myViewController.h; sourceTree = "<group>"; };
 		DABCE5212040212B006432B5 /* myViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myViewController.m; sourceTree = "<group>"; };
+		DABE0946208706C300141546 /* studentQuestionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = studentQuestionTableViewCell.h; sourceTree = "<group>"; };
+		DABE0947208706C300141546 /* studentQuestionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = studentQuestionTableViewCell.m; sourceTree = "<group>"; };
+		DABE0949208706EA00141546 /* student_question.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = student_question.h; sourceTree = "<group>"; };
+		DABE094A208706EA00141546 /* student_question.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = student_question.m; sourceTree = "<group>"; };
+		DABE09502087084500141546 /* studentQuestionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = studentQuestionViewController.h; sourceTree = "<group>"; };
+		DABE09512087084500141546 /* studentQuestionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = studentQuestionViewController.m; sourceTree = "<group>"; };
 		F98F1F4220847D430051E2D4 /* questionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = questionViewController.h; sourceTree = "<group>"; };
 		F98F1F4320847D430051E2D4 /* questionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = questionViewController.m; sourceTree = "<group>"; };
 		F98F1F452084B3950051E2D4 /* questionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = questionTableViewCell.h; sourceTree = "<group>"; };
@@ -268,6 +277,7 @@
 		26F91A34207D01F1005B619A /* student_list */ = {
 			isa = PBXGroup;
 			children = (
+				DABE094F208707DD00141546 /* studentQuestion */,
 				26F91A4B207D2204005B619A /* homeworkDownloadViewController.h */,
 				26F91A4C207D2204005B619A /* homeworkDownloadViewController.m */,
 				DA379F4320844530004882A6 /* student_in_class.h */,
@@ -405,6 +415,19 @@
 				DA26F16B208640990027A837 /* user.m */,
 			);
 			path = "登录注册";
+			sourceTree = "<group>";
+		};
+		DABE094F208707DD00141546 /* studentQuestion */ = {
+			isa = PBXGroup;
+			children = (
+				DABE0949208706EA00141546 /* student_question.h */,
+				DABE094A208706EA00141546 /* student_question.m */,
+				DABE0946208706C300141546 /* studentQuestionTableViewCell.h */,
+				DABE0947208706C300141546 /* studentQuestionTableViewCell.m */,
+				DABE09502087084500141546 /* studentQuestionViewController.h */,
+				DABE09512087084500141546 /* studentQuestionViewController.m */,
+			);
+			path = studentQuestion;
 			sourceTree = "<group>";
 		};
 		F966980720847CE000FDDB89 /* question */ = {
@@ -571,6 +594,7 @@
 				26E74A152070F1F300529D32 /* my_courseTableViewCell.m in Sources */,
 				DA26F16C208640990027A837 /* user.m in Sources */,
 				268816332078BC4E005BD0E4 /* questionListViewController.m in Sources */,
+				DABE09522087084500141546 /* studentQuestionViewController.m in Sources */,
 				26E74A112070F0F400529D32 /* my_course.m in Sources */,
 				26E74A182070F24000529D32 /* my_courseTableViewController.m in Sources */,
 				DABCE4F1203FED4E006432B5 /* loginViewController.m in Sources */,
@@ -580,6 +604,7 @@
 				DAA9E95C2042AC4A00D63C4A /* messageViewController.m in Sources */,
 				F98F1F4420847D430051E2D4 /* questionViewController.m in Sources */,
 				DA379F4520844530004882A6 /* student_in_class.m in Sources */,
+				DABE0948208706C300141546 /* studentQuestionTableViewCell.m in Sources */,
 				26DC84712078E5120090F18D /* AFURLResponseSerialization.m in Sources */,
 				26DC84732078E5120090F18D /* AFURLSessionManager.m in Sources */,
 				2618A5CE207A5CAD007504F6 /* homeworkViewController.m in Sources */,
@@ -592,6 +617,7 @@
 				26EAA0272067F259000F8B47 /* struct_user.m in Sources */,
 				DA199019204D3489006C694D /* course_1ViewController.m in Sources */,
 				2657719D20763B9900AEF2F6 /* class_belong_to_courseTableViewCell.m in Sources */,
+				DABE094B208706EA00141546 /* student_question.m in Sources */,
 				DA7C755820867ABB0074B759 /* MHRadioButton.m in Sources */,
 				26DC84722078E5120090F18D /* AFHTTPSessionManager.m in Sources */,
 				2618A5B62079DC36007504F6 /* registerViewController.m in Sources */,

@@ -20,6 +20,7 @@ static THIS_STUDENTS_IN_THIS_CLASS this_student_message;
     [super viewDidLoad];
     _student_table.tableFooterView = [[UIView alloc] init];
     _student_table.dataSource=self;
+    _student_table.delegate=self;
     // Do any additional setup after loading the view.
 }
 - (void)didReceiveMemoryWarning {
@@ -98,6 +99,13 @@ static THIS_STUDENTS_IN_THIS_CLASS this_student_message;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"this is student tableview cell set");
+//    studentListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"student_cell" forIndexPath:indexPath];
+//     select_student_cell=[student_in_class student_in_classWithName:cell.student_name.text
+//user_id:cell.user_id
+//touxiang:cell.model.touxiang
+//homework_is_done:cell.is_done.text
+//school_name:cell.school_name.text
+//homework_score:cell.homework_score];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,68 +114,4 @@ static THIS_STUDENTS_IN_THIS_CLASS this_student_message;
     cell.model=self.student_dataSource[indexPath.row];
     return cell;
 }
-//实现右滑动删除
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        studentListTableViewCell *this_cell_select=[tableView cellForRowAtIndexPath:indexPath];
-        //alert to make sure user want to exit this class
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"确定要删除该学生吗？" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
-                          {
-                              //delete from database in mysql
-                              BOOL is_success_delete=[self url_to_delete_student:this_cell_select.model.user_id];
-                              if(is_success_delete)
-                              {
-                                  ///< delete this rows
-                                  [_student_dataSource removeObjectAtIndex:indexPath.row];
-                                  [_student_table deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                              }
-                          }]];
-        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
-        [self presentViewController:alert animated:true completion:nil];
-        
-    }
-    else if (editingStyle == UITableViewCellEditingStyleInsert)
-    {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
-}
--(BOOL)url_to_delete_student:(NSString *)homework_id_to_delete
-{
-    BOOL is_success_delete=NO;
-    //    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myhomework?operate=delete&user_id=%@&put_id=%@",this_user_.THIS_TEACHER_USER_ID,homework_id_to_delete]];
-    //    NSData *data= [NSData dataWithContentsOfURL:url];
-    //    NSString *return_text =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    //    NSArray *array = [return_text componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组
-    //    NSString *is_delete=[array objectAtIndex:1];
-    //    //alert
-    //    UIAlertController *alert;
-    //    if([is_delete isEqual:@"删除成功"])
-    //    {
-    //        alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"删除成功" preferredStyle:UIAlertControllerStyleAlert];
-    //        is_success_delete=YES;
-    //    }
-    //    else
-    //    {
-    //        alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"作业不存在" preferredStyle:UIAlertControllerStyleAlert];
-    //        is_success_delete=NO;
-    //    }
-    //    UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
-    //    [alert addAction:Btn_yes];
-    //    [self presentViewController:alert animated:true completion:nil];
-    //    NSLog(@"this is delete ");
-    return is_success_delete;
-}
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return @"删除该班级";
-}
-/*
-
-
-*/
 @end

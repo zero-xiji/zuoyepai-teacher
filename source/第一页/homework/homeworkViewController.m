@@ -14,11 +14,14 @@
 @end
 
 @implementation homeworkViewController
-static THIS_HOMEWORK_MESSAGE this_homework_message;
+static homework *this_homework_message;
+static int rows;
 - (void)viewDidLoad {
     [super viewDidLoad];
     _homework_table.tableFooterView = [[UIView alloc] init];
     _homework_table.dataSource=self;
+    _homework_table.delegate=self;
+//    _homework_table.rowHeight=40;
     // Do any additional setup after loading the view.
 }
 - (void)didReceiveMemoryWarning {
@@ -32,6 +35,47 @@ static THIS_HOMEWORK_MESSAGE this_homework_message;
     [_homework_table reloadData];
 }
 
+
+- (void)initdata
+{
+    _homework_dataSource =[NSMutableArray new];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myhomework?operate=select&user_id=%@&put_id=%@",this_user_.THIS_TEACHER_USER_ID,select_class_cell.THIS_CLASS_ID]];
+    //2.根据ＷＥＢ路径创建一个请求
+    NSData *data= [NSData dataWithContentsOfURL:url];
+    NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    if([str  isEqual: @"该课程不存在作业"])
+    {
+        _homework_is_null.text=@"该班级暂无作业";
+        _homework_dataSource=NULL;
+    }
+    else
+    {
+        _homework_is_null.text=@"";
+        NSArray *array = [str componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组
+        NSString *how_many_class=[array objectAtIndex:0];
+        NSString *all_class_been_search=[array objectAtIndex:1];
+        NSArray *class_in_one_row=[all_class_been_search componentsSeparatedByString:@"%"];
+        rows=[how_many_class intValue];
+        for(int i=0;i<rows;i++)
+        {
+            NSString *every_class_all_message=[class_in_one_row objectAtIndex:i];
+            [self set_this_homework:every_class_all_message];///< class
+            [_homework_dataSource addObject:this_homework_message];
+        }
+    }
+}
+-(void)set_this_homework:(NSString*) every_class_all_message
+{
+    //class_id class_name teacher_id
+    NSArray *class_detial=[every_class_all_message componentsSeparatedByString:@"*"];
+    this_homework_message = [homework homeworkWithName:[class_detial objectAtIndex:0]
+                      class_id:[class_detial objectAtIndex:1]
+                    class_name:select_class_cell.THIS_CLASS_NAME
+                   course_name:[class_detial objectAtIndex:3]
+                        detail:[class_detial objectAtIndex:6]
+                      end_time:[class_detial objectAtIndex:7]];
+}
+
 #pragma mark -UITableView 协议
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -39,7 +83,7 @@ static THIS_HOMEWORK_MESSAGE this_homework_message;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _homework_dataSource.count;
+    return rows;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -48,7 +92,10 @@ static THIS_HOMEWORK_MESSAGE this_homework_message;
     select.homework_detail=select.detail.text;
     
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
+}
 //实现右滑动删除
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
@@ -120,45 +167,6 @@ static THIS_HOMEWORK_MESSAGE this_homework_message;
     return cell;
 }
 
-- (void)initdata
-{
-    _homework_dataSource =[NSMutableArray new];
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myhomework?operate=select&user_id=%@&put_id=%@",this_user_.THIS_TEACHER_USER_ID,select_class_cell.THIS_CLASS_ID]];
-    //2.根据ＷＥＢ路径创建一个请求
-    NSData *data= [NSData dataWithContentsOfURL:url];
-    NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    if([str  isEqual: @"该课程不存在作业"])
-    {
-        _homework_is_null.text=@"该班级暂无作业";
-        _homework_dataSource=NULL;
-    }
-    else
-    {
-        _homework_is_null.text=@"";
-        NSArray *array = [str componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组
-        NSString *how_many_class=[array objectAtIndex:0];
-        NSString *all_class_been_search=[array objectAtIndex:1];
-        NSArray *class_in_one_row=[all_class_been_search componentsSeparatedByString:@"%"];
-        int rows=[how_many_class intValue];
-        for(int i=0;i<rows;i++)
-        {
-            NSString *every_class_all_message=[class_in_one_row objectAtIndex:i];
-            [self set_this_homework:every_class_all_message];///< class
-            homework *p0 = [homework homeworkWithName:this_homework_message.THIS_HOMEWORK_ID class_id:this_homework_message.THIS_CLASS_ID class_name:select_class_cell.THIS_CLASS_NAME  course_name:select_class_cell.THIS_CLASS_NAME detail:this_homework_message.HOMEWORK_DETAIL end_time:this_homework_message.HOMEWORK_SUBMISSION_TIME];
-            [_homework_dataSource addObject:p0];
-        }
-    }
-}
--(void)set_this_homework:(NSString*) every_class_all_message
-{
-    //class_id class_name teacher_id
-    NSArray *class_detial=[every_class_all_message componentsSeparatedByString:@"*"];
-    this_homework_message.THIS_HOMEWORK_ID=[class_detial objectAtIndex:0];
-    this_homework_message.THIS_CLASS_ID=[class_detial objectAtIndex:1];
-    select_class_cell.THIS_CLASS_COURSR_NAME=[class_detial objectAtIndex:3];
-    this_homework_message.HOMEWORK_DETAIL=[class_detial objectAtIndex:6];
-    this_homework_message.HOMEWORK_SUBMISSION_TIME=[class_detial objectAtIndex:7];
-}
 
 - (IBAction)back2class:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

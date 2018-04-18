@@ -20,5 +20,5 @@
 @property NSString *homework_is_done;
 @property NSString *homework_score;
 @property (strong, nonatomic) student_in_class *model;
-extern THIS_STUDENTS_IN_THIS_CLASS select_student_cell;
+extern student_in_class *select_student_cell;
 @end

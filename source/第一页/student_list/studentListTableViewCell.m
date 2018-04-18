@@ -9,7 +9,7 @@
 #import "studentListTableViewCell.h"
 
 @implementation studentListTableViewCell
-
+student_in_class *select_student_cell;
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -21,22 +21,29 @@
     // Configure the view for the selected state
 }
 
+-(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
+    if (highlighted == YES)
+    {
+        NSLog(@"this is cell click in studentListTableViewCell");
+        select_student_cell=[student_in_class student_in_classWithName:_student_name.text
+                                                               user_id:_user_id
+                                                              touxiang:@"0"
+                                                      homework_is_done:_is_done.text
+                                                           school_name:_school_name.text
+                                                        homework_score:_homework_score];
+//        select_student_cell.user_id=_user_id;
+//        select_student_cell.user_name=_student_name.text;
+//        select_student_cell.touxiang=@"0";
+//        select_student_cell.homework_is_done=_homework_is_done;
+//        select_student_cell.school_name=_school_name.text;
+//        select_student_cell.homework_score=_homework_score;
+    }
+    else
+    {
+    }
+    [super setHighlighted:highlighted animated:animated];
+}
 -(void)setModel:(student_in_class *)model{
-//    select_user_message = model;
-//    _student_id=model->THIS_STUDENT_USER_ID;
-//    _student_name.text=model->THIS_STUDENT_USER_NAME;
-//    _student_touxiang.image=[UIImage imageNamed:model->THIS_STUDENT_USER_TOUXIANG];
-//    _school_name.text=model->THIS_USER_BOLONG_TO_SCHOOL_NAME;
-//
-//    if([model->THIS_HOMEWORK_IS_DONE isEqual:@"1"])
-//    {
-//        _is_done.text=model->THIS_HOMEWORK_SCORE;
-//    }
-//    else
-//    {
-//        _is_done.text=@"未提交";
-//    }
-    
     _model = model;
     _user_id=model.user_id;
     _student_name.text=model.user_name;
@@ -51,21 +58,6 @@
         _is_done.text=@"未提交";
     }
 }
-/*
--(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
-    if (highlighted == YES)
-    {
-        select_student_cell.THIS_STUDENT_USER_ID=_user_id;
-        select_student_cell.THIS_STUDENT_USER_NAME=_student_name.text;
-        select_student_cell.THIS_USER_BOLONG_TO_SCHOOL_NAME=_school_name.text;
-        NSLog(@"select_user_id = %@",select_student_cell.THIS_STUDENT_USER_ID);
-    }
-    else
-    {
-        
-    }
-    [super setHighlighted:highlighted animated:animated];
-}*/
 //使用懒加载创建分割线view,保证一个cell只有一条
 -(UIView *)separatorView
 {
