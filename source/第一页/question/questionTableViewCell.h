@@ -13,6 +13,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *question_score;
 @property (weak, nonatomic) IBOutlet UILabel *question_detail;
 @property (weak, nonatomic) IBOutlet UILabel *question_answer;
+@property (strong, nonatomic) IBOutlet UITextField *my_score;
+@property (strong, nonatomic) IBOutlet UILabel *all_question_score;
+@property (strong, nonatomic) IBOutlet UILabel *student_my_answer;
 @property NSString *question_id;
 @property NSString *homework_id;
 @property(nonatomic,weak) UIView *separatorView;

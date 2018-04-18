@@ -64,7 +64,7 @@ static THIS_QUESTION_MESSAGE this_question_message;
                                                   question_detail:this_question_message.THIS_QUESTION_DETAIL
                                                   question_answer:this_question_message.THIS_QUESTION_ANSWER
                                                    question_score:this_question_message.THIS_QUESTION_SCORE
-                                                    question_type:@"123"];
+                                                    question_type:this_question_message.THIS_QUESTION_TYPE];
             [_question_dataSource addObject:p0];
         }
     }
@@ -77,6 +77,19 @@ static THIS_QUESTION_MESSAGE this_question_message;
     this_question_message.THIS_QUESTION_DETAIL=[question_detial objectAtIndex:2];
     this_question_message.THIS_QUESTION_ANSWER=[question_detial objectAtIndex:3];
     this_question_message.THIS_QUESTION_SCORE=[question_detial objectAtIndex:4];
+    this_question_message.THIS_QUESTION_TYPE=[question_detial objectAtIndex:5];
+    if([this_question_message.THIS_QUESTION_TYPE isEqualToString:@"0"])
+    {
+        this_question_message.THIS_QUESTION_TYPE=@" 单选题 ";
+    }
+    else     if([this_question_message.THIS_QUESTION_TYPE isEqualToString:@"1"])
+    {
+        this_question_message.THIS_QUESTION_TYPE=@" 判断题 ";
+    }
+    else
+    {
+        this_question_message.THIS_QUESTION_TYPE=@" 填空／简答题 ";
+    }
 }
 
 - (IBAction)back:(id)sender {

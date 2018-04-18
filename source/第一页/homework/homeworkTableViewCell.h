@@ -10,7 +10,7 @@
 #import "struct_user.h"
 #import "homework.h"
 @interface homeworkTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *class_name;
+@property (copy, nonatomic) NSString *class_name;
 @property (weak, nonatomic) IBOutlet UILabel *detail;
 @property (weak, nonatomic) IBOutlet UILabel *end_time;
 @property (copy, nonatomic) NSString *homework_id;

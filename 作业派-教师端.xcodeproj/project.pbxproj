@@ -42,6 +42,7 @@
 		DA5F0DED203F32A600F45AED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5F0DEC203F32A600F45AED /* main.m */; };
 		DA5F0DF7203F32A600F45AED /* _Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5F0DF6203F32A600F45AED /* _Tests.m */; };
 		DA5F0E02203F32A600F45AED /* _UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5F0E01203F32A600F45AED /* _UITests.m */; };
+		DA7C755820867ABB0074B759 /* MHRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C755720867ABB0074B759 /* MHRadioButton.m */; };
 		DAA9E95C2042AC4A00D63C4A /* messageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA9E95B2042AC4A00D63C4A /* messageViewController.m */; };
 		DABCE4F1203FED4E006432B5 /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABCE4F0203FED4E006432B5 /* loginViewController.m */; };
 		DABCE50220400764006432B5 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABCE50120400764006432B5 /* mainViewController.m */; };
@@ -140,8 +141,10 @@
 		DA5F0DFD203F32A600F45AED /* 作业派-教师端UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "作业派-教师端UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5F0E01203F32A600F45AED /* _UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _UITests.m; sourceTree = "<group>"; };
 		DA5F0E03203F32A600F45AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA7C755720867ABB0074B759 /* MHRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHRadioButton.m; sourceTree = "<group>"; };
 		DAA9E95A2042AC4A00D63C4A /* messageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = messageViewController.h; sourceTree = "<group>"; };
 		DAA9E95B2042AC4A00D63C4A /* messageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = messageViewController.m; sourceTree = "<group>"; };
+		DABB2AC0208677F400B821C5 /* MHRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRadioButton.h; path = "../New Group/MHRadioButton.h"; sourceTree = "<group>"; };
 		DABCE4EF203FED4E006432B5 /* loginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loginViewController.h; sourceTree = "<group>"; };
 		DABCE4F0203FED4E006432B5 /* loginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loginViewController.m; sourceTree = "<group>"; };
 		DABCE50020400764006432B5 /* mainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mainViewController.h; sourceTree = "<group>"; };
@@ -223,6 +226,7 @@
 		26DC84422078E4450090F18D /* 第三方库 */ = {
 			isa = PBXGroup;
 			children = (
+				DABB2AC32086780200B821C5 /* MHRadioButton */,
 				26DC84632078E5120090F18D /* AFNetworking */,
 			);
 			path = "第三方库";
@@ -365,6 +369,15 @@
 			);
 			name = "第二页";
 			path = "第三页";
+			sourceTree = "<group>";
+		};
+		DABB2AC32086780200B821C5 /* MHRadioButton */ = {
+			isa = PBXGroup;
+			children = (
+				DABB2AC0208677F400B821C5 /* MHRadioButton.h */,
+				DA7C755720867ABB0074B759 /* MHRadioButton.m */,
+			);
+			path = MHRadioButton;
 			sourceTree = "<group>";
 		};
 		DABCE4F5203FF677006432B5 /* source */ = {
@@ -579,6 +592,7 @@
 				26EAA0272067F259000F8B47 /* struct_user.m in Sources */,
 				DA199019204D3489006C694D /* course_1ViewController.m in Sources */,
 				2657719D20763B9900AEF2F6 /* class_belong_to_courseTableViewCell.m in Sources */,
+				DA7C755820867ABB0074B759 /* MHRadioButton.m in Sources */,
 				26DC84722078E5120090F18D /* AFHTTPSessionManager.m in Sources */,
 				2618A5B62079DC36007504F6 /* registerViewController.m in Sources */,
 				2618A5CD207A5CAD007504F6 /* homeworkTableViewCell.m in Sources */,

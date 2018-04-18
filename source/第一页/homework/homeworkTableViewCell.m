@@ -38,7 +38,7 @@ THIS_HOMEWORK_MESSAGE select_homework_cell;
 }
 -(void)setModel:(homework *)model{
     _model = model;
-    _class_name.text=model.detail;
+    _class_name=model.class_name;
     _detail.text=model.detail;
     _end_time.text=model.end_time;
     self.homework_id=model.homework_id;

@@ -65,6 +65,7 @@ typedef struct
     __unsafe_unretained NSString *THIS_QUESTION_DETAIL;
     __unsafe_unretained NSString *THIS_QUESTION_ANSWER;
     __unsafe_unretained NSString *THIS_QUESTION_SCORE;
+    __unsafe_unretained NSString *THIS_QUESTION_TYPE;
 }THIS_QUESTION_MESSAGE;
 @interface struct_user : NSObject
 @property(nonatomic,retain)NSString *set_name;
