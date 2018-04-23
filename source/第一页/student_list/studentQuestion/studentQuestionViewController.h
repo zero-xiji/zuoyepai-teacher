@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "homeworkViewController.h"
+#import "studentHomeworkViewController.h"
 #import "studentQuestionTableViewCell.h"
 
 @interface studentQuestionViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *main_view;
+- (IBAction)correct_homework:(id)sender;
 @property (weak, nonatomic) IBOutlet UINavigationBar *my_bar;
 - (IBAction)back:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *question_table;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *btn_correct_homework;
 @property (weak, nonatomic) IBOutlet UILabel *question_is_null;
 @end

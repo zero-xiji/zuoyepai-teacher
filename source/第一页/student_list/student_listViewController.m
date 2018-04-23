@@ -39,11 +39,7 @@ static THIS_STUDENTS_IN_THIS_CLASS this_student_message;
 {
     _student_dataSource =[NSMutableArray new];
     
-    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/students_in_class?class_id=%@",select_class_cell.THIS_CLASS_ID];
-    NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
-    NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
-    NSURL *url =[NSURL URLWithString:urlstringEncode];
-//    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/students_in_class?class_id=%@",select_class_cell.THIS_CLASS_ID]];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/students_in_class?class_id=%@",select_class_cell.THIS_CLASS_ID]];
     //2.根据ＷＥＢ路径创建一个请求
     NSData *data= [NSData dataWithContentsOfURL:url];
     NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];

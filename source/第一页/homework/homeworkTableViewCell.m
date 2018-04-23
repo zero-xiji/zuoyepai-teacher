@@ -9,7 +9,7 @@
 #import "homeworkTableViewCell.h"
 
 @implementation homeworkTableViewCell
-THIS_HOMEWORK_MESSAGE select_homework_cell;
+homework *select_homework_cell;
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -24,11 +24,14 @@ THIS_HOMEWORK_MESSAGE select_homework_cell;
 -(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
     if (highlighted == YES)
     {
-        select_homework_cell.THIS_CLASS_ID=_class_id;
-        select_homework_cell.THIS_HOMEWORK_ID=_homework_id;
-        select_homework_cell.HOMEWORK_DETAIL=_homework_detail;
-        select_homework_cell.HOMEWORK_SUBMISSION_TIME=_end_time.text;
-        NSLog(@"homework_id = %@",select_homework_cell.THIS_HOMEWORK_ID);
+        select_homework_cell = [homework homeworkWithName:_homework_id
+                                                  class_id:_class_id
+                                                class_name:_class_name
+                                              course_name:_course_name
+                                                    detail:_detail.text
+                                                  end_time:_end_time.text
+                                                  is_issue:_is_issue];
+        NSLog(@"homework_id = %@",select_homework_cell.homework_id);
     }
     else
     {
@@ -44,6 +47,7 @@ THIS_HOMEWORK_MESSAGE select_homework_cell;
     self.homework_id=model.homework_id;
     self.class_id=model.class_id;
     self.course_name = model.course_name;
+    self.is_issue=model.is_issue;
 }
 //使用懒加载创建分割线view,保证一个cell只有一条
 -(UIView *)separatorView

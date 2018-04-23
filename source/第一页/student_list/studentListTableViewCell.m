@@ -31,12 +31,6 @@ student_in_class *select_student_cell;
                                                       homework_is_done:_is_done.text
                                                            school_name:_school_name.text
                                                         homework_score:_homework_score];
-//        select_student_cell.user_id=_user_id;
-//        select_student_cell.user_name=_student_name.text;
-//        select_student_cell.touxiang=@"0";
-//        select_student_cell.homework_is_done=_homework_is_done;
-//        select_student_cell.school_name=_school_name.text;
-//        select_student_cell.homework_score=_homework_score;
     }
     else
     {

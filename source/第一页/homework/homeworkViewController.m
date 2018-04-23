@@ -16,6 +16,7 @@
 @implementation homeworkViewController
 static homework *this_homework_message;
 static int rows;
+//static int can_modify;
 - (void)viewDidLoad {
     [super viewDidLoad];
     _homework_table.tableFooterView = [[UIView alloc] init];
@@ -69,11 +70,12 @@ static int rows;
     //class_id class_name teacher_id
     NSArray *class_detial=[every_class_all_message componentsSeparatedByString:@"*"];
     this_homework_message = [homework homeworkWithName:[class_detial objectAtIndex:0]
-                      class_id:[class_detial objectAtIndex:1]
-                    class_name:select_class_cell.THIS_CLASS_NAME
-                   course_name:[class_detial objectAtIndex:3]
-                        detail:[class_detial objectAtIndex:6]
-                      end_time:[class_detial objectAtIndex:7]];
+                                              class_id:[class_detial objectAtIndex:1]
+                                            class_name:select_class_cell.THIS_CLASS_NAME
+                                           course_name:[class_detial objectAtIndex:3]
+                                                detail:[class_detial objectAtIndex:6]
+                                              end_time:[class_detial objectAtIndex:7]
+                                              is_issue:[class_detial objectAtIndex:8]];
 }
 
 #pragma mark -UITableView 协议
@@ -90,7 +92,6 @@ static int rows;
     NSLog(@"this is homework tableview cell set");
     homeworkTableViewCell *select=[tableView cellForRowAtIndexPath:indexPath];
     select.homework_detail=select.detail.text;
-    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -105,7 +106,16 @@ static int rows;
     {
         homeworkTableViewCell *this_cell_select=[tableView cellForRowAtIndexPath:indexPath];
         //alert to make sure user want to exit this class
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"确定要删除该班级吗？" preferredStyle:UIAlertControllerStyleAlert];
+        NSString *tipStr;
+        if([this_cell_select.is_issue isEqualToString:@"1"])
+        {
+            tipStr=@"作业已发布！\n确定仍要删除该作业吗？";
+        }
+        else
+        {
+           tipStr=@"确定要删除该作业吗？";
+        }
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:tipStr preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
                           {
                               //delete from database in mysql
@@ -128,16 +138,12 @@ static int rows;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return @"删除该班级";
+    return @"删除该作业";
 }
 -(BOOL)url_to_delete_homework:(NSString *)homework_id_to_delete
 {
     BOOL is_success_delete=NO;
-    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myhomework?operate=delete&user_id=%@&put_id=%@",this_user_.THIS_TEACHER_USER_ID,homework_id_to_delete];
-    NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
-    NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
-    NSURL *url =[NSURL URLWithString:urlstringEncode];
-//    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myhomework?operate=delete&user_id=%@&put_id=%@",this_user_.THIS_TEACHER_USER_ID,homework_id_to_delete]];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myhomework?operate=delete&user_id=%@&put_id=%@",this_user_.THIS_TEACHER_USER_ID,homework_id_to_delete]];
     NSData *data= [NSData dataWithContentsOfURL:url];
     NSString *return_text =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSArray *array = [return_text componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组
@@ -164,6 +170,14 @@ static int rows;
 {
     homeworkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"homework_cell" forIndexPath:indexPath];
     cell.model=self.homework_dataSource[indexPath.row];
+    if([cell.is_issue isEqualToString:@"1"])
+    {
+        cell.backgroundColor= [UIColor colorWithRed:1.0 green:0.894 blue:0.709 alpha:0.5];
+    }
+    else
+    {
+        cell.backgroundColor= [UIColor colorWithRed:0.942 green:0.973 blue:1.0 alpha:0.5];
+    }
     return cell;
 }
 
@@ -188,8 +202,9 @@ static int rows;
         [_homework_table reloadData];
     }];
     UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:Btn_cancle];
     [alert addAction:Btn_yes];
+    [alert addAction:Btn_cancle];
+
     //
     //add this alert into the view
     //
@@ -227,8 +242,9 @@ static int rows;
         NSLog(@"%@",dateString);
     }];
     UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:Btn_cancle];
     [alert addAction:Btn_yes];
+    [alert addAction:Btn_cancle];
+
     //
     //add this alert into the view
     //

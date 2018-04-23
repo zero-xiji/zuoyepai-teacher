@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "student_question.h"
 @interface studentQuestionTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *question_type;
+@property (weak, nonatomic) IBOutlet UILabel *l_question_type;
 @property (weak, nonatomic) IBOutlet UILabel *question_score;
 @property (weak, nonatomic) IBOutlet UILabel *question_detail;
 @property (weak, nonatomic) IBOutlet UILabel *question_answer;
@@ -18,6 +18,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *student_score;
 @property NSString *question_id;
 @property NSString *homework_id;
+@property NSString *score;
+@property NSString *question_type;
 @property(nonatomic,weak) UIView *separatorView;
 @property (strong, nonatomic) student_question *model;
 

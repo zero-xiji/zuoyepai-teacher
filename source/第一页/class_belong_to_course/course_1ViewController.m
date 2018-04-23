@@ -91,11 +91,7 @@ static THIS_CLASS_MESSAGE this_class_message;
 -(BOOL)url_to_exit:(NSString *)class_id_to_exit
 {
     BOOL is_success_delete=NO;
-    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/operate_class?operate=delete_class&put_in=%@",class_id_to_exit];
-    NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
-    NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
-    NSURL *url =[NSURL URLWithString:urlstringEncode];
-//    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/operate_class?operate=delete_class&put_in=%@",class_id_to_exit]];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/operate_class?operate=delete_class&put_in=%@",class_id_to_exit]];
     NSData *data= [NSData dataWithContentsOfURL:url];
     NSString *return_text =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSArray *array = [return_text componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组
@@ -195,8 +191,9 @@ static THIS_CLASS_MESSAGE this_class_message;
         [_this_class_belong_to_course_table reloadData];
     }];
     UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:Btn_cancle];
     [alert addAction:Btn_yes];
+    [alert addAction:Btn_cancle];
+
     //
     //add this alert into the view
     //

@@ -31,7 +31,7 @@
 - (IBAction)reset_password:(id)sender {
     if([this_user_.THIS_USER_IS_LOGIN isEqual: @"1"])
     {
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"修改密码" message:@"" preferredStyle:UIAlertControllerStyleAlert];
         [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull old_password) {
             old_password.placeholder=@"旧密码";
             old_password.secureTextEntry=YES;

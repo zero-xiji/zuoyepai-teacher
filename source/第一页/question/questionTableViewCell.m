@@ -46,6 +46,17 @@
     _question_detail.text=model.question_detail;
     _question_answer.text=model.question_answer;
     _question_score.text=[NSString stringWithFormat:@"分数：%@",model.question_score];
-    _question_type.text=[NSString stringWithFormat:@"题型：%@",model.question_type];
+    if([model.question_type isEqualToString:@"0"])
+    {
+        _question_type.text=@" 单选题 ";
+    }
+    else if([model.question_type isEqualToString:@"1"])
+    {
+        _question_type.text=@" 判断题 ";
+    }
+    else
+    {
+        _question_type.text=@" 填空／简答题 ";
+    }
 }
 @end

@@ -46,21 +46,30 @@
     self.homework_id=model.homework_id;
     self.question_detail.text=model.question_detail;
     self.question_answer.text=model.question_answer;
+    self.score=model.student_score;
     self.question_score.text=[NSString stringWithFormat:@"满分%@分",model.question_score];
-    self.question_type.text=model.question_type;
+    self.question_type=model.question_type;
     if([model.question_type isEqualToString:@"0"])
     {
-        _question_type.text=@" 单选题 ";
+        _l_question_type.text=@" 单选题 ";
     }
     else if([model.question_type isEqualToString:@"1"])
     {
-        _question_type.text=@" 判断题 ";
+        _l_question_type.text=@" 判断题 ";
     }
     else
     {
-        _question_type.text=@" 填空／简答题 ";
+        _l_question_type.text=@" 填空／简答题 ";
     }
     self.student_my_answer.text=model.student_answer;
     self.student_score.text=[NSString stringWithFormat:@"%@分/",model.student_score];
+    if(model.student_score!= model.question_score)
+    {
+        _student_score.textColor=[UIColor redColor];
+    }
+    else
+    {
+        _student_score.textColor=[UIColor greenColor];
+    }
 }
 @end

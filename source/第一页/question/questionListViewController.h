@@ -14,5 +14,8 @@
 - (IBAction)back:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *question_table;
 @property (weak, nonatomic) IBOutlet UILabel *question_is_null;
+- (IBAction)issue_homework:(id)sender;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *btn_add_question;
+@property (strong, nonatomic) IBOutlet UIButton *btn_issue_homework;
 
 @end

@@ -124,8 +124,8 @@ static THIS_FILE_MESSAGE this_file_message;
         NSLog(@"%@",dateString);
     }];
     UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:Btn_cancle];
     [alert addAction:Btn_yes];
+    [alert addAction:Btn_cancle];
     //
     //add this alert into the view
     //

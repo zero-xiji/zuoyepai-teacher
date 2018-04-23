@@ -205,8 +205,9 @@ static int is_first_appear;
             [self.tableView reloadData];
         }];
         UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:Btn_cancle];
         [alert addAction:Btn_yes];
+        [alert addAction:Btn_cancle];
+
         //
         //add this alert into the view
         //
