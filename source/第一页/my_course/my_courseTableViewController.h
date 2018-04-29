@@ -12,6 +12,7 @@
 
 @interface my_courseTableViewController : UITableViewController
 - (IBAction)btn_add_course:(id)sender;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *btn_add;
 
 extern THIS_COURSE_MESSAGE select_course_cell;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "studentHomeworkViewController.h"
-#import "homeworkTableViewCell.h"
+#import "studentHomeworkTableViewCell.h"
 #import "loginViewController.h"
 #import "student_listViewController.h"
 @interface studentHomeworkViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -70,12 +70,16 @@ static int rows;
     //class_id class_name teacher_id
     NSArray *class_detial=[every_class_all_message componentsSeparatedByString:@"*"];
     this_student_homework_message = [homework homeworkWithName:[class_detial objectAtIndex:0]
-                                              class_id:[class_detial objectAtIndex:1]
-                                            class_name:select_class_cell.THIS_CLASS_NAME
-                                           course_name:[class_detial objectAtIndex:3]
-                                                detail:[class_detial objectAtIndex:6]
-                                              end_time:[class_detial objectAtIndex:7]
-                                              is_issue:[class_detial objectAtIndex:8]];
+                                                      class_id:[class_detial objectAtIndex:1]
+                                                    class_name:select_class_cell.THIS_CLASS_NAME
+                                                   course_name:[class_detial objectAtIndex:3]
+                                                        detail:[class_detial objectAtIndex:6]
+                                                      end_time:[class_detial objectAtIndex:7]
+                                                      is_issue:[class_detial objectAtIndex:8]
+                                                 is_correcting:[class_detial objectAtIndex:9]
+                                                 student_score:[class_detial objectAtIndex:10]
+                                                         score:[class_detial objectAtIndex:11]];
+    
 }
 
 #pragma mark -UITableView 协议
@@ -89,7 +93,7 @@ static int rows;
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    homeworkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"student_homework_cell" forIndexPath:indexPath];
+    studentHomeworkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"student_homework_cell" forIndexPath:indexPath];
     cell.model=self.student_homework_dataSource[indexPath.row];
     return cell;
 }
@@ -97,7 +101,7 @@ static int rows;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"this is homework tableview cell set");
-    homeworkTableViewCell *select=[tableView cellForRowAtIndexPath:indexPath];
+    studentHomeworkTableViewCell *select=[tableView cellForRowAtIndexPath:indexPath];
     select.homework_detail=select.detail.text;
 }
 

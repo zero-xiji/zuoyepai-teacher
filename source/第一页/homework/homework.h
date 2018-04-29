@@ -17,7 +17,9 @@
 @property (copy, nonatomic) NSString *detail;
 @property (copy, nonatomic) NSString *end_time;
 @property (copy, nonatomic) NSString *is_issue;
-@property (copy, nonatomic) NSString *student_homework_is_correcting;
+@property (copy, nonatomic) NSString *is_correcting;
+@property (copy, nonatomic) NSString *score;
+@property (copy, nonatomic) NSString *student_score;
 - (instancetype)initWithName:(NSString *)homework_id
                     class_id:(NSString *)class_id
                   class_name:(NSString *)class_name
@@ -32,7 +34,30 @@
                           detail:(NSString *)detail
                         end_time:(NSString *)end_time
                         is_issue:(NSString *)is_issue;
-- (instancetype)initWithName:(NSString *)student_homework_is_correcting;
-+ (instancetype)homeworkIsCorrectWithName:(NSString *)student_homework_is_correcting;
 
+- (instancetype)initWithName:(NSString *)homework_id
+                    class_id:(NSString *)class_id
+                  class_name:(NSString *)class_name
+                 course_name:(NSString *)course_name
+                      detail:(NSString *)detail
+                    end_time:(NSString *)end_time
+                    is_issue:(NSString *)is_issue
+               is_correcting:(NSString *)is_correcting
+               student_score:(NSString *)student_score
+                       score:(NSString *)score;
+
++ (instancetype)homeworkWithName:(NSString *)homework_id
+                        class_id:(NSString *)class_id
+                      class_name:(NSString *)class_name
+                     course_name:(NSString *)course_name
+                          detail:(NSString *)detail
+                        end_time:(NSString *)end_time
+                        is_issue:(NSString *)is_issue
+                   is_correcting:(NSString *)is_correcting
+                   student_score:(NSString *)student_score
+                           score:(NSString *)score;
+
+
+
+//is_correcting:(NSString *)is_correcting;
 @end

@@ -36,13 +36,21 @@ static student_question *this_question_message;
     {
         _my_bar.topItem.title=@"未批改题目列表";
     }
+    if([select_homework_cell.is_correcting isEqual:@"1"])
+    {
+        _btn_correct_homework.title=@"";
+//        _question_table.allowsSelection=NO;
+    }
+    else
+    {
+        _btn_correct_homework.title=@"完成批改";
+    }
 }
 
 - (void)initdata
 {
     _question_dataSource =[NSMutableArray new];
     _all_question_dataSource =[NSMutableArray new];
-//    NSString *urlString=[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/select-student-question?student_id=%@&homework_id=%@",select_student_cell.user_id,select_homework_cell.homework_id];
     NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/select-student-question?student_id=%@&homework_id=%@",select_student_cell.user_id,select_homework_cell.homework_id]];
 //    NSLog(@"%@",urlString);
     //2.根据ＷＥＢ路径创建一个请求
@@ -102,7 +110,9 @@ static student_question *this_question_message;
     UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:str preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
     {
-//        student_homework_is_correcting=@"1";
+        _btn_correct_homework.title=@"";
+        [self dismissViewControllerAnimated:YES completion:nil];
+//        [self viewWillAppear:YES];
     }]];
     [self presentViewController:alert animated:true completion:nil];
 }
@@ -122,22 +132,37 @@ static student_question *this_question_message;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"this is student didSelectRowAtIndexPath set");
-    studentQuestionTableViewCell *this_cell=[tableView cellForRowAtIndexPath:indexPath];
-    if([this_cell.question_type isEqualToString:@"2"])
+    if([select_homework_cell.is_correcting isEqualToString:@"0"])
     {
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"批改" message:nil preferredStyle:UIAlertControllerStyleAlert];
-        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-            textField.placeholder=@"请输入该提分数";
-        }];
-        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
-                          {
-                              NSString *this_score=alert.textFields.firstObject.text;
-                              [self teacher_set_score_url:this_cell.question_id :this_score];
-                              [_question_table reloadData];
-                          }]];
-        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
-        [self presentViewController:alert animated:true completion:nil];
+        studentQuestionTableViewCell *this_cell=[tableView cellForRowAtIndexPath:indexPath];
+        if([this_cell.question_type isEqualToString:@"2"])
+        {
+            UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"批改" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+                textField.placeholder=@"请输入该题分数";
+            }];
+            [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+                              {
+                                  NSString *this_score=alert.textFields.firstObject.text;
+                                  if(this_score.intValue>this_cell.model.question_score.intValue||this_score.intValue<0)
+                                  {
+                                      NSLog(@"teacher_set_score_url warning");
+                                      
+                                      UIAlertController *score_alert=[UIAlertController alertControllerWithTitle:@"分数不可超出本题最高分或低于最低分!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                                      [score_alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+                                      [self presentViewController:score_alert animated:true completion:nil];
+                                  }
+                                  else
+                                  {
+                                      NSLog(@"teacher_set_score_url");
+                                      [self teacher_set_score_url:this_cell.question_id :this_score];
+                                      [_question_table reloadData];
+                                      [self viewWillAppear:YES];
+                                  }
+                              }]];
+            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alert animated:true completion:nil];
+        }
     }
 }
 
@@ -147,24 +172,12 @@ static student_question *this_question_message;
     NSData *data= [NSData dataWithContentsOfURL:url];
     NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:str preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
-    {
-//        _question_dataSource[]
-    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
     [self presentViewController:alert animated:true completion:nil];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     studentQuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"student_question_cell" forIndexPath:indexPath];
-    if(![cell.model.question_type isEqualToString:@"2"])
-    {
-        cell.my_score.hidden=YES;
-    }
-    if([cell.model.question_type isEqualToString:@"2"])
-    {
-        cell.my_score.hidden=NO;
-//        cell.student_score.hidden=YES;
-    }
     if(_question_dataSource.count==0)
     {
         cell.model=_all_question_dataSource[indexPath.row];

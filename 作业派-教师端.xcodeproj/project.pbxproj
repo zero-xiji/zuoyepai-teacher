@@ -48,6 +48,7 @@
 		DABCE4F1203FED4E006432B5 /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABCE4F0203FED4E006432B5 /* loginViewController.m */; };
 		DABCE50220400764006432B5 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABCE50120400764006432B5 /* mainViewController.m */; };
 		DABCE5222040212B006432B5 /* myViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABCE5212040212B006432B5 /* myViewController.m */; };
+		DABCF90D2095C3D900758E0C /* studentHomeworkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DABCF90C2095C3D900758E0C /* studentHomeworkTableViewCell.m */; };
 		DABE0948208706C300141546 /* studentQuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DABE0947208706C300141546 /* studentQuestionTableViewCell.m */; };
 		DABE094B208706EA00141546 /* student_question.m in Sources */ = {isa = PBXBuildFile; fileRef = DABE094A208706EA00141546 /* student_question.m */; };
 		DABE09522087084500141546 /* studentQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABE09512087084500141546 /* studentQuestionViewController.m */; };
@@ -159,6 +160,8 @@
 		DABCE50120400764006432B5 /* mainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
 		DABCE5202040212B006432B5 /* myViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myViewController.h; sourceTree = "<group>"; };
 		DABCE5212040212B006432B5 /* myViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myViewController.m; sourceTree = "<group>"; };
+		DABCF90B2095C3D900758E0C /* studentHomeworkTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = studentHomeworkTableViewCell.h; sourceTree = "<group>"; };
+		DABCF90C2095C3D900758E0C /* studentHomeworkTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = studentHomeworkTableViewCell.m; sourceTree = "<group>"; };
 		DABE0946208706C300141546 /* studentQuestionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = studentQuestionTableViewCell.h; sourceTree = "<group>"; };
 		DABE0947208706C300141546 /* studentQuestionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = studentQuestionTableViewCell.m; sourceTree = "<group>"; };
 		DABE0949208706EA00141546 /* student_question.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = student_question.h; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 		DA0F4A9D208D9351003FD7F1 /* student_homework */ = {
 			isa = PBXGroup;
 			children = (
+				DABCF90B2095C3D900758E0C /* studentHomeworkTableViewCell.h */,
+				DABCF90C2095C3D900758E0C /* studentHomeworkTableViewCell.m */,
 				DAE0F770208DCC2600A6E460 /* studentHomeworkViewController.h */,
 				DAE0F771208DCC2600A6E460 /* studentHomeworkViewController.m */,
 			);
@@ -626,6 +631,7 @@
 				265771A120763CE000AEF2F6 /* class_belong_to_course.m in Sources */,
 				F98F1F472084B3950051E2D4 /* questionTableViewCell.m in Sources */,
 				DAA9E95C2042AC4A00D63C4A /* messageViewController.m in Sources */,
+				DABCF90D2095C3D900758E0C /* studentHomeworkTableViewCell.m in Sources */,
 				F98F1F4420847D430051E2D4 /* questionViewController.m in Sources */,
 				DA379F4520844530004882A6 /* student_in_class.m in Sources */,
 				DABE0948208706C300141546 /* studentQuestionTableViewCell.m in Sources */,

@@ -14,7 +14,6 @@
 @implementation my_courseTableViewController
 THIS_COURSE_MESSAGE select_course_cell;
 static THIS_COURSE_MESSAGE this_course_message;
-static THIS_COURSE_MESSAGE this_course_message2delete;
 static UITableView *this_tableView;
 static UIView *containerView;
 static int is_first_appear;
@@ -27,10 +26,12 @@ static int is_first_appear;
     is_first_appear=0;
     if(![this_user_.THIS_USER_IS_LOGIN isEqual:@"1"])
     {
+        _btn_add.title=@"";
         NSLog(@"you are not login");
     }
     else
     {
+        _btn_add.title=@"添加课程";
         [self initdata];
         self.tableView.dataSource=self;
     }
@@ -47,11 +48,13 @@ static int is_first_appear;
         if(![this_user_.THIS_USER_IS_LOGIN isEqual:@"1"])
         {
             NSLog(@"you are not login");
+            _btn_add.title=@"";
             _dataSource=NULL;
             [self.tableView reloadData];
         }
         else
         {
+            _btn_add.title=@"添加课程";
             [self initdata];
             [self.tableView reloadData];
         }
@@ -97,11 +100,9 @@ static int is_first_appear;
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     return _dataSource.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -110,8 +111,6 @@ static int is_first_appear;
     cell.model=self.dataSource[indexPath.row];
     return cell;
 }
-
-
 //实现右滑动删除
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;

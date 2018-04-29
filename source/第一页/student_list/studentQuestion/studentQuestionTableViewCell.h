@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *question_score;
 @property (weak, nonatomic) IBOutlet UILabel *question_detail;
 @property (weak, nonatomic) IBOutlet UILabel *question_answer;
-@property (strong, nonatomic) IBOutlet UITextField *my_score;
 @property (strong, nonatomic) IBOutlet UILabel *student_my_answer;
 @property (strong, nonatomic) IBOutlet UILabel *student_score;
 @property NSString *question_id;

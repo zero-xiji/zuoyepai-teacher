@@ -226,6 +226,7 @@ static int rows;
     [alert addAction:Btn_yes];
     [self presentViewController:alert animated:true completion:nil];
 }
+/*
 -(void)setAdataPicker
 {
     UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"作业提交日期时间" message:@"" preferredStyle:UIAlertControllerStyleAlert];
@@ -249,5 +250,5 @@ static int rows;
     //add this alert into the view
     //
     [self presentViewController:alert animated:true completion:nil];
-}
+}*/
 @end
