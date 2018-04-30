@@ -38,6 +38,7 @@ static NSString *this_question_answer;
     _btn_D.hidden=NO;
     _btn_A.selected=YES;
     this_question_answer=@"A";
+    question_type=0;
 }
 
 - (IBAction)add_question:(id)sender {

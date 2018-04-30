@@ -34,7 +34,6 @@
 		26F91A4D207D2204005B619A /* homeworkDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F91A4C207D2204005B619A /* homeworkDownloadViewController.m */; };
 		DA199019204D3489006C694D /* course_1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA199018204D3489006C694D /* course_1ViewController.m */; };
 		DA26F16C208640990027A837 /* user.m in Sources */ = {isa = PBXBuildFile; fileRef = DA26F16B208640990027A837 /* user.m */; };
-		DA2C40352088A158001CADB3 /* answerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2C40342088A157001CADB3 /* answerViewController.m */; };
 		DA379F4520844530004882A6 /* student_in_class.m in Sources */ = {isa = PBXBuildFile; fileRef = DA379F4420844530004882A6 /* student_in_class.m */; };
 		DA5F0DDF203F32A600F45AED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5F0DDE203F32A600F45AED /* AppDelegate.m */; };
 		DA5F0DE2203F32A600F45AED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5F0DE1203F32A600F45AED /* ViewController.m */; };
@@ -43,7 +42,6 @@
 		DA5F0DED203F32A600F45AED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5F0DEC203F32A600F45AED /* main.m */; };
 		DA5F0DF7203F32A600F45AED /* _Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5F0DF6203F32A600F45AED /* _Tests.m */; };
 		DA5F0E02203F32A600F45AED /* _UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5F0E01203F32A600F45AED /* _UITests.m */; };
-		DA7C755820867ABB0074B759 /* MHRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C755720867ABB0074B759 /* MHRadioButton.m */; };
 		DAA9E95C2042AC4A00D63C4A /* messageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA9E95B2042AC4A00D63C4A /* messageViewController.m */; };
 		DABCE4F1203FED4E006432B5 /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABCE4F0203FED4E006432B5 /* loginViewController.m */; };
 		DABCE50220400764006432B5 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABCE50120400764006432B5 /* mainViewController.m */; };
@@ -131,8 +129,6 @@
 		DA199018204D3489006C694D /* course_1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = course_1ViewController.m; sourceTree = "<group>"; };
 		DA26F16A208640990027A837 /* user.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
 		DA26F16B208640990027A837 /* user.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = user.m; sourceTree = "<group>"; };
-		DA2C40332088A157001CADB3 /* answerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = answerViewController.h; sourceTree = "<group>"; };
-		DA2C40342088A157001CADB3 /* answerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = answerViewController.m; sourceTree = "<group>"; };
 		DA379F4320844530004882A6 /* student_in_class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = student_in_class.h; sourceTree = "<group>"; };
 		DA379F4420844530004882A6 /* student_in_class.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = student_in_class.m; sourceTree = "<group>"; };
 		DA5F0DDA203F32A600F45AED /* 作业派-教师端.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "作业派-教师端.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,10 +146,8 @@
 		DA5F0DFD203F32A600F45AED /* 作业派-教师端UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "作业派-教师端UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5F0E01203F32A600F45AED /* _UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _UITests.m; sourceTree = "<group>"; };
 		DA5F0E03203F32A600F45AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA7C755720867ABB0074B759 /* MHRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHRadioButton.m; sourceTree = "<group>"; };
 		DAA9E95A2042AC4A00D63C4A /* messageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = messageViewController.h; sourceTree = "<group>"; };
 		DAA9E95B2042AC4A00D63C4A /* messageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = messageViewController.m; sourceTree = "<group>"; };
-		DABB2AC0208677F400B821C5 /* MHRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRadioButton.h; path = "../New Group/MHRadioButton.h"; sourceTree = "<group>"; };
 		DABCE4EF203FED4E006432B5 /* loginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loginViewController.h; sourceTree = "<group>"; };
 		DABCE4F0203FED4E006432B5 /* loginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loginViewController.m; sourceTree = "<group>"; };
 		DABCE50020400764006432B5 /* mainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mainViewController.h; sourceTree = "<group>"; };
@@ -249,7 +243,6 @@
 			children = (
 				DACCA6C8208C8F6F00B07204 /* RadioButton.h */,
 				DACCA6C7208C8F6F00B07204 /* RadioButton.m */,
-				DABB2AC32086780200B821C5 /* MHRadioButton */,
 				26DC84632078E5120090F18D /* AFNetworking */,
 			);
 			path = "第三方库";
@@ -407,15 +400,6 @@
 			path = "第三页";
 			sourceTree = "<group>";
 		};
-		DABB2AC32086780200B821C5 /* MHRadioButton */ = {
-			isa = PBXGroup;
-			children = (
-				DABB2AC0208677F400B821C5 /* MHRadioButton.h */,
-				DA7C755720867ABB0074B759 /* MHRadioButton.m */,
-			);
-			path = MHRadioButton;
-			sourceTree = "<group>";
-		};
 		DABCE4F5203FF677006432B5 /* source */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,8 +451,6 @@
 				F98F1F4320847D430051E2D4 /* questionViewController.m */,
 				268816312078BC4E005BD0E4 /* questionListViewController.h */,
 				268816322078BC4E005BD0E4 /* questionListViewController.m */,
-				DA2C40332088A157001CADB3 /* answerViewController.h */,
-				DA2C40342088A157001CADB3 /* answerViewController.m */,
 			);
 			path = question;
 			sourceTree = "<group>";
@@ -648,12 +630,10 @@
 				DA199019204D3489006C694D /* course_1ViewController.m in Sources */,
 				2657719D20763B9900AEF2F6 /* class_belong_to_courseTableViewCell.m in Sources */,
 				DABE094B208706EA00141546 /* student_question.m in Sources */,
-				DA7C755820867ABB0074B759 /* MHRadioButton.m in Sources */,
 				26DC84722078E5120090F18D /* AFHTTPSessionManager.m in Sources */,
 				2618A5B62079DC36007504F6 /* registerViewController.m in Sources */,
 				2618A5CD207A5CAD007504F6 /* homeworkTableViewCell.m in Sources */,
 				DABCE50220400764006432B5 /* mainViewController.m in Sources */,
-				DA2C40352088A158001CADB3 /* answerViewController.m in Sources */,
 				26DC84762078E5120090F18D /* AFSecurityPolicy.m in Sources */,
 				26F91A4D207D2204005B619A /* homeworkDownloadViewController.m in Sources */,
 				2618A5CF207A5CAD007504F6 /* homework.m in Sources */,

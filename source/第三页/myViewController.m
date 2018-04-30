@@ -33,15 +33,10 @@ int count_how_many_time_appear=0;
     count_how_many_time_appear++;
     if([this_user_.THIS_USER_IS_LOGIN isEqualToString:@"1"])
     {
-        NSURL *url_touxiang =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/my_view?table=teacher&user_name=%@&password=%@",this_user_.THIS_TEACHER_USER_NAME,this_user_.THIS_TEACHER_USER_PASSWORD]];
-        NSData *data= [NSData dataWithContentsOfURL:url_touxiang];
-        NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-        NSArray *array = [str componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组
-        NSString *school_name=[array objectAtIndex:3];
         _btn_login.hidden=YES;//set btn can't be used
         _touxiang.image=[UIImage imageNamed:this_user_.THIS_TEACHER_USER_TOUXIANG];
         _l_userName.text=this_user_.THIS_TEACHER_USER_NAME;
-        _l_school.text=school_name;
+        _l_school.text=this_user_.THIS_USER_BOLONG_TO_SCHOOL_NAME;
         _touxiang.contentMode = UIViewContentModeScaleAspectFill;
     }
     else
@@ -57,23 +52,23 @@ int count_how_many_time_appear=0;
 - (IBAction)btn_logout:(id)sender {
     if([this_user_.THIS_USER_IS_LOGIN isEqual: @"1"])
     {
-        NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/logout?table=teacher&user_name=%@&password=%@",this_user_.THIS_TEACHER_USER_NAME,this_user_.THIS_TEACHER_USER_PASSWORD];
-        NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
-        NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
-        NSURL *url =[NSURL URLWithString:urlstringEncode];
-//        NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/logout?table=teacher&user_name=%@&password=%@",this_user_.THIS_TEACHER_USER_NAME,this_user_.THIS_TEACHER_USER_PASSWORD]];
-        NSData *data= [NSData dataWithContentsOfURL:url];
-        NSString *is_logout=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-        if([is_logout isEqual:@"退出成功!"])
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"确定要退出吗！" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
         {
-            UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"确定要退出吗！" preferredStyle:UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/logout?table=teacher&user_name=%@&password=%@",this_user_.THIS_TEACHER_USER_NAME,this_user_.THIS_TEACHER_USER_PASSWORD];
+            NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
+            NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
+            NSURL *url =[NSURL URLWithString:urlstringEncode];
+            NSData *data= [NSData dataWithContentsOfURL:url];
+            NSString *is_logout=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+            if([is_logout isEqual:@"退出成功!"])
+            {
                 [self set_logout_user];
                 [self viewWillAppear:YES];
-            }]];
-            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
-            [self presentViewController:alert animated:true completion:nil];
-        }
+            }
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alert animated:true completion:nil];
     }
     else
     {

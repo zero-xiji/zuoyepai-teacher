@@ -22,7 +22,6 @@ user *this_user_;
     _touxiang.layer.masksToBounds=YES;
     _touxiang.layer.cornerRadius=50;
     _page=[NSUserDefaults standardUserDefaults];
-//    this_user_=nil;
     //添加手势，为了关闭键盘的操作
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     tap1.cancelsTouchesInView = NO;
@@ -54,20 +53,19 @@ user *this_user_;
         NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
         NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
         NSURL *url =[NSURL URLWithString:urlstringEncode];
-        //        NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/login?table=teacher&user_name=%@&password=%@",_username.text,_password.text]];
-        //2.根据ＷＥＢ路径创建一个请求
-        NSURLRequest *request=[NSURLRequest requestWithURL:url];
         NSData *data_teacher= [NSData dataWithContentsOfURL:url];
-        NSString *set_text=[[NSString alloc]initWithData:data_teacher encoding:NSUTF8StringEncoding];
+        NSString *str =[[NSString alloc]initWithData:data_teacher encoding:NSUTF8StringEncoding];
+        NSArray *array = [str componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组
+
+        NSString *set_text=[array objectAtIndex:0];
         _tips.text= set_text;
         NSLog(@"%@",_tips.text);
         if([_tips.text isEqual:@"登录成功!"])
         {
-            [self setUser];
             _tips.text=@"";
             UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"登录成功！" preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [self setUser];
+                [self setUser:array];
                 [self dismissViewControllerAnimated:YES completion:nil];
             }]];
             [self presentViewController:alert animated:true completion:nil];
@@ -80,19 +78,24 @@ user *this_user_;
 - (IBAction)back:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
--(void)setUser
+-(void)setUser:(NSArray *)array
 {
-    NSURL *url_touxiang =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/my_view?table=teacher&user_name=%@&password=%@",_username.text,_password.text]];
-    NSData *data= [NSData dataWithContentsOfURL:url_touxiang];
-    NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    NSArray *array = [str componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组
-    this_user_ = [user UserWithName:[array objectAtIndex:2]
-                THIS_TEACHER_USER_ID:[array objectAtIndex:4]
-          THIS_TEACHER_USER_PASSWORD:[array objectAtIndex:5]
-          THIS_TEACHER_USER_TOUXIANG:[array objectAtIndex:1]
-                  THIS_USER_IS_LOGIN:@"1"
-       THIS_USER_BOLONG_TO_SCHOOL_ID:@"no"
-     THIS_USER_BOLONG_TO_SCHOOL_NAME:[array objectAtIndex:3]];
+    /*
+     0:message
+     1:islogin
+     2:touxiang
+     3:user_name
+     4:schoolName
+     5:user_id
+     6:user_password
+     7:get_School_id*/
+       this_user_ = [user UserWithName:[array objectAtIndex:3]
+               THIS_TEACHER_USER_ID:[array objectAtIndex:5]
+         THIS_TEACHER_USER_PASSWORD:[array objectAtIndex:6]
+         THIS_TEACHER_USER_TOUXIANG:[array objectAtIndex:2]
+                 THIS_USER_IS_LOGIN:@"1"
+      THIS_USER_BOLONG_TO_SCHOOL_ID:[array objectAtIndex:7]
+    THIS_USER_BOLONG_TO_SCHOOL_NAME:[array objectAtIndex:4]];
 }
 @end
 
