@@ -85,7 +85,7 @@ static int rows;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return rows;
+    return _homework_dataSource.count;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -191,24 +191,80 @@ static int rows;
         textField.placeholder=@"作业标题";
     }];
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField){
-        textField.placeholder=@"作业提交日期时间";
+        textField.placeholder=@"作业提交时间：2018-02-04 00:00:00";
     }];
     UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        [self setAdataPicker];
         UITextField *detail = alert.textFields.firstObject;
         UITextField *submission_time = alert.textFields.lastObject;
-        [self add_homework_url:detail.text :submission_time.text];
-        [self initdata];
-        [_homework_table reloadData];
+        if([self is_time_over:submission_time.text])
+        {
+            [self add_homework_url:detail.text :submission_time.text];
+            [self initdata];
+            [_homework_table reloadData];
+        }
+        else
+        {
+            UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"输入的提交时间不合理" preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alert animated:true completion:nil];
+        }
     }];
     UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:Btn_yes];
     [alert addAction:Btn_cancle];
-
     //
     //add this alert into the view
     //
     [self presentViewController:alert animated:true completion:nil];
+}
+-(BOOL)is_time_over:(NSString *)end_time_to_check
+{
+    BOOL is_time_over_return=NO;
+
+    NSDateFormatter *now_time_f = [[NSDateFormatter alloc] init];
+    [now_time_f setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    NSDate *datenow = [NSDate date];
+    NSString *nowtimeStr = [now_time_f stringFromDate:datenow];
+    
+    int is_end_time_now=[self junc_CompareOneDateStr:end_time_to_check withAnotherDateStr:nowtimeStr];
+    if(is_end_time_now==-1)
+    {
+        is_time_over_return=YES;
+    }
+    return is_time_over_return;
+}
+- (int)junc_CompareOneDateStr:(NSString *)oneDateStr withAnotherDateStr:(NSString *)anotherDateStr
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSDate *dateA = [[NSDate alloc]init];
+    
+    NSDate *dateB = [[NSDate alloc]init];
+    
+    dateA = [df dateFromString:oneDateStr];
+    
+    dateB = [df dateFromString:anotherDateStr];
+    
+    NSString *dateAStr = [df stringFromDate:dateA];
+    NSString *dateBStr = [df stringFromDate:dateB];
+    NSLog(@"\n dataA = %@ \n dataB = %@",dateAStr,dateBStr);
+    
+    NSComparisonResult result = [dateA compare:dateB];
+    
+    if (result == NSOrderedAscending)
+    {  // end_time < nowtimeStr
+        return 1;
+        
+    }
+    else if (result == NSOrderedDescending)
+    {  // end_time > nowtimeStr
+        return -1;
+    }
+    
+    // oneDateStr = anotherDateStr
+    return 0;
 }
 -(void)add_homework_url:(NSString *)detail :(NSString *)submission_time
 {
