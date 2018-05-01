@@ -31,7 +31,7 @@ static int rows;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_class_cell.THIS_CLASS_NAME;
+    _my_bar.topItem.title=select_class_cell.class_name;
     [self initdata];
     [_homework_table reloadData];
 }
@@ -40,7 +40,7 @@ static int rows;
 - (void)initdata
 {
     _homework_dataSource =[NSMutableArray new];
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myhomework?operate=select&user_id=%@&put_id=%@",this_user_.THIS_TEACHER_USER_ID,select_class_cell.THIS_CLASS_ID]];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myhomework?operate=select&user_id=%@&put_id=%@",this_user_.THIS_TEACHER_USER_ID,select_class_cell.class_id]];
     //2.根据ＷＥＢ路径创建一个请求
     NSData *data= [NSData dataWithContentsOfURL:url];
     NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
@@ -71,7 +71,7 @@ static int rows;
     NSArray *class_detial=[every_class_all_message componentsSeparatedByString:@"*"];
     this_homework_message = [homework homeworkWithName:[class_detial objectAtIndex:0]
                                               class_id:[class_detial objectAtIndex:1]
-                                            class_name:select_class_cell.THIS_CLASS_NAME
+                                            class_name:select_class_cell.class_name
                                            course_name:[class_detial objectAtIndex:3]
                                                 detail:[class_detial objectAtIndex:6]
                                               end_time:[class_detial objectAtIndex:7]
@@ -268,7 +268,7 @@ static int rows;
 }
 -(void)add_homework_url:(NSString *)detail :(NSString *)submission_time
 {
-    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/teacher_homework?operate=add&submission_time=%@&detail=%@&put_id=%@",submission_time,detail,select_class_cell.THIS_CLASS_ID];
+    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/teacher_homework?operate=add&submission_time=%@&detail=%@&put_id=%@",submission_time,detail,select_class_cell.class_id];
     NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
     NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
     NSURL *url =[NSURL URLWithString:urlstringEncode];

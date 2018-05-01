@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "loginViewController.h"
-#import "struct_user.h"
 #import "my_courseTableViewController.h"
 #import "class_belong_to_courseTableViewCell.h"
 @interface course_1ViewController : ViewController
@@ -17,5 +16,5 @@
 @property NSUserDefaults *page;
 - (IBAction)add_class:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *this_class_belong_to_course_table;
-@property THIS_CLASS_MESSAGE *class_source;
+@property class_belong_to_course *class_source;
 @end

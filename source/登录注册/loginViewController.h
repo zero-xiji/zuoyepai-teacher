@@ -5,7 +5,6 @@
 //  Created by zero on 2018/2/2作业派-教师端.
 //  Copyright © 2018年 zero. All rights reserved.
 //
-#import "struct_user.h"
 #import "user.h"
 #import <UIKit/UIKit.h>
 @interface loginViewController : UIViewController

@@ -9,7 +9,7 @@
 #import "class_belong_to_courseTableViewCell.h"
 
 @implementation class_belong_to_courseTableViewCell
-THIS_CLASS_MESSAGE select_class_cell;
+class_belong_to_course *select_class_cell;
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -55,16 +55,16 @@ THIS_CLASS_MESSAGE select_class_cell;
 -(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
     if (highlighted == YES)
     {
-        select_class_cell.THIS_CLASS_ID=_class_id;
-        select_class_cell.THIS_CLASS_NAME=_class_name.text;
-        select_class_cell.THIS_COURSE_ID=_course_id;
-        select_class_cell.THIS_CLASS_COURSR_NAME=_course_name;
-        select_class_cell.THIS_CLASS_START_TIME=_start_time.text;
-        select_class_cell.COUNT_HOW_MANY_STUDENT=_count_student.text;
-        select_class_cell.THIS_CLASS_SCHOOL_NAME=_school_name;
-        select_class_cell.THIS_TEACHER_USER_ID=_teacher_id;
-        select_class_cell.THIS_CLASS_TEACHER_NAME=_teacher_name;
-        NSLog(@"class_id = %@",select_class_cell.THIS_CLASS_ID);
+        select_class_cell=[class_belong_to_course classWithName:_class_id
+                                                     class_name:_class_name.text
+                                                      course_id:_course_id
+                                                    course_name:_course_name
+                                                     teacher_id:_teacher_id
+                                                   teacher_name:_teacher_name
+                                                    school_name:_school_name
+                                                     start_time:_start_time.text
+                                                  count_student:_count_student.text];
+        NSLog(@"class_id = %@",select_class_cell.class_id);
     }
     else
     {

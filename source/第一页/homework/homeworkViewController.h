@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "loginViewController.h"
-#import "struct_user.h"
 #import "course_1ViewController.h"
 #import "homeworkTableViewCell.h"
 @interface homeworkViewController : UIViewController

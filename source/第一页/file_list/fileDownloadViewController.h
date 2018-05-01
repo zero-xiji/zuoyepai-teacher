@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "file_in_classTableViewCell.h"
 #import "loginViewController.h"
-#import "struct_user.h"
 #import "course_1ViewController.h"
 #import "homeworkTableViewCell.h"
 @interface fileDownloadViewController : UIViewController

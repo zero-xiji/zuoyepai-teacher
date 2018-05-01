@@ -13,7 +13,7 @@
 @end
 
 @implementation file2ViewController
-static THIS_FILE_MESSAGE this_file_message;
+static file_in_class *this_file_message;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -26,7 +26,7 @@ static THIS_FILE_MESSAGE this_file_message;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_class_cell.THIS_CLASS_NAME;
+    _my_bar.topItem.title=select_class_cell.class_name;
     [self initdata];
     [_file_table reloadData];
 }
@@ -44,8 +44,8 @@ static THIS_FILE_MESSAGE this_file_message;
 {
     NSLog(@"this is file_in_class tableview cell in viewController set");
     file_in_classTableViewCell *this_cell=[tableView cellForRowAtIndexPath:indexPath];
-    select_file_message.THIS_FILE_NAME=this_cell.model.file_name;
-    select_file_message.WHO_UPLOAD_THIS_FILE_NAME=this_cell.model.who_upload;
+    select_file_message.file_name=this_cell.model.file_name;
+    select_file_message.who_upload=this_cell.model.who_upload;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -82,15 +82,7 @@ static THIS_FILE_MESSAGE this_file_message;
         {
             NSString *every_class_all_message=[class_in_one_row objectAtIndex:i];
             [self set_this_file_in_class:every_class_all_message];///< class
-            file_in_class *p0 =nil;
-            p0=[file_in_class file_in_classWithName:this_file_message.THIS_FILE_NAME
-                                                            class_id:select_class_cell.THIS_CLASS_ID
-                                                          class_name:select_class_cell.THIS_CLASS_NAME
-                                                           course_id:select_class_cell.THIS_COURSE_ID
-//                                                         course_name:select_class_cell.THIS_CLASS_COURSR_NAME
-                                                          who_upload:this_file_message.WHO_UPLOAD_THIS_FILE_NAME
-                                                         time_upload:@""];
-            [_file_dataSource addObject:p0];
+            [_file_dataSource addObject:this_file_message];
         }
     }
 }
@@ -98,10 +90,12 @@ static THIS_FILE_MESSAGE this_file_message;
 {
     //class_id class_name teacher_id
     NSArray *file_detial=[every_class_all_message componentsSeparatedByString:@"*"];
-    this_file_message.THIS_FILE_ID=[file_detial objectAtIndex:0];
-    this_file_message.WHO_UPLOAD_THIS_FILE_ID=[file_detial objectAtIndex:1];
-    this_file_message.WHO_UPLOAD_THIS_FILE_NAME=[file_detial objectAtIndex:2];
-    this_file_message.THIS_FILE_NAME=[file_detial objectAtIndex:3];
+    this_file_message=[file_in_class file_in_classWithName:[file_detial objectAtIndex:3]
+                                                  class_id:select_class_cell.class_id
+                                                class_name:select_class_cell.class_name
+                                                 course_id:select_class_cell.course_id
+                                                who_upload:[file_detial objectAtIndex:2]
+                                               time_upload:@""];
 }
 
 

@@ -24,7 +24,7 @@
     //****************注*********************
     webView.navigationDelegate = self;
     [_main_view addSubview:webView];
-    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/download?file_name=%@",select_file_message.THIS_FILE_NAME];
+    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/download?file_name=%@",select_file_message.file_name];
     NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
     NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
     NSURL *url =[NSURL URLWithString:urlstringEncode];
@@ -42,7 +42,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_file_message.THIS_FILE_NAME;
+    _my_bar.topItem.title=select_file_message.file_name;
     NSLog(@"this is download");
 }
 - (IBAction)back:(id)sender {

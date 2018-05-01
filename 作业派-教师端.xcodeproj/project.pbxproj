@@ -24,7 +24,6 @@
 		26E74A112070F0F400529D32 /* my_course.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E74A102070F0F400529D32 /* my_course.m */; };
 		26E74A152070F1F300529D32 /* my_courseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E74A142070F1F300529D32 /* my_courseTableViewCell.m */; };
 		26E74A182070F24000529D32 /* my_courseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E74A172070F24000529D32 /* my_courseTableViewController.m */; };
-		26EAA0272067F259000F8B47 /* struct_user.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EAA0262067F259000F8B47 /* struct_user.m */; };
 		26F91A37207D05CB005B619A /* student_listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F91A36207D05CB005B619A /* student_listViewController.m */; };
 		26F91A3D207D0613005B619A /* studentListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F91A3C207D0613005B619A /* studentListTableViewCell.m */; };
 		26F91A47207D071B005B619A /* file2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F91A3F207D071A005B619A /* file2ViewController.m */; };
@@ -109,8 +108,6 @@
 		26E74A142070F1F300529D32 /* my_courseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = my_courseTableViewCell.m; sourceTree = "<group>"; };
 		26E74A162070F24000529D32 /* my_courseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = my_courseTableViewController.h; sourceTree = "<group>"; };
 		26E74A172070F24000529D32 /* my_courseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = my_courseTableViewController.m; sourceTree = "<group>"; };
-		26EAA0252067F259000F8B47 /* struct_user.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = struct_user.h; sourceTree = "<group>"; };
-		26EAA0262067F259000F8B47 /* struct_user.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = struct_user.m; sourceTree = "<group>"; };
 		26F91A35207D05CB005B619A /* student_listViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = student_listViewController.h; sourceTree = "<group>"; };
 		26F91A36207D05CB005B619A /* student_listViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = student_listViewController.m; sourceTree = "<group>"; };
 		26F91A3B207D0613005B619A /* studentListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = studentListTableViewCell.h; sourceTree = "<group>"; };
@@ -403,8 +400,6 @@
 		DABCE4F5203FF677006432B5 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				26EAA0252067F259000F8B47 /* struct_user.h */,
-				26EAA0262067F259000F8B47 /* struct_user.m */,
 				DABCE50020400764006432B5 /* mainViewController.h */,
 				DABCE50120400764006432B5 /* mainViewController.m */,
 				DABCE50320401895006432B5 /* 登录注册 */,
@@ -626,7 +621,6 @@
 				26F91A37207D05CB005B619A /* student_listViewController.m in Sources */,
 				26F91A4A207D071B005B619A /* file_in_classTableViewCell.m in Sources */,
 				DA5F0DED203F32A600F45AED /* main.m in Sources */,
-				26EAA0272067F259000F8B47 /* struct_user.m in Sources */,
 				DA199019204D3489006C694D /* course_1ViewController.m in Sources */,
 				2657719D20763B9900AEF2F6 /* class_belong_to_courseTableViewCell.m in Sources */,
 				DABE094B208706EA00141546 /* student_question.m in Sources */,

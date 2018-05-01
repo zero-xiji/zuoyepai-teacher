@@ -12,11 +12,14 @@
 @end
 
 @implementation my_courseTableViewController
-THIS_COURSE_MESSAGE select_course_cell;
-static THIS_COURSE_MESSAGE this_course_message;
+my_course *select_course_cell;
+static my_course *this_course_message;
 static UITableView *this_tableView;
 static UIView *containerView;
+static NSIndexPath *tableSelection;
 static int is_first_appear;
+static int tapCount;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     //only set the line when the cell is not null
@@ -43,6 +46,7 @@ static int is_first_appear;
 -(void)viewWillAppear:(BOOL)animated
 {
     is_first_appear++;
+    tapCount=0;
     if(is_first_appear>1)
     {
         if(![this_user_.THIS_USER_IS_LOGIN isEqual:@"1"])
@@ -82,10 +86,7 @@ static int is_first_appear;
         {
             NSString *every_class_all_message=[class_in_one_row objectAtIndex:i];
             [self set_thisClass:every_class_all_message];///< class
-            my_course *p0 = [my_course my_courseWithName:this_course_message.THIS_COURSE_ID
-                                             course_name:this_course_message.THIS_COURSR_NAME
-                                              class_rows:this_course_message.COUNT_HOW_MANY_CLASS];
-            [_dataSource addObject:p0];
+            [_dataSource addObject:this_course_message];
         }
     }
 }
@@ -93,9 +94,9 @@ static int is_first_appear;
 {
     //class_id class_name teacher_id
     NSArray *class_detial=[every_class_all_message componentsSeparatedByString:@"*"];
-    this_course_message.THIS_COURSE_ID=[class_detial objectAtIndex:0];
-    this_course_message.THIS_COURSR_NAME=[class_detial objectAtIndex:1];
-    this_course_message.COUNT_HOW_MANY_CLASS=[class_detial objectAtIndex:2];
+    this_course_message= [my_course my_courseWithName:[class_detial objectAtIndex:0]
+                                          course_name:[class_detial objectAtIndex:1]
+                                           class_rows:[class_detial objectAtIndex:2]];
 }
 
 #pragma mark - Table view data source
@@ -173,13 +174,38 @@ static int is_first_appear;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     my_courseTableViewCell *this_cell=[tableView cellForRowAtIndexPath:indexPath];
-    select_course_cell.THIS_COURSE_ID=this_cell.model.course_id;
-    select_course_cell.THIS_COURSR_NAME=this_cell.course_name.text;
-    select_course_cell.COUNT_HOW_MANY_CLASS=this_cell.how_many_class.text;
-    //     [self.navigationController popViewControllerAnimated:YES];
+    
+    select_course_cell= [my_course my_courseWithName:this_cell.model.course_id
+                                          course_name:this_cell.model.course_name
+                                           class_rows:this_cell.how_many_class.text];
+    tableSelection = indexPath;
+    tapCount++;
+    switch (tapCount)
+    {
+        case 1: //single tap
+            [self performSelector:@selector(singleTap) withObject: nil afterDelay: .4];
+            break;
+        case 2: //double tap
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(singleTap) object:nil];
+            this_cell.selected=NO;
+            [self performSelector:@selector(doubleTap) withObject: nil];
+            break;
+        default:
+            break;
+    }
+}
+- (void)singleTap
+{
+    tapCount = 0;
+    NSLog(@"single tap");
 }
 
-
+- (void)doubleTap
+{
+    tapCount = 0;
+    NSLog(@"double tap");
+}
+    
 - (IBAction)btn_add_course:(id)sender {
     //set the alert
     if(![this_user_.THIS_USER_IS_LOGIN isEqual:@"1"])

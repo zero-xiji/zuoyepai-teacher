@@ -14,7 +14,7 @@
 @end
 
 @implementation student_listViewController
-static THIS_STUDENTS_IN_THIS_CLASS this_student_message;
+static student_in_class *this_student_message;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +29,7 @@ static THIS_STUDENTS_IN_THIS_CLASS this_student_message;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_class_cell.THIS_CLASS_NAME;
+    _my_bar.topItem.title=select_class_cell.class_name;
     [self initdata];
     [_student_table reloadData];
 }
@@ -39,7 +39,7 @@ static THIS_STUDENTS_IN_THIS_CLASS this_student_message;
 {
     _student_dataSource =[NSMutableArray new];
     
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/students_in_class?class_id=%@",select_class_cell.THIS_CLASS_ID]];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/students_in_class?class_id=%@",select_class_cell.class_id]];
     //2.根据ＷＥＢ路径创建一个请求
     NSData *data= [NSData dataWithContentsOfURL:url];
     NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
@@ -60,20 +60,19 @@ static THIS_STUDENTS_IN_THIS_CLASS this_student_message;
         {
             NSString *every_student_all_message=[class_in_one_row objectAtIndex:i];
             [self set_this_student:every_student_all_message];///< class
-            student_in_class *p0 = [student_in_class student_in_classWithName:this_student_message.THIS_STUDENT_USER_NAME user_id:this_student_message.THIS_STUDENT_USER_ID touxiang:this_student_message.THIS_STUDENT_USER_TOUXIANG homework_is_done:this_student_message.THIS_HOMEWORK_IS_DONE school_name:this_student_message.THIS_USER_BOLONG_TO_SCHOOL_NAME   homework_score:this_student_message.THIS_HOMEWORK_SCORE];
-            [_student_dataSource addObject:p0];
+            [_student_dataSource addObject:this_student_message];
         }
     }
 }
 -(void)set_this_student:(NSString*) every_student_all_message
 {
     NSArray *student_detial=[every_student_all_message componentsSeparatedByString:@"*"];
-    this_student_message.THIS_STUDENT_USER_NAME=[student_detial objectAtIndex:0];
-    this_student_message.THIS_STUDENT_USER_TOUXIANG=[student_detial objectAtIndex:1];
-    this_student_message.THIS_HOMEWORK_IS_DONE=[student_detial objectAtIndex:2];
-    this_student_message.THIS_HOMEWORK_SCORE=[student_detial objectAtIndex:3];
-    this_student_message.THIS_STUDENT_USER_ID=[student_detial objectAtIndex:4];
-    this_student_message.THIS_USER_BOLONG_TO_SCHOOL_NAME=[student_detial objectAtIndex:6];
+    this_student_message= [student_in_class student_in_classWithName:[student_detial objectAtIndex:0]
+                                                             user_id:[student_detial objectAtIndex:4]
+                                                            touxiang:[student_detial objectAtIndex:1]
+                                                    homework_is_done:[student_detial objectAtIndex:2]
+                                                         school_name:[student_detial objectAtIndex:6]
+                                                      homework_score:[student_detial objectAtIndex:3]];
 }
 
 

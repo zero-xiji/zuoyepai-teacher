@@ -15,7 +15,7 @@
 @end
 
 @implementation questionListViewController
-static THIS_QUESTION_MESSAGE this_question_message;
+static question *this_question_message;
 static int can_change;
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,6 +43,8 @@ static int can_change;
         can_change=1;
     }
     [_question_table reloadData];
+    _question_table.estimatedRowHeight = 44.0f;//推测高度，必须有，可以随便写多少
+    _question_table.rowHeight =UITableViewAutomaticDimension;//iOS8之后默认就是这个值，可以省略
 }
 
 - (void)initdata
@@ -74,26 +76,19 @@ static int can_change;
         {
             NSString *every_question_all_message=[class_in_one_row objectAtIndex:i];
             [self set_this_question:every_question_all_message];///< class
-            question *p0 = [question question_in_homeworkWithName:this_question_message.THIS_QUESTION_ID
-                                                      homework_id:this_question_message.THIS_HOMEWORK_ID
-                                                  question_detail:this_question_message.THIS_QUESTION_DETAIL
-                                                  question_answer:this_question_message.THIS_QUESTION_ANSWER
-                                                   question_score:this_question_message.THIS_QUESTION_SCORE
-                                                    question_type:this_question_message.THIS_QUESTION_TYPE];
-            [_question_dataSource addObject:p0];
+            [_question_dataSource addObject:this_question_message];
         }
     }
 }
 -(void)set_this_question:(NSString*) every_question_all_message
 {
     NSArray *question_detial=[every_question_all_message componentsSeparatedByString:@"*"];
-    this_question_message.THIS_QUESTION_ID=[question_detial objectAtIndex:0];
-    this_question_message.THIS_HOMEWORK_ID=[question_detial objectAtIndex:1];
-    this_question_message.THIS_QUESTION_DETAIL=[question_detial objectAtIndex:2];
-    this_question_message.THIS_QUESTION_ANSWER=[question_detial objectAtIndex:3];
-    this_question_message.THIS_QUESTION_SCORE=[question_detial objectAtIndex:4];
-    this_question_message.THIS_QUESTION_TYPE=[question_detial objectAtIndex:5];
-    
+    this_question_message=[question question_in_homeworkWithName:[question_detial objectAtIndex:0]
+                                                     homework_id:[question_detial objectAtIndex:1]
+                                                 question_detail:[question_detial objectAtIndex:2]
+                                                 question_answer:[question_detial objectAtIndex:3]
+                                                  question_score:[question_detial objectAtIndex:4]
+                                                   question_type:[question_detial objectAtIndex:5]];  
 }
 
 - (IBAction)back:(id)sender {

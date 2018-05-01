@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "struct_user.h"
 #import "student_in_class.h"
 @interface studentListTableViewCell : UITableViewCell
 @property(nonatomic,weak) UIView *separatorView;

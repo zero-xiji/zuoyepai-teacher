@@ -12,7 +12,7 @@
 @end
 
 @implementation course_1ViewController
-static THIS_CLASS_MESSAGE this_class_message;
+static class_belong_to_course *this_class_message;
 - (void)viewDidLoad {
     [super viewDidLoad];
     _page=[NSUserDefaults standardUserDefaults];
@@ -25,7 +25,7 @@ static THIS_CLASS_MESSAGE this_class_message;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_course_cell.THIS_COURSR_NAME;
+    _my_bar.topItem.title=select_course_cell.course_name;
     [self initdata];
     [_this_class_belong_to_course_table reloadData];
 }
@@ -130,7 +130,7 @@ static THIS_CLASS_MESSAGE this_class_message;
 - (void)initdata
 {
     _class_belong_to_course_dataSource =[NSMutableArray new];
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/operate_class?operate=select_my_in_this_course&put_in=%@",select_course_cell.THIS_COURSE_ID]];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/operate_class?operate=select_my_in_this_course&put_in=%@",select_course_cell.course_id]];
     //2.根据ＷＥＢ路径创建一个请求
     NSData *data= [NSData dataWithContentsOfURL:url];
     NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
@@ -143,31 +143,31 @@ static THIS_CLASS_MESSAGE this_class_message;
     {
         NSString *every_class_all_message=[class_in_one_row objectAtIndex:i];
         [self set_thisClass:every_class_all_message];///< class
-        class_belong_to_course *p0 = [class_belong_to_course classWithName:this_class_message.THIS_CLASS_ID
-                                                                class_name:this_class_message.THIS_CLASS_NAME
-                                                                 course_id:this_class_message.THIS_COURSE_ID
-                                                               course_name:this_class_message.THIS_CLASS_COURSR_NAME
-                                                                teacher_id:this_user_.THIS_TEACHER_USER_ID
-                                                              teacher_name:this_class_message.THIS_CLASS_TEACHER_NAME
-                                                               school_name:this_class_message.THIS_CLASS_SCHOOL_NAME
-                                                                start_time:this_class_message.THIS_CLASS_START_TIME
-                                                             count_student:this_class_message.COUNT_HOW_MANY_STUDENT];
-        [_class_belong_to_course_dataSource addObject:p0];
+        [_class_belong_to_course_dataSource addObject:this_class_message];
     }
 }
 -(void)set_thisClass:(NSString*) every_class_all_message
 {
     //class_id class_name teacher_id
     NSArray *class_detial=[every_class_all_message componentsSeparatedByString:@"*"];
-    this_class_message.THIS_CLASS_TEACHER_NAME=[class_detial objectAtIndex:0];
-    this_class_message.THIS_CLASS_SCHOOL_NAME=[class_detial objectAtIndex:1];
-    this_class_message.THIS_CLASS_COURSR_NAME=[class_detial objectAtIndex:2];
-    this_class_message.THIS_CLASS_NAME=[class_detial objectAtIndex:3];
-    this_class_message.THIS_CLASS_START_TIME=[class_detial objectAtIndex:4];
-    this_class_message.THIS_CLASS_ID=[class_detial objectAtIndex:5];
-    this_class_message.THIS_COURSE_ID=[class_detial objectAtIndex:6];
-    this_class_message.COUNT_HOW_MANY_STUDENT=[class_detial objectAtIndex:7];
-    this_class_message.THIS_TEACHER_USER_ID=[class_detial objectAtIndex:8];
+    this_class_message= [class_belong_to_course classWithName:[class_detial objectAtIndex:5]
+                                                   class_name:[class_detial objectAtIndex:3]
+                                                    course_id:[class_detial objectAtIndex:6]
+                                                  course_name:[class_detial objectAtIndex:2]
+                                                   teacher_id:[class_detial objectAtIndex:8]
+                                                 teacher_name:[class_detial objectAtIndex:0]
+                                                  school_name:[class_detial objectAtIndex:1]
+                                                   start_time:[class_detial objectAtIndex:4]
+                                                count_student:[class_detial objectAtIndex:7]];
+//    .THIS_CLASS_TEACHER_NAME=[class_detial objectAtIndex:0];
+//    this_class_message.THIS_CLASS_SCHOOL_NAME=[class_detial objectAtIndex:1];
+//    this_class_message.THIS_CLASS_COURSR_NAME=[class_detial objectAtIndex:2];
+//    this_class_message.THIS_CLASS_NAME=[class_detial objectAtIndex:3];
+//    this_class_message.THIS_CLASS_START_TIME=[class_detial objectAtIndex:4];
+//    this_class_message.THIS_CLASS_ID=[class_detial objectAtIndex:5];
+//    this_class_message.THIS_COURSE_ID=[class_detial objectAtIndex:6];
+//    this_class_message.COUNT_HOW_MANY_STUDENT=[class_detial objectAtIndex:7];
+//    this_class_message.THIS_TEACHER_USER_ID=[class_detial objectAtIndex:8];
 }
 
 - (IBAction)back2course:(id)sender
@@ -201,7 +201,7 @@ static THIS_CLASS_MESSAGE this_class_message;
 }
 - (void)add_class_url:(NSString *)class_name_put_in :(NSString *)start_time_put_in
 {
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/add_class?class_name=%@&course_id=%@&start_time=%@",class_name_put_in,select_course_cell.THIS_COURSE_ID,start_time_put_in]];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/add_class?class_name=%@&course_id=%@&start_time=%@",class_name_put_in,select_course_cell.course_id,start_time_put_in]];
     NSData *data_student= [NSData dataWithContentsOfURL:url];
     NSString *return_text=[[NSString alloc]initWithData:data_student encoding:NSUTF8StringEncoding];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

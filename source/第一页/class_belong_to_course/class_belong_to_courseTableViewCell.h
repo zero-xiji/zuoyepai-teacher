@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "class_belong_to_course.h"
-#import "struct_user.h"
 @interface class_belong_to_courseTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *file_type;
 @property (weak, nonatomic) IBOutlet UILabel *class_name;
@@ -23,5 +22,5 @@
 @property(nonatomic,weak) UIView *separatorView;
 @property(nonatomic,weak) NSString *class_id_in_this_cell;
 @property (strong, nonatomic) class_belong_to_course *model;
-extern THIS_CLASS_MESSAGE select_class_cell;
+extern class_belong_to_course *select_class_cell;
 @end

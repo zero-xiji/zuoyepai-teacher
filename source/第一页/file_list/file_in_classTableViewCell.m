@@ -9,7 +9,7 @@
 #import "file_in_classTableViewCell.h"
 
 @implementation file_in_classTableViewCell
- THIS_FILE_MESSAGE select_file_message;
+ file_in_class *select_file_message;
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -25,12 +25,12 @@
     if (highlighted == YES)
     {
         NSLog(@"this is cell click in file_in_classTableView");
-        _file_name_in_this_cell=_file_name.text;
-//        select_file_message.THIS_FILE_ID=_
-        select_file_message.THIS_FILE_NAME=_file_name.text;
-        select_file_message.WHO_UPLOAD_THIS_FILE_NAME=_who_upload.text;
-//        select_file_message.WHO_UPLOAD_THIS_FILE_ID=_who_upload
-//        [self download_from_url];
+        select_file_message=[file_in_class file_in_classWithName:_file_name.text
+                                                      class_id:_class_id
+                                                    class_name:_class_name
+                                                     course_id:_course_id
+                                                    who_upload:_who_upload.text
+                                                   time_upload:@""];
     }
     else
     {
@@ -40,6 +40,7 @@
 
 -(void)setModel:(file_in_class *)model{
     _model = model;
+    _l_else.hidden=YES;
     _file_name.text=model.file_name;
     _who_upload.text=model.who_upload;
     _class_name=model.class_name;

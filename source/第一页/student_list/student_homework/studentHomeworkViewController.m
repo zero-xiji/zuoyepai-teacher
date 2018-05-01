@@ -40,7 +40,7 @@ static int rows;
 - (void)initdata
 {
     _student_homework_dataSource =[NSMutableArray new];
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myhomework?operate=select_student_homework_in_this_class&user_id=%@&put_id=%@",select_student_cell.user_id,select_class_cell.THIS_CLASS_ID]];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myhomework?operate=select_student_homework_in_this_class&user_id=%@&put_id=%@",select_student_cell.user_id,select_class_cell.class_id]];
     //2.根据ＷＥＢ路径创建一个请求
     NSData *data= [NSData dataWithContentsOfURL:url];
     NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
@@ -71,7 +71,7 @@ static int rows;
     NSArray *class_detial=[every_class_all_message componentsSeparatedByString:@"*"];
     this_student_homework_message = [homework homeworkWithName:[class_detial objectAtIndex:0]
                                                       class_id:[class_detial objectAtIndex:1]
-                                                    class_name:select_class_cell.THIS_CLASS_NAME
+                                                    class_name:select_class_cell.class_name
                                                    course_name:[class_detial objectAtIndex:3]
                                                         detail:[class_detial objectAtIndex:6]
                                                       end_time:[class_detial objectAtIndex:7]

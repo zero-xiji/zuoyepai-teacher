@@ -865,15 +865,9 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="file name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHL-Yl-Glh">
-                                                            <rect key="frame" x="142" y="7" width="78" height="23"/>
+                                                            <rect key="frame" x="140" y="7" width="220" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                             <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="上传者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDC-11-rqi">
-                                                            <rect key="frame" x="142" y="47" width="78" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.73327630759999995" green="0.73336547610000002" blue="0.73324590919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXU-EX-3db">
@@ -900,11 +894,17 @@
                                                             <color key="textColor" red="0.73327630759999995" green="0.73336547610000002" blue="0.73324590919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="上传者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDC-11-rqi">
+                                                            <rect key="frame" x="140" y="47" width="52" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.73327630759999995" green="0.73336547610000002" blue="0.73324590919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="trailingMargin" secondItem="GXU-EX-3db" secondAttribute="trailing" constant="31" id="054-mG-9Qa"/>
                                                         <constraint firstItem="18O-MA-ctw" firstAttribute="top" secondItem="EDC-11-rqi" secondAttribute="bottom" constant="18" id="0Aq-kO-dB4"/>
-                                                        <constraint firstItem="PHL-Yl-Glh" firstAttribute="leading" secondItem="EDC-11-rqi" secondAttribute="leading" id="1Pz-c1-8YT"/>
+                                                        <constraint firstItem="PHL-Yl-Glh" firstAttribute="leading" secondItem="EDC-11-rqi" secondAttribute="leading" constant="-28" id="1Pz-c1-8YT"/>
                                                         <constraint firstItem="vQ2-m4-bEO" firstAttribute="centerY" secondItem="GXU-EX-3db" secondAttribute="centerY" constant="1.5" id="63R-0P-qKc"/>
                                                         <constraint firstItem="vQ2-m4-bEO" firstAttribute="top" secondItem="xJd-f8-Xcm" secondAttribute="topMargin" id="6Hh-Hh-25D"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="18O-MA-ctw" secondAttribute="bottom" constant="6" id="8nu-Yx-yrw"/>
@@ -912,7 +912,7 @@
                                                         <constraint firstItem="GXU-EX-3db" firstAttribute="leading" secondItem="EDC-11-rqi" secondAttribute="trailing" constant="8" symbolic="YES" id="KFM-Wv-Mf9"/>
                                                         <constraint firstItem="18O-MA-ctw" firstAttribute="leading" secondItem="vQ2-m4-bEO" secondAttribute="trailing" constant="53" id="Las-JE-Ts5"/>
                                                         <constraint firstItem="EDC-11-rqi" firstAttribute="top" secondItem="PHL-Yl-Glh" secondAttribute="bottom" constant="17" id="MP0-e0-0cd"/>
-                                                        <constraint firstItem="PHL-Yl-Glh" firstAttribute="trailing" secondItem="EDC-11-rqi" secondAttribute="trailing" id="SbO-ON-aDu"/>
+                                                        <constraint firstItem="PHL-Yl-Glh" firstAttribute="trailing" secondItem="EDC-11-rqi" secondAttribute="trailing" constant="140" id="SbO-ON-aDu"/>
                                                         <constraint firstItem="vQ2-m4-bEO" firstAttribute="leading" secondItem="xJd-f8-Xcm" secondAttribute="leadingMargin" constant="-1" id="dEr-qf-S7M"/>
                                                         <constraint firstItem="EDC-11-rqi" firstAttribute="baseline" secondItem="GXU-EX-3db" secondAttribute="baseline" id="hHc-0x-IOi"/>
                                                         <constraint firstItem="DZx-zm-VIR" firstAttribute="leading" secondItem="18O-MA-ctw" secondAttribute="trailing" constant="8" symbolic="YES" id="leQ-yV-slE"/>
@@ -923,6 +923,7 @@
                                                 <connections>
                                                     <outlet property="file_name" destination="PHL-Yl-Glh" id="g9z-je-c50"/>
                                                     <outlet property="file_type" destination="vQ2-m4-bEO" id="vc3-Zc-G1w"/>
+                                                    <outlet property="l_else" destination="DZx-zm-VIR" id="AsD-Aa-aKI"/>
                                                     <outlet property="who_upload" destination="GXU-EX-3db" id="LfU-OJ-FIs"/>
                                                     <segue destination="84o-vy-0zI" kind="showDetail" id="4Oj-5X-SyB"/>
                                                 </connections>
@@ -984,7 +985,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m92-ND-Qhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9050" y="-2059"/>
+            <point key="canvasLocation" x="9048.7999999999993" y="-2059.5202398800602"/>
         </scene>
         <!--班级相关-->
         <scene sceneID="uUN-hT-LX5">
