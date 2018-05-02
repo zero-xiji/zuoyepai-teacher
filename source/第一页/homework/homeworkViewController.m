@@ -192,6 +192,11 @@ static int rows;
     }];
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField){
         textField.placeholder=@"作业提交时间：2018-02-04 00:00:00";
+        NSDateFormatter *now_time_f = [[NSDateFormatter alloc] init];
+        [now_time_f setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+        NSDate *datenow = [NSDate date];
+        NSString *nowtimeStr = [now_time_f stringFromDate:datenow];
+        textField.text=nowtimeStr;
     }];
     UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField *detail = alert.textFields.firstObject;

@@ -52,7 +52,9 @@
                  course_name:(NSString *)course_name
                       detail:(NSString *)detail
                     end_time:(NSString *)end_time
+                is_time_over:(BOOL)is_time_over
                     is_issue:(NSString *)is_issue
+                   is_submit:(NSString *)is_submit
                is_correcting:(NSString *)is_correcting
                student_score:(NSString *)student_score
                        score:(NSString *)score
@@ -65,7 +67,9 @@
         self.course_name = course_name;
         self.detail=detail;
         self.end_time=end_time;
+        self.is_time_over=is_time_over;
         self.is_issue=is_issue;
+        self.is_submit=is_submit;
         self.is_correcting=is_correcting;
         self.student_score=student_score;
         self.score=score;
@@ -78,7 +82,9 @@
                      course_name:(NSString *)course_name
                           detail:(NSString *)detail
                         end_time:(NSString *)end_time
+                    is_time_over:(BOOL)is_time_over
                         is_issue:(NSString *)is_issue
+                       is_submit:(NSString *)is_submit
                    is_correcting:(NSString *)is_correcting
                    student_score:(NSString *)student_score
                            score:(NSString *)score
@@ -89,7 +95,9 @@
                               course_name:course_name
                                    detail:detail
                                  end_time:end_time
+                             is_time_over:is_time_over
                                  is_issue:is_issue
+                                is_submit:is_submit
                             is_correcting:is_correcting
                             student_score:student_score
                                     score:score];

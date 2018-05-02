@@ -560,13 +560,25 @@
                                                 <color key="textColor" red="0.53894531726837158" green="0.46511632204055786" blue="0.414765864610672" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该课程暂无班级" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCU-QN-XVd">
+                                                <rect key="frame" x="0.0" y="254" width="375" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="29" id="vc9-2J-Tm3"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" red="0.53894531729999995" green="0.46511632200000003" blue="0.41476586459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.92149782180786133" green="0.92160838842391968" blue="0.92146027088165283" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstItem="TCU-QN-XVd" firstAttribute="leading" secondItem="xYd-jj-R6m" secondAttribute="leading" id="Cgm-N6-RDQ"/>
                                             <constraint firstAttribute="trailing" secondItem="xYd-jj-R6m" secondAttribute="trailing" id="SE5-zS-JBE"/>
                                             <constraint firstItem="xYd-jj-R6m" firstAttribute="leading" secondItem="1c6-Bc-fJI" secondAttribute="leading" id="VEG-hb-aWV"/>
                                             <constraint firstItem="kzW-Nh-0hE" firstAttribute="top" secondItem="1c6-Bc-fJI" secondAttribute="top" id="WKf-Oi-40l"/>
+                                            <constraint firstItem="TCU-QN-XVd" firstAttribute="trailing" secondItem="xYd-jj-R6m" secondAttribute="trailing" id="jtK-bJ-Sex"/>
                                             <constraint firstItem="kzW-Nh-0hE" firstAttribute="leading" secondItem="1c6-Bc-fJI" secondAttribute="leadingMargin" id="lCV-RU-ppJ"/>
+                                            <constraint firstItem="TCU-QN-XVd" firstAttribute="top" secondItem="1c6-Bc-fJI" secondAttribute="top" constant="254" id="lxH-PE-sex"/>
                                             <constraint firstAttribute="bottom" secondItem="xYd-jj-R6m" secondAttribute="bottom" constant="2" id="yQb-3S-OPc"/>
                                             <constraint firstItem="xYd-jj-R6m" firstAttribute="top" secondItem="kzW-Nh-0hE" secondAttribute="bottom" constant="3" id="zRe-AW-uEu"/>
                                         </constraints>
@@ -617,13 +629,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZcS-eT-Zf6"/>
                     <connections>
+                        <outlet property="l_is_class_null" destination="TCU-QN-XVd" id="7pN-oI-dTa"/>
                         <outlet property="my_bar" destination="pqN-Db-mqR" id="GcE-tE-fah"/>
                         <outlet property="this_class_belong_to_course_table" destination="xYd-jj-R6m" id="9c5-zk-4sK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tS0-Cw-2sT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6724" y="-1298"/>
+            <point key="canvasLocation" x="6724" y="-1299.400299850075"/>
         </scene>
         <!--作业-->
         <scene sceneID="VOd-fn-ljM">
@@ -939,7 +952,7 @@
                                         <color key="textColor" red="0.53894531729999995" green="0.46511632200000003" blue="0.41476586459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该课程暂无作业" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dp-3j-oe8">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您尚未上传资料" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dp-3j-oe8">
                                         <rect key="frame" x="0.0" y="184" width="375" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="PIa-al-30x"/>
@@ -1310,7 +1323,7 @@
                                         <color key="textColor" red="0.53894531729999995" green="0.46511632200000003" blue="0.41476586459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该课程暂无作业" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOX-fv-4Jr">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该班级暂无学生" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOX-fv-4Jr">
                                         <rect key="frame" x="0.0" y="184" width="375" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="ep8-bJ-WJY"/>
@@ -1349,7 +1362,7 @@
                     <tabBarItem key="tabBarItem" title="学生" image="tabBar_friendTrends_icon" selectedImage="tabBar_friendTrends_click_icon" id="15i-Km-MoJ"/>
                     <connections>
                         <outlet property="my_bar" destination="irB-lc-j4I" id="3et-yu-Bqe"/>
-                        <outlet property="student_is_null" destination="BOX-fv-4Jr" id="EC0-5n-YtD"/>
+                        <outlet property="student_is_null" destination="BOX-fv-4Jr" id="hxk-Yc-N29"/>
                         <outlet property="student_table" destination="3A3-vC-HYU" id="icC-je-kNI"/>
                     </connections>
                 </viewController>
@@ -2286,7 +2299,7 @@
                                             <constraint firstItem="CLc-fH-rOT" firstAttribute="top" secondItem="Sqi-Oo-vTq" secondAttribute="top" id="zmg-e9-YMn"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该作业暂无题目" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxx-r8-SGG">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="学生交了白卷" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxx-r8-SGG">
                                         <rect key="frame" x="0.0" y="261" width="375" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="enT-XA-4cv"/>
@@ -2325,7 +2338,7 @@
                         <outlet property="btn_correct_homework" destination="ac0-Vi-Lk7" id="r1K-bD-0mr"/>
                         <outlet property="main_view" destination="LXb-UU-mcQ" id="Kka-uU-nuD"/>
                         <outlet property="my_bar" destination="fw0-Od-XTZ" id="MuW-Ds-afY"/>
-                        <outlet property="question_is_null" destination="Dxx-r8-SGG" id="d8V-yS-MNg"/>
+                        <outlet property="question_is_null" destination="Dxx-r8-SGG" id="4dC-eB-ahL"/>
                         <outlet property="question_table" destination="CLc-fH-rOT" id="op9-O7-Exa"/>
                     </connections>
                 </viewController>

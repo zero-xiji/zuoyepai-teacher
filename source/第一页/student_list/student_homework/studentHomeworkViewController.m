@@ -61,7 +61,11 @@ static int rows;
         {
             NSString *every_class_all_message=[class_in_one_row objectAtIndex:i];
             [self set_this_homework:every_class_all_message];///< class
-            [_student_homework_dataSource addObject:this_student_homework_message];
+            if([this_student_homework_message.is_submit isEqual:@"1"]
+               ||([this_student_homework_message.is_submit isEqual:@"0"]&&this_student_homework_message.is_time_over==NO))
+            {
+                [_student_homework_dataSource addObject:this_student_homework_message];
+            }
         }
     }
 }
@@ -75,12 +79,59 @@ static int rows;
                                                    course_name:[class_detial objectAtIndex:3]
                                                         detail:[class_detial objectAtIndex:6]
                                                       end_time:[class_detial objectAtIndex:7]
+                                                  is_time_over:[self is_time_over:[class_detial objectAtIndex:7]]
                                                       is_issue:[class_detial objectAtIndex:8]
+                                                     is_submit:[class_detial objectAtIndex:12]
                                                  is_correcting:[class_detial objectAtIndex:9]
                                                  student_score:[class_detial objectAtIndex:10]
                                                          score:[class_detial objectAtIndex:11]];
-    
 }
+
+-(BOOL)is_time_over:(NSString *)end_time_to_check
+{
+    BOOL is_time_over_return=NO;
+    
+    int is_end_time_now=[self junc_CompareOneDateStr:end_time_to_check];
+    if(is_end_time_now==-1)
+    {
+        is_time_over_return=YES;
+    }
+    return is_time_over_return;
+}
+- (int)junc_CompareOneDateStr:(NSString *)oneDateStr
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
+    
+    NSDate *dateA = [[NSDate alloc]init];
+    dateA = [df dateFromString:oneDateStr];
+    
+    NSDateFormatter *now_time_f = [[NSDateFormatter alloc] init];
+    [now_time_f setDateFormat:@"YYYY-MM-dd HH:mm:ss.S"];
+    NSDate *dateB = [NSDate date];
+    
+    
+    NSString *dateAStr = [df stringFromDate:dateA];
+    NSString *dateBStr = [df stringFromDate:dateB];
+    NSLog(@"\n dataA = %@ \n dataB = %@",dateAStr,dateBStr);
+    
+    NSComparisonResult result = [dateA compare:dateB];
+    
+    if (result == NSOrderedAscending)
+    {  // end_time < nowtimeStr
+        return 1;
+        
+    }
+    else if (result == NSOrderedDescending)
+    {  // end_time > nowtimeStr
+        return -1;
+    }
+    
+    // oneDateStr = anotherDateStr
+    return 0;
+}
+
 
 #pragma mark -UITableView 协议
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -91,17 +142,20 @@ static int rows;
 {
     return _student_homework_dataSource.count;
 }
-
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     studentHomeworkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"student_homework_cell" forIndexPath:indexPath];
     cell.model=self.student_homework_dataSource[indexPath.row];
     return cell;
 }
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"this is homework tableview cell set");
+    NSLog(@"homework tableview cell Select");
     studentHomeworkTableViewCell *select=[tableView cellForRowAtIndexPath:indexPath];
+    if([select.is_submit isEqual:@"0"]&&select.is_time_over==NO)
+    {
+        select.selected=NO;
+    }
+    
     select.homework_detail=select.detail.text;
 }
 

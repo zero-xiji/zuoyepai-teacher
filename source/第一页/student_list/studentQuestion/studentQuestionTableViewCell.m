@@ -62,7 +62,14 @@
         _l_question_type.text=@" 填空／简答题 ";
     }
     self.student_my_answer.text=model.student_answer;
-    self.student_score.text=[NSString stringWithFormat:@"%@分/",model.student_score];
+    if([model.student_score isEqual:@"-1"])
+    {
+        self.student_score.text=@"0分/";
+    }
+    else
+    {
+        self.student_score.text=[NSString stringWithFormat:@"%@分/",model.student_score];
+    }
     if(model.student_score!= model.question_score)
     {
         _student_score.textColor=[UIColor redColor];

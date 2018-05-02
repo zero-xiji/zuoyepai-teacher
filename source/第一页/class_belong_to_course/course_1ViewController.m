@@ -15,6 +15,8 @@
 static class_belong_to_course *this_class_message;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _this_class_belong_to_course_table.dataSource=self;
+    _this_class_belong_to_course_table.delegate=self;
     _page=[NSUserDefaults standardUserDefaults];
     _this_class_belong_to_course_table.tableFooterView = [[UIView alloc] init];
     _this_class_belong_to_course_table.dataSource=self;
@@ -28,7 +30,45 @@ static class_belong_to_course *this_class_message;
     _my_bar.topItem.title=select_course_cell.course_name;
     [self initdata];
     [_this_class_belong_to_course_table reloadData];
+    if(_class_belong_to_course_dataSource.count==0)
+        _l_is_class_null.hidden=NO;
+    else
+        _l_is_class_null.hidden=YES;
 }
+- (void)initdata
+{
+    _class_belong_to_course_dataSource =[NSMutableArray new];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/operate_class?operate=select_my_in_this_course&put_in=%@",select_course_cell.course_id]];
+    //2.根据ＷＥＢ路径创建一个请求
+    NSData *data= [NSData dataWithContentsOfURL:url];
+    NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    NSArray *array = [str componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组
+    NSString *how_many_class=[array objectAtIndex:0];
+    NSString *all_class_been_search=[array objectAtIndex:1];
+    NSArray *class_in_one_row=[all_class_been_search componentsSeparatedByString:@"%"];
+    int rows=[how_many_class intValue];
+    for(int i=0;i<rows;i++)
+    {
+        NSString *every_class_all_message=[class_in_one_row objectAtIndex:i];
+        [self set_thisClass:every_class_all_message];///< class
+        [_class_belong_to_course_dataSource addObject:this_class_message];
+    }
+}
+-(void)set_thisClass:(NSString*) every_class_all_message
+{
+    //class_id class_name teacher_id
+    NSArray *class_detial=[every_class_all_message componentsSeparatedByString:@"*"];
+    this_class_message= [class_belong_to_course classWithName:[class_detial objectAtIndex:5]
+                                                   class_name:[class_detial objectAtIndex:3]
+                                                    course_id:[class_detial objectAtIndex:6]
+                                                  course_name:[class_detial objectAtIndex:2]
+                                                   teacher_id:[class_detial objectAtIndex:8]
+                                                 teacher_name:[class_detial objectAtIndex:0]
+                                                  school_name:[class_detial objectAtIndex:1]
+                                                   start_time:[class_detial objectAtIndex:4]
+                                                count_student:[class_detial objectAtIndex:7]];
+}
+
 
 #pragma mark -UITableView 协议
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -127,49 +167,6 @@ static class_belong_to_course *this_class_message;
 //    return nil;
 //}
 
-- (void)initdata
-{
-    _class_belong_to_course_dataSource =[NSMutableArray new];
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/operate_class?operate=select_my_in_this_course&put_in=%@",select_course_cell.course_id]];
-    //2.根据ＷＥＢ路径创建一个请求
-    NSData *data= [NSData dataWithContentsOfURL:url];
-    NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    NSArray *array = [str componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组
-    NSString *how_many_class=[array objectAtIndex:0];
-    NSString *all_class_been_search=[array objectAtIndex:1];
-    NSArray *class_in_one_row=[all_class_been_search componentsSeparatedByString:@"%"];
-    int rows=[how_many_class intValue];
-    for(int i=0;i<rows;i++)
-    {
-        NSString *every_class_all_message=[class_in_one_row objectAtIndex:i];
-        [self set_thisClass:every_class_all_message];///< class
-        [_class_belong_to_course_dataSource addObject:this_class_message];
-    }
-}
--(void)set_thisClass:(NSString*) every_class_all_message
-{
-    //class_id class_name teacher_id
-    NSArray *class_detial=[every_class_all_message componentsSeparatedByString:@"*"];
-    this_class_message= [class_belong_to_course classWithName:[class_detial objectAtIndex:5]
-                                                   class_name:[class_detial objectAtIndex:3]
-                                                    course_id:[class_detial objectAtIndex:6]
-                                                  course_name:[class_detial objectAtIndex:2]
-                                                   teacher_id:[class_detial objectAtIndex:8]
-                                                 teacher_name:[class_detial objectAtIndex:0]
-                                                  school_name:[class_detial objectAtIndex:1]
-                                                   start_time:[class_detial objectAtIndex:4]
-                                                count_student:[class_detial objectAtIndex:7]];
-//    .THIS_CLASS_TEACHER_NAME=[class_detial objectAtIndex:0];
-//    this_class_message.THIS_CLASS_SCHOOL_NAME=[class_detial objectAtIndex:1];
-//    this_class_message.THIS_CLASS_COURSR_NAME=[class_detial objectAtIndex:2];
-//    this_class_message.THIS_CLASS_NAME=[class_detial objectAtIndex:3];
-//    this_class_message.THIS_CLASS_START_TIME=[class_detial objectAtIndex:4];
-//    this_class_message.THIS_CLASS_ID=[class_detial objectAtIndex:5];
-//    this_class_message.THIS_COURSE_ID=[class_detial objectAtIndex:6];
-//    this_class_message.COUNT_HOW_MANY_STUDENT=[class_detial objectAtIndex:7];
-//    this_class_message.THIS_TEACHER_USER_ID=[class_detial objectAtIndex:8];
-}
-
 - (IBAction)back2course:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -181,14 +178,38 @@ static class_belong_to_course *this_class_message;
         textField.placeholder=@"班级名称";
     }];
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField){
-        textField.placeholder=@"上课时间";
+        textField.placeholder=@"上课时间:时";
+        textField.text=@"00";
+    }];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField){
+        textField.placeholder=@"上课时间:分";
+        textField.text=@"00";
+    }];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField){
+        textField.placeholder=@"上课时间:秒";
+        textField.text=@"00";
     }];
     UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField *class_name = alert.textFields.firstObject;
-        UITextField *start_time = alert.textFields.lastObject;
-        [self add_class_url:class_name.text :start_time.text];
-        [self initdata];
-        [_this_class_belong_to_course_table reloadData];
+        NSString *start_time=[NSString stringWithFormat:@"%@%@%@",
+                              alert.textFields[1].text,
+                              alert.textFields[2].text,
+                              alert.textFields[3].text];
+        if([self is_end_time_just:alert.textFields[1].text
+                           minute:alert.textFields[2].text
+                           second:alert.textFields[3].text])
+        {
+            [self add_class_url:class_name.text :start_time];
+            [self initdata];
+            [_this_class_belong_to_course_table reloadData];
+        }
+        else
+        {
+            UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"开始上课时间不合理！" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+            [alert addAction:Btn_yes];
+            [self presentViewController:alert animated:true completion:nil];
+        }
     }];
     UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:Btn_yes];
@@ -199,9 +220,31 @@ static class_belong_to_course *this_class_message;
     //
     [self presentViewController:alert animated:true completion:nil];
 }
+-(BOOL)is_end_time_just:(NSString *)hour minute:(NSString *)minute second:(NSString *)second
+{
+    BOOL is_just=NO;
+    if(hour.intValue>=0 && hour.intValue<=24
+       && minute.intValue >= 0 && minute.intValue <= 60
+       && second.intValue >= 0 && second.intValue <= 60)
+    {
+        is_just=YES;
+    }
+    return is_just;
+}
 - (void)add_class_url:(NSString *)class_name_put_in :(NSString *)start_time_put_in
 {
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/add_class?class_name=%@&course_id=%@&start_time=%@",class_name_put_in,select_course_cell.course_id,start_time_put_in]];
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/add_class?class_name=%@&course_id=%@&start_time=%@",
+                           class_name_put_in,
+                           select_course_cell.course_id,
+                           start_time_put_in];
+    NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
+    NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
+    NSURL *url =[NSURL URLWithString:urlstringEncode];
+//    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/add_class?class_name=%@&course_id=%@&start_time=%@",
+//                                      class_name_put_in,
+//                                      select_course_cell.course_id,
+//                                      start_time_put_in]];
     NSData *data_student= [NSData dataWithContentsOfURL:url];
     NSString *return_text=[[NSString alloc]initWithData:data_student encoding:NSUTF8StringEncoding];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

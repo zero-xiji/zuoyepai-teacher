@@ -26,24 +26,32 @@ static student_question *this_question_message;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self initdata];
-    [_question_table reloadData];
-    if(_question_dataSource.count==0)
-    {
-        _my_bar.topItem.title=@"题目列表";
-    }
-    else
-    {
-        _my_bar.topItem.title=@"未批改题目列表";
-    }
-    if([select_homework_cell.is_correcting isEqual:@"1"])
+    if(select_homework_cell.is_time_over==NO&&[select_homework_cell.is_submit isEqual:@"0"])
     {
         _btn_correct_homework.title=@"";
-//        _question_table.allowsSelection=NO;
+        _question_is_null.hidden=NO;
+        _my_bar.topItem.title=[NSString stringWithFormat:@"%@",select_student_cell.user_name];
     }
     else
     {
-        _btn_correct_homework.title=@"完成批改";
+        [self initdata];
+        [_question_table reloadData];
+        if(_question_dataSource.count==0)
+        {
+            _my_bar.topItem.title=@"题目列表";
+        }
+        else
+        {
+            _my_bar.topItem.title=@"未批改题目列表";
+        }
+        if([select_homework_cell.is_correcting isEqual:@"1"]||select_homework_cell.is_time_over==NO)
+        {
+            _btn_correct_homework.title=@"";
+        }
+        else
+        {
+            _btn_correct_homework.title=@"完成批改";
+        }
     }
 }
 
@@ -58,12 +66,12 @@ static student_question *this_question_message;
     NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     if([str  isEqual: @"该作业暂无题目"])
     {
-        _question_is_null.text=@"该作业暂无题目";
+        _question_is_null.hidden=NO;
         _question_dataSource=NULL;
     }
     else
     {
-        _question_is_null.text=@"";
+        _question_is_null.hidden=YES;
         NSArray *array = [str componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组
         NSString *how_many_question=[array objectAtIndex:0];
         NSString *all_class_been_search=[array objectAtIndex:1];
@@ -122,14 +130,12 @@ static student_question *this_question_message;
 {
     return 1;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(_question_dataSource.count==0)
         return _all_question_dataSource.count;
     return _question_dataSource.count;
 }
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if([select_homework_cell.is_correcting isEqualToString:@"0"])
@@ -165,7 +171,6 @@ static student_question *this_question_message;
         }
     }
 }
-
 -(void)teacher_set_score_url:(NSString *)question_id_to_set :(NSString *)score_to_set
 {
     NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/teacher_set_score?student_id=%@&question_id=%@&my_score=%@",select_student_cell.user_id,question_id_to_set,score_to_set]];

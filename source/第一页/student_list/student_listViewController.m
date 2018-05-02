@@ -45,12 +45,12 @@ static student_in_class *this_student_message;
     NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     if([str  isEqual: @"课程无学生!"])
     {
-        _student_is_null.text=@"该班级暂无学生";
         _student_dataSource=NULL;
+        _student_is_null.hidden=NO;
     }
     else
     {
-        _student_is_null.text=@"";
+        _student_is_null.hidden=YES;
         NSArray *array = [str componentsSeparatedByString:@"]"]; //字符串按照]分隔成数组
         NSString *how_many_student=[array objectAtIndex:0];
         NSString *all_class_been_search=[array objectAtIndex:1];

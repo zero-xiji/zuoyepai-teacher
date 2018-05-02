@@ -17,7 +17,9 @@
 @property (copy, nonatomic) NSString *homework_id;
 @property (copy, nonatomic) NSString *class_id;
 @property (copy, nonatomic) NSString *course_name;
+@property BOOL is_time_over;
 @property (copy, nonatomic) NSString *is_issue;
+@property (copy, nonatomic) NSString *is_submit;
 @property (copy, nonatomic) NSString *is_correcting;
 @property (copy, nonatomic) NSString *student_score;
 @property (copy, nonatomic) NSString *score;

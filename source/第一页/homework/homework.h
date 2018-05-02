@@ -16,7 +16,9 @@
 @property (copy, nonatomic) NSString *course_name;
 @property (copy, nonatomic) NSString *detail;
 @property (copy, nonatomic) NSString *end_time;
+@property BOOL is_time_over;
 @property (copy, nonatomic) NSString *is_issue;
+@property (copy, nonatomic) NSString *is_submit;
 @property (copy, nonatomic) NSString *is_correcting;
 @property (copy, nonatomic) NSString *score;
 @property (copy, nonatomic) NSString *student_score;
@@ -41,7 +43,9 @@
                  course_name:(NSString *)course_name
                       detail:(NSString *)detail
                     end_time:(NSString *)end_time
+                is_time_over:(BOOL)is_time_over
                     is_issue:(NSString *)is_issue
+                   is_submit:(NSString *)is_submit
                is_correcting:(NSString *)is_correcting
                student_score:(NSString *)student_score
                        score:(NSString *)score;
@@ -52,7 +56,9 @@
                      course_name:(NSString *)course_name
                           detail:(NSString *)detail
                         end_time:(NSString *)end_time
+                    is_time_over:(BOOL)is_time_over
                         is_issue:(NSString *)is_issue
+                       is_submit:(NSString *)is_submit
                    is_correcting:(NSString *)is_correcting
                    student_score:(NSString *)student_score
                            score:(NSString *)score;

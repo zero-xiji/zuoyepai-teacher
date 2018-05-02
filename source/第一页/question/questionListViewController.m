@@ -91,21 +91,15 @@ static int can_change;
                                                    question_type:[question_detial objectAtIndex:5]];  
 }
 
-- (IBAction)back:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 #pragma mark -UITableView 协议
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _question_dataSource.count;
 }
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"this is student tableview cell select");
@@ -116,14 +110,12 @@ static int can_change;
     [updateView.question_type_picker selectRow:[[_question_dataSource objectAtIndex:indexPath.row].question_type intValue] inComponent:0 animated:YES];
 //    [self.view addSubview:updateView.view];
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     questionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"question_cell" forIndexPath:indexPath];
     cell.model=_question_dataSource[indexPath.row];
     return cell;
 }
-
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     if(can_change == 1)
     {
@@ -190,27 +182,135 @@ static int can_change;
     NSLog(@"this is delete ");
     return is_success_delete;
 }
+
+
+- (IBAction)back:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (IBAction)issue_homework:(id)sender
 {
-    UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"发布作业" message:@"发布作业后不可修改，是否确认发布？" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
-                            {
-                                _question_table.allowsSelection=NO;
-                                [self issue_homework_url:select_homework_cell.homework_id];
-                                //        _btn_upload.titleLabel.text=@"已上传，不可更改";
-                            }];
-    UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:Btn_yes];
-    [alert addAction:Btn_cancle];
-    //
-    //add this alert into the view
-    //
-    [self presentViewController:alert animated:true completion:nil];
+    if(_question_dataSource.count==0)
+    {
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"作业中无题目，不可发布！" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:Btn_yes];
+        [self presentViewController:alert animated:true completion:nil];
+    }
+    else
+    {
+        int is_end_time_now=[self junc_CompareOneDateStr:select_homework_cell.end_time :1];
+        if(is_end_time_now!=-1)
+        {
+            UIAlertController *alert_set_time=[UIAlertController alertControllerWithTitle:@"现在的时间已超过原设定提交时间，请重新设置提交时间" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            [alert_set_time addTextFieldWithConfigurationHandler:^(UITextField *textField){
+                textField.text=select_homework_cell.detail;
+            }];
+            [alert_set_time addTextFieldWithConfigurationHandler:^(UITextField *textField){
+                NSDateFormatter *now_time_f = [[NSDateFormatter alloc] init];
+                [now_time_f setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+                NSDate *datenow = [NSDate date];
+                NSString *nowtimeStr = [now_time_f stringFromDate:datenow];
+                textField.text=nowtimeStr;
+            }];
+            [alert_set_time addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+            {
+                NSString *homework_name=alert_set_time.textFields.firstObject.text;
+                NSString *submission_time=alert_set_time.textFields.lastObject.text;
+                //recheck is time just?
+                int is_end_time_now=[self junc_CompareOneDateStr:submission_time :0];
+                if(is_end_time_now==-1)
+                {
+                    UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"确认修改提交时间并发布作业吗？" message:@"发布作业后不可修改" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+                    {
+                        _question_table.allowsSelection=NO;
+                        [self issue_homework_url:select_homework_cell.homework_id
+                                          detail:homework_name
+                                 submission_time:submission_time];
+                    }];                        
+                    UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+                    [alert addAction:Btn_yes];
+                    [alert addAction:Btn_cancle];
+                    [self presentViewController:alert animated:true completion:nil];
+                }
+                else
+                {
+                    UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提交时间不合理" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+                    [alert addAction:Btn_yes];
+                    [self presentViewController:alert animated:true completion:nil];
+                }
+            }]];
+            [alert_set_time addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alert_set_time animated:true completion:nil];
+        }
+        else
+        {
+            UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"发布作业" message:@"发布作业后不可修改，是否确认发布？" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+            {
+                _question_table.allowsSelection=NO;
+                [self issue_homework_url:select_homework_cell.homework_id
+                                  detail:select_homework_cell.detail
+                         submission_time:select_homework_cell.end_time];
+            }];
+            UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            [alert addAction:Btn_yes];
+            [alert addAction:Btn_cancle];
+            [self presentViewController:alert animated:true completion:nil];
+        }
+    }
 }
--(void)issue_homework_url:(NSString *)homework_id_to_issue
+- (int)junc_CompareOneDateStr:(NSString *)oneDateStr :(int)is_submit_time
 {
-    NSString *urlString=[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/issue_homework?teacher_id=%@&homework_id=%@",this_user_.THIS_TEACHER_USER_ID,homework_id_to_issue];
-    NSURL *url =[NSURL URLWithString:urlString];
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    if(is_submit_time==0)
+    {
+        [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    }
+    else
+    {
+        [df setDateFormat:@"yyyy-MM-dd HH:mm:ss.S"];
+    }
+    NSDate *dateA = [[NSDate alloc]init];
+    dateA = [df dateFromString:oneDateStr];
+
+    NSDateFormatter *now_time_f = [[NSDateFormatter alloc] init];
+    [now_time_f setDateFormat:@"YYYY-MM-dd HH:mm:ss.S"];
+    NSDate *dateB = [NSDate date];
+    
+    NSString *dateAStr = [df stringFromDate:dateA];
+    NSString *dateBStr = [df stringFromDate:dateB];
+    NSLog(@"\n dataA = %@ \n dataB = %@",dateAStr,dateBStr);
+    
+    NSComparisonResult result = [dateA compare:dateB];
+    
+    if (result == NSOrderedAscending)
+    {  // end_time < nowtimeStr
+        return 1;
+        
+    }
+    else if (result == NSOrderedDescending)
+    {  // end_time > nowtimeStr
+        return -1;
+    }
+    
+    // oneDateStr = anotherDateStr
+    return 0;
+}
+
+-(void)issue_homework_url:(NSString *)homework_id_to_issue
+                   detail:(NSString *)detail
+          submission_time:(NSString *)submission_time
+{
+    NSString *urlString=[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/issue_homework?teacher_id=%@&homework_id=%@&submission_time=%@&detail=%@",
+                         this_user_.THIS_TEACHER_USER_ID,
+                         select_homework_cell.homework_id,
+                         submission_time,
+                         detail];
+    NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
+    NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
+    NSURL *url =[NSURL URLWithString:urlstringEncode];
     //2.根据ＷＥＢ路径创建一个请求
     NSLog(@"this is issue_homework_url \n url = %@",urlString);
     NSData *data= [NSData dataWithContentsOfURL:url];

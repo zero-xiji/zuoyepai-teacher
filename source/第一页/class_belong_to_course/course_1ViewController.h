@@ -14,6 +14,7 @@
 - (IBAction)back2course:(id)sender;
 @property (weak, nonatomic) IBOutlet UINavigationBar *my_bar;
 @property NSUserDefaults *page;
+@property (strong, nonatomic) IBOutlet UILabel *l_is_class_null;
 - (IBAction)add_class:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *this_class_belong_to_course_table;
 @property class_belong_to_course *class_source;
