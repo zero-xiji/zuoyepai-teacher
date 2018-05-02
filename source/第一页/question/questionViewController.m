@@ -69,7 +69,8 @@ static NSString *this_question_answer;
                 UIAlertController *alert_is_success=[UIAlertController alertControllerWithTitle:@"提示" message:@"添加成功" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *Yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
                 {
-                    [self dismissViewControllerAnimated:YES completion:nil];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+//                    [self dismissViewControllerAnimated:YES completion:nil];
                 }];
                 [alert_is_success addAction:Yes];
                 [self presentViewController:alert_is_success animated:true completion:nil];
@@ -104,7 +105,8 @@ static NSString *this_question_answer;
     return is_add;
 }
 - (IBAction)back2questionTable:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)btn_judge_yes:(id)sender {

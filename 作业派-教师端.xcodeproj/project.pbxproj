@@ -30,7 +30,6 @@
 		26F91A48207D071B005B619A /* file_in_class.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F91A42207D071A005B619A /* file_in_class.m */; };
 		26F91A49207D071B005B619A /* fileDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F91A44207D071B005B619A /* fileDownloadViewController.m */; };
 		26F91A4A207D071B005B619A /* file_in_classTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F91A45207D071B005B619A /* file_in_classTableViewCell.m */; };
-		26F91A4D207D2204005B619A /* homeworkDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F91A4C207D2204005B619A /* homeworkDownloadViewController.m */; };
 		DA199019204D3489006C694D /* course_1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA199018204D3489006C694D /* course_1ViewController.m */; };
 		DA26F16C208640990027A837 /* user.m in Sources */ = {isa = PBXBuildFile; fileRef = DA26F16B208640990027A837 /* user.m */; };
 		DA379F4520844530004882A6 /* student_in_class.m in Sources */ = {isa = PBXBuildFile; fileRef = DA379F4420844530004882A6 /* student_in_class.m */; };
@@ -49,6 +48,7 @@
 		DABE0948208706C300141546 /* studentQuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DABE0947208706C300141546 /* studentQuestionTableViewCell.m */; };
 		DABE094B208706EA00141546 /* student_question.m in Sources */ = {isa = PBXBuildFile; fileRef = DABE094A208706EA00141546 /* student_question.m */; };
 		DABE09522087084500141546 /* studentQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABE09512087084500141546 /* studentQuestionViewController.m */; };
+		DAC8FF6F209A22270057148D /* classMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8FF6E209A22270057148D /* classMessageViewController.m */; };
 		DACCA6C9208C8F6F00B07204 /* RadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DACCA6C7208C8F6F00B07204 /* RadioButton.m */; };
 		DAE0F772208DCC2600A6E460 /* studentHomeworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE0F771208DCC2600A6E460 /* studentHomeworkViewController.m */; };
 		F98F1F4420847D430051E2D4 /* questionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F98F1F4320847D430051E2D4 /* questionViewController.m */; };
@@ -120,8 +120,6 @@
 		26F91A44207D071B005B619A /* fileDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fileDownloadViewController.m; sourceTree = "<group>"; };
 		26F91A45207D071B005B619A /* file_in_classTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = file_in_classTableViewCell.m; sourceTree = "<group>"; };
 		26F91A46207D071B005B619A /* file_in_classTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_in_classTableViewCell.h; sourceTree = "<group>"; };
-		26F91A4B207D2204005B619A /* homeworkDownloadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = homeworkDownloadViewController.h; sourceTree = "<group>"; };
-		26F91A4C207D2204005B619A /* homeworkDownloadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = homeworkDownloadViewController.m; sourceTree = "<group>"; };
 		DA199017204D3489006C694D /* course_1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = course_1ViewController.h; sourceTree = "<group>"; };
 		DA199018204D3489006C694D /* course_1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = course_1ViewController.m; sourceTree = "<group>"; };
 		DA26F16A208640990027A837 /* user.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
@@ -159,6 +157,8 @@
 		DABE094A208706EA00141546 /* student_question.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = student_question.m; sourceTree = "<group>"; };
 		DABE09502087084500141546 /* studentQuestionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = studentQuestionViewController.h; sourceTree = "<group>"; };
 		DABE09512087084500141546 /* studentQuestionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = studentQuestionViewController.m; sourceTree = "<group>"; };
+		DAC8FF6D209A22270057148D /* classMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = classMessageViewController.h; sourceTree = "<group>"; };
+		DAC8FF6E209A22270057148D /* classMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = classMessageViewController.m; sourceTree = "<group>"; };
 		DACCA6C7208C8F6F00B07204 /* RadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioButton.m; sourceTree = "<group>"; };
 		DACCA6C8208C8F6F00B07204 /* RadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioButton.h; sourceTree = "<group>"; };
 		DAE0F770208DCC2600A6E460 /* studentHomeworkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = studentHomeworkViewController.h; sourceTree = "<group>"; };
@@ -225,6 +225,7 @@
 		265771A920764BB700AEF2F6 /* 第一页 */ = {
 			isa = PBXGroup;
 			children = (
+				DAC8FF6C209A21CC0057148D /* uitabbar */,
 				F966980720847CE000FDDB89 /* question */,
 				26F91A3E207D064A005B619A /* file_list */,
 				26F91A34207D01F1005B619A /* student_list */,
@@ -283,8 +284,6 @@
 			children = (
 				DA0F4A9D208D9351003FD7F1 /* student_homework */,
 				DABE094F208707DD00141546 /* studentQuestion */,
-				26F91A4B207D2204005B619A /* homeworkDownloadViewController.h */,
-				26F91A4C207D2204005B619A /* homeworkDownloadViewController.m */,
 				DA379F4320844530004882A6 /* student_in_class.h */,
 				DA379F4420844530004882A6 /* student_in_class.m */,
 				26F91A3B207D0613005B619A /* studentListTableViewCell.h */,
@@ -433,6 +432,15 @@
 				DABE09512087084500141546 /* studentQuestionViewController.m */,
 			);
 			path = studentQuestion;
+			sourceTree = "<group>";
+		};
+		DAC8FF6C209A21CC0057148D /* uitabbar */ = {
+			isa = PBXGroup;
+			children = (
+				DAC8FF6D209A22270057148D /* classMessageViewController.h */,
+				DAC8FF6E209A22270057148D /* classMessageViewController.m */,
+			);
+			path = uitabbar;
 			sourceTree = "<group>";
 		};
 		F966980720847CE000FDDB89 /* question */ = {
@@ -610,6 +618,7 @@
 				DAA9E95C2042AC4A00D63C4A /* messageViewController.m in Sources */,
 				DABCF90D2095C3D900758E0C /* studentHomeworkTableViewCell.m in Sources */,
 				F98F1F4420847D430051E2D4 /* questionViewController.m in Sources */,
+				DAC8FF6F209A22270057148D /* classMessageViewController.m in Sources */,
 				DA379F4520844530004882A6 /* student_in_class.m in Sources */,
 				DABE0948208706C300141546 /* studentQuestionTableViewCell.m in Sources */,
 				26DC84712078E5120090F18D /* AFURLResponseSerialization.m in Sources */,
@@ -629,7 +638,6 @@
 				2618A5CD207A5CAD007504F6 /* homeworkTableViewCell.m in Sources */,
 				DABCE50220400764006432B5 /* mainViewController.m in Sources */,
 				26DC84762078E5120090F18D /* AFSecurityPolicy.m in Sources */,
-				26F91A4D207D2204005B619A /* homeworkDownloadViewController.m in Sources */,
 				2618A5CF207A5CAD007504F6 /* homework.m in Sources */,
 				26F91A3D207D0613005B619A /* studentListTableViewCell.m in Sources */,
 				DAE0F772208DCC2600A6E460 /* studentHomeworkViewController.m in Sources */,

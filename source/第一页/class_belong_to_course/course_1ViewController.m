@@ -7,6 +7,7 @@
 //
 
 #import "course_1ViewController.h"
+#import "classMessageViewController.h"
 @interface course_1ViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) NSMutableArray<class_belong_to_course *> *class_belong_to_course_dataSource;///<describe
 @end
@@ -19,7 +20,6 @@ static class_belong_to_course *this_class_message;
     _this_class_belong_to_course_table.delegate=self;
     _page=[NSUserDefaults standardUserDefaults];
     _this_class_belong_to_course_table.tableFooterView = [[UIView alloc] init];
-    _this_class_belong_to_course_table.dataSource=self;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -27,7 +27,7 @@ static class_belong_to_course *this_class_message;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_course_cell.course_name;
+    _my_bar_item.title=select_course_cell.course_name;
     [self initdata];
     [_this_class_belong_to_course_table reloadData];
     if(_class_belong_to_course_dataSource.count==0)
@@ -155,6 +155,12 @@ static class_belong_to_course *this_class_message;
     return is_success_delete;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"this is homework tableview cell set");
+//    classMessageViewController *select=[[classMessageViewController alloc]init];
+//    [self.navigationController pushViewController:select animated:YES];
+}
 ////send block to else
 //-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -169,7 +175,8 @@ static class_belong_to_course *this_class_message;
 
 - (IBAction)back2course:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)add_class:(id)sender {
     NSLog(@"add class");

@@ -26,7 +26,7 @@ static file_in_class *this_file_message;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_class_cell.class_name;
+    _my_bar_item.title=select_class_cell.class_name;
     [self initdata];
     [_file_table reloadData];
 }

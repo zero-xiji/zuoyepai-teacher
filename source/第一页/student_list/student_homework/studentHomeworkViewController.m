@@ -24,15 +24,13 @@ static int rows;
     _student_homework_table.delegate=self;
     // Do any additional setup after loading the view.
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_student_cell.user_name;
+    _my_bar_item.title=select_student_cell.user_name;
     [self initdata];
     [_student_homework_table reloadData];
 }
@@ -160,6 +158,7 @@ static int rows;
 }
 
 - (IBAction)back2class:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

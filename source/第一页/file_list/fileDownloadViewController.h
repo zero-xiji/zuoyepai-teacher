@@ -12,6 +12,6 @@
 #import "course_1ViewController.h"
 #import "homeworkTableViewCell.h"
 @interface fileDownloadViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UINavigationItem *my_bar_item;
 @property (weak, nonatomic) IBOutlet UIView *main_view;
-@property (weak, nonatomic) IBOutlet UINavigationBar *my_bar;
 @end

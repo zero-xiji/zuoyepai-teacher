@@ -13,7 +13,7 @@
 @interface studentHomeworkViewController : UIViewController
 - (IBAction)back2class:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *student_homework_table;
-@property (weak, nonatomic) IBOutlet UINavigationBar *my_bar;
 @property (weak, nonatomic) IBOutlet UILabel *student_homework_is_null;
+@property (strong, nonatomic) IBOutlet UINavigationItem *my_bar_item;
 
 @end

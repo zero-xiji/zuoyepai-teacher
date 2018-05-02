@@ -29,7 +29,7 @@ static student_in_class *this_student_message;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_class_cell.class_name;
+    _my_bar_item.title=select_class_cell.class_name;
     [self initdata];
     [_student_table reloadData];
 }

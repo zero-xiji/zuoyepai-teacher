@@ -12,7 +12,7 @@
 #import "class_belong_to_courseTableViewCell.h"
 @interface course_1ViewController : ViewController
 - (IBAction)back2course:(id)sender;
-@property (weak, nonatomic) IBOutlet UINavigationBar *my_bar;
+@property (strong, nonatomic) IBOutlet UINavigationItem *my_bar_item;
 @property NSUserDefaults *page;
 @property (strong, nonatomic) IBOutlet UILabel *l_is_class_null;
 - (IBAction)add_class:(id)sender;

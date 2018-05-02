@@ -42,7 +42,7 @@
     
 }
 - (IBAction)back:(id)sender {
-    
+//    [self.navigationController popToRootViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -92,6 +92,7 @@
 
 - (IBAction)return2login:(id)sender
 {
+//    [self.navigationController popToRootViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
