@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *question_score;
 @property (weak, nonatomic) IBOutlet UITextView *question_answer;
 - (IBAction)back2questionTable:(id)sender;
+@property (strong, nonatomic) IBOutlet UINavigationItem *my_bar_item;
 
 - (IBAction)btn_choice_A:(id)sender;
 - (IBAction)btn_choice_B:(id)sender;

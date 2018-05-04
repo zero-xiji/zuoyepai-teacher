@@ -7,14 +7,13 @@
 //
 
 #import "questionListViewController.h"
-#import "homeworkViewController.h"
-#import "questionTableViewCell.h"
-#import "questionViewController.h"
 @interface questionListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) NSMutableArray<question *> *question_dataSource;///<describe
 @end
 
 @implementation questionListViewController
+int select_type;
+question *select_question_cell;
 static question *this_question_message;
 static int can_change;
 - (void)viewDidLoad {
@@ -30,12 +29,14 @@ static int can_change;
 -(void)viewWillAppear:(BOOL)animated
 {
     [self initdata];
+    select_type=0;
     _my_bar.topItem.title=select_homework_cell.detail;
     if([select_homework_cell.is_issue isEqualToString:@"1"])
     {
         _btn_issue_homework.hidden=YES;
         _btn_add_question.title=@"";
         _btn_add_question.action=nil;
+        _question_table.allowsSelection=NO;
         can_change=0;
     }
     else
@@ -102,13 +103,15 @@ static int can_change;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"this is student tableview cell select");
-    questionViewController *updateView=[[questionViewController alloc]init];
-    updateView.tabBarItem.title=@"修改题目";
-    updateView.question_answer.text=[_question_dataSource objectAtIndex:indexPath.row].question_answer;
-    updateView.question_detail.text=[_question_dataSource objectAtIndex:indexPath.row].question_detail;
-    [updateView.question_type_picker selectRow:[[_question_dataSource objectAtIndex:indexPath.row].question_type intValue] inComponent:0 animated:YES];
-//    [self.view addSubview:updateView.view];
+    NSLog(@"this is question tableview cell select");
+    select_type=1;
+    select_question_cell=[question question_in_homeworkWithName:[_question_dataSource objectAtIndex:indexPath.row].question_id
+                                                    homework_id:[_question_dataSource objectAtIndex:indexPath.row].homework_id
+                                                question_detail:[_question_dataSource objectAtIndex:indexPath.row].question_detail
+                                                question_answer:[_question_dataSource objectAtIndex:indexPath.row].question_answer
+                                                 question_score:[_question_dataSource objectAtIndex:indexPath.row].question_score
+                                                  question_type:[_question_dataSource objectAtIndex:indexPath.row].question_type];
+
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -321,5 +324,8 @@ static int can_change;
                           [self dismissViewControllerAnimated:YES completion:nil];
                       }]];
     [self presentViewController:alert animated:true completion:nil];
+}
+- (IBAction)btn_add_question_prause:(id)sender {
+    select_type=0;
 }
 @end

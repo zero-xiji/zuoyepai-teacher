@@ -29,6 +29,7 @@ static student_question *this_question_message;
     if(select_homework_cell.is_time_over==NO&&[select_homework_cell.is_submit isEqual:@"0"])
     {
         _btn_correct_homework.title=@"";
+        _btn_correct_homework.action=nil;
         _question_is_null.hidden=NO;
         _my_bar.topItem.title=[NSString stringWithFormat:@"%@",select_student_cell.user_name];
     }
@@ -44,9 +45,10 @@ static student_question *this_question_message;
         {
             _my_bar.topItem.title=@"未批改题目列表";
         }
-        if([select_homework_cell.is_correcting isEqual:@"1"]||select_homework_cell.is_time_over==NO)
+        if([select_homework_cell.is_correcting isEqual:@"1"])
         {
             _btn_correct_homework.title=@"";
+            _btn_correct_homework.action=nil;
         }
         else
         {

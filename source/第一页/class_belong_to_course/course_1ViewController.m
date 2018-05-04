@@ -173,7 +173,7 @@ static class_belong_to_course *this_class_message;
 }
 - (IBAction)add_class:(id)sender {
     NSLog(@"add class");
-    UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"请输入要添加的班级名" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"请输入要添加的班级名" message:@"添加后无法修改班级名" preferredStyle:UIAlertControllerStyleAlert];
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField){
         textField.placeholder=@"班级名称";
     }];
@@ -189,7 +189,8 @@ static class_belong_to_course *this_class_message;
         textField.placeholder=@"上课时间:秒";
         textField.text=@"00";
     }];
-    UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+    {
         UITextField *class_name = alert.textFields.firstObject;
         NSString *start_time=[NSString stringWithFormat:@"%@%@%@",
                               alert.textFields[1].text,

@@ -218,11 +218,12 @@ static int tapCount;
     }
     else
     {
-        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"请输入要添加的课程" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"请输入要添加的课程" message:@"添加后无法修改课程名!" preferredStyle:UIAlertControllerStyleAlert];
         [alert addTextFieldWithConfigurationHandler:^(UITextField *textField){
             textField.placeholder=@"课程名";
         }];
-        UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+        {
             UITextField *add_course = alert.textFields.firstObject;
             NSLog(@"%@",add_course.text);
             [self add_course_url:add_course.text];
@@ -241,7 +242,12 @@ static int tapCount;
 }
 - (void)add_course_url:(NSString *)course_put_in
 {
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/course?operate=add&user_id=%@&user_type=teacher&course_name=%@",this_user_.THIS_TEACHER_USER_ID,course_put_in]];
+    NSString *urlString=[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/course?operate=add&user_id=%@&user_type=teacher&course_name=%@",this_user_.THIS_TEACHER_USER_ID,course_put_in];
+    NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
+    NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
+    NSURL *url =[NSURL URLWithString:urlstringEncode];
+//    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/course?operate=add&user_id=%@&user_type=teacher&course_name=%@",this_user_.THIS_TEACHER_USER_ID,course_put_in]];
+    NSLog(@"add_course_url = %@",url);
     NSData *data_student= [NSData dataWithContentsOfURL:url];
     NSString *return_text=[[NSString alloc]initWithData:data_student encoding:NSUTF8StringEncoding];
     NSLog(@"%@",return_text);

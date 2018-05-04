@@ -364,7 +364,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="123"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U1v-UN-2vb" id="IQR-Mr-NBl">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="122.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="123"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="teacher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39m-Rs-4SG">
@@ -476,7 +476,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="375" height="108"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ghM-tD-dMU" id="Zn6-4C-vBa">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="class name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMA-mg-MME">
@@ -679,7 +679,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="98"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pNi-CK-RkM" id="c6u-WA-mqP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="97.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="class name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="811-Ej-iNU">
@@ -867,7 +867,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="124"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mHj-Ra-Vgt" id="xJd-f8-Xcm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="123.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="vQ2-m4-bEO">
@@ -1270,7 +1270,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="107"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3JJ-ad-r2k" id="cjK-ST-ggF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="106.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MpE-mN-G1V">
@@ -1588,6 +1588,7 @@
                                         <barButtonItem key="rightBarButtonItem" title="添加题目" largeContentSizeImage="发现" id="ocf-DP-6Sk">
                                             <color key="tintColor" red="0.34661310909999998" green="0.24038138989999999" blue="0.16644316910000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
+                                                <action selector="btn_add_question_prause:" destination="VJZ-aN-doz" id="RC7-QV-rCu"/>
                                                 <segue destination="79D-rK-SD9" kind="showDetail" id="TnD-Tw-kJ3"/>
                                             </connections>
                                         </barButtonItem>
@@ -1608,7 +1609,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="375" height="178"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Bp-4t-UmA" id="5Y1-Ha-jpp">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="177.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJa-nU-Pr0">
@@ -1683,6 +1684,7 @@
                                                             <outlet property="question_detail" destination="WfW-AK-XyC" id="Hha-5C-2Xm"/>
                                                             <outlet property="question_score" destination="KJa-nU-Pr0" id="ktW-hB-pa0"/>
                                                             <outlet property="question_type" destination="zpP-Be-X9e" id="EhF-UR-99D"/>
+                                                            <segue destination="79D-rK-SD9" kind="showDetail" id="vKE-jd-wle"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -1984,6 +1986,7 @@
                         <outlet property="btn_D" destination="5hb-Qc-CqO" id="BZc-pY-8hP"/>
                         <outlet property="btn_no" destination="360-T8-85w" id="OzX-rU-j57"/>
                         <outlet property="btn_yes" destination="rwU-oG-gTp" id="vle-OJ-JK5"/>
+                        <outlet property="my_bar_item" destination="cSa-gE-RzW" id="KBE-eV-8yn"/>
                         <outlet property="question_answer" destination="txe-e9-rfH" id="rro-YD-nrq"/>
                         <outlet property="question_detail" destination="Gdk-SJ-VnI" id="rHV-Oq-L2i"/>
                         <outlet property="question_score" destination="36C-bP-UmO" id="VxK-sI-UcG"/>
@@ -2029,7 +2032,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="82"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="loU-5e-qfR" id="nUv-gn-MSN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="81.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="规定提交时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83A-Hg-YtU">
@@ -2185,7 +2188,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="375" height="234"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Xf-YR-IL7" id="5dV-5k-lei">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="234"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="题型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5j-gl-bX3">
@@ -2362,4 +2365,7 @@
         <image name="我" width="25" height="25"/>
         <image name="课程" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="TnD-Tw-kJ3"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionListViewController.m"
-            timestampString = "546957293.15749"
+            timestampString = "547115443.796564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "-initdata"
             landmarkType = "7">
          </BreakpointContent>
@@ -39,28 +39,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionViewController.m"
-            timestampString = "546946620.513092"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "-pickerView:didSelectRow:inComponent:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionListViewController.m"
-            timestampString = "546957293.157604"
+            timestampString = "547115443.796645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -72,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionListViewController.m"
-            timestampString = "546957293.157665"
+            timestampString = "547115443.7967089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "-set_this_question:"
             landmarkType = "7">
          </BreakpointContent>
@@ -88,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionListViewController.m"
-            timestampString = "546957293.157719"
+            timestampString = "547115443.796767"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "-initdata"
             landmarkType = "7">
          </BreakpointContent>
@@ -104,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionListViewController.m"
-            timestampString = "546957293.157773"
+            timestampString = "547115443.796823"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "7">
          </BreakpointContent>
@@ -120,7 +104,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/homework/homeworkViewController.m"
-            timestampString = "546952725.443258"
+            timestampString = "547051739.76087"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
@@ -216,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
-            timestampString = "546959949.067893"
+            timestampString = "547052234.52346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "-initdata"
             landmarkType = "7">
          </BreakpointContent>
@@ -232,11 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
-            timestampString = "546959949.131838"
+            timestampString = "547052234.523959"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-initdata"
             landmarkType = "7">
          </BreakpointContent>
@@ -248,11 +232,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
-            timestampString = "546959949.13231"
+            timestampString = "547052234.524235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "-set_this_question:"
             landmarkType = "7">
          </BreakpointContent>
@@ -264,11 +248,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
-            timestampString = "546959949.132731"
+            timestampString = "547052234.524524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "-teacher_set_score_url::"
             landmarkType = "7">
          </BreakpointContent>
@@ -280,11 +264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
-            timestampString = "546959949.1332"
+            timestampString = "547052234.524843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "-correct_homework:"
             landmarkType = "7">
          </BreakpointContent>
@@ -296,11 +280,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
-            timestampString = "546959949.133592"
+            timestampString = "547052234.525126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "-teacher_set_score_url::"
             landmarkType = "7">
          </BreakpointContent>
@@ -312,11 +296,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
-            timestampString = "546959949.1339999"
+            timestampString = "547052234.525393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -328,11 +312,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
-            timestampString = "546959949.134523"
+            timestampString = "547052234.525684"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "-set_this_question:"
             landmarkType = "7">
          </BreakpointContent>
@@ -344,11 +328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
-            timestampString = "546959949.134915"
+            timestampString = "547052234.52598"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "7">
          </BreakpointContent>
@@ -360,11 +344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
-            timestampString = "546959949.135267"
+            timestampString = "547052234.526263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-initdata"
             landmarkType = "7">
          </BreakpointContent>
@@ -376,11 +360,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
-            timestampString = "546959949.135597"
+            timestampString = "547052234.526518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "-correct_homework:"
             landmarkType = "7">
          </BreakpointContent>
@@ -392,11 +376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionViewController.m"
-            timestampString = "546946620.514667"
+            timestampString = "547115443.797201"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "-add_question_url"
             landmarkType = "7">
          </BreakpointContent>
@@ -408,11 +392,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionViewController.m"
-            timestampString = "546946620.514727"
+            timestampString = "547115443.797628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "-add_question_url"
             landmarkType = "7">
          </BreakpointContent>
@@ -424,11 +408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionViewController.m"
-            timestampString = "546946620.514779"
+            timestampString = "547115443.797923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-add_question_url"
             landmarkType = "7">
          </BreakpointContent>
@@ -440,11 +424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionViewController.m"
-            timestampString = "546946620.514827"
+            timestampString = "547115443.798213"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "-add_question_url"
             landmarkType = "7">
          </BreakpointContent>
@@ -456,11 +440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionViewController.m"
-            timestampString = "546946620.514874"
+            timestampString = "547115443.798486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "-add_question_url"
             landmarkType = "7">
          </BreakpointContent>
@@ -472,7 +456,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/homework/homeworkViewController.m"
-            timestampString = "546952725.445151"
+            timestampString = "547051739.834247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -488,7 +472,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/homework/homeworkViewController.m"
-            timestampString = "546952725.445223"
+            timestampString = "547051739.834628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
@@ -504,7 +488,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/homework/homeworkViewController.m"
-            timestampString = "546952725.445297"
+            timestampString = "547051739.834916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
@@ -520,7 +504,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/homework/homeworkViewController.m"
-            timestampString = "546952725.445365"
+            timestampString = "547051739.835224"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
@@ -536,7 +520,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/homework/homeworkViewController.m"
-            timestampString = "546952725.4454449"
+            timestampString = "547051739.835548"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
@@ -552,7 +536,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/homework/homeworkViewController.m"
-            timestampString = "546952725.445503"
+            timestampString = "547051739.835849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
@@ -615,7 +599,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/homework/homeworkViewController.m"
-            timestampString = "546952725.445612"
+            timestampString = "547051739.8361501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "207"
@@ -631,7 +615,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/homework/homeworkViewController.m"
-            timestampString = "546952725.445671"
+            timestampString = "547051739.836485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "212"
@@ -647,7 +631,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/homework/homeworkViewController.m"
-            timestampString = "546952725.445729"
+            timestampString = "547051739.836759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "213"
@@ -695,11 +679,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionListViewController.m"
-            timestampString = "546957293.161572"
+            timestampString = "547115443.7989531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
             landmarkName = "-issue_homework_url:detail:submission_time:"
             landmarkType = "7">
          </BreakpointContent>
@@ -711,11 +695,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionListViewController.m"
-            timestampString = "546957293.1616319"
+            timestampString = "547115443.799016"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "-url_to_delete_question:"
             landmarkType = "7">
          </BreakpointContent>
@@ -727,11 +711,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionListViewController.m"
-            timestampString = "546957293.161685"
+            timestampString = "547115443.7990741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "-issue_homework_url:detail:submission_time:"
             landmarkType = "7">
          </BreakpointContent>
@@ -743,11 +727,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionListViewController.m"
-            timestampString = "546957293.161749"
+            timestampString = "547115443.799129"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "-issue_homework_url:detail:submission_time:"
             landmarkType = "7">
          </BreakpointContent>
@@ -759,11 +743,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionListViewController.m"
-            timestampString = "546957293.161801"
+            timestampString = "547115443.799184"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -775,11 +759,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionListViewController.m"
-            timestampString = "546957293.161851"
+            timestampString = "547115443.799238"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -791,11 +775,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "source/&#x7b2c;&#x4e00;&#x9875;/question/questionListViewController.m"
-            timestampString = "546957293.161901"
+            timestampString = "547115443.799292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "-issue_homework:"
             landmarkType = "7">
          </BreakpointContent>
@@ -845,6 +829,134 @@
             startingLineNumber = "70"
             endingLineNumber = "70"
             landmarkName = "-initdata"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
+            timestampString = "547052234.527366"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
+            timestampString = "547052234.527846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/&#x7b2c;&#x4e00;&#x9875;/student_list/studentQuestion/studentQuestionViewController.m"
+            timestampString = "547052234.528145"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/&#x7b2c;&#x4e00;&#x9875;/my_course/my_courseTableViewController.m"
+            timestampString = "547058463.327472"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "-add_course_url:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/&#x7b2c;&#x4e00;&#x9875;/my_course/my_courseTableViewController.m"
+            timestampString = "547058463.4094779"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "-add_course_url:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/&#x7b2c;&#x4e00;&#x9875;/my_course/my_courseTableViewController.m"
+            timestampString = "547058463.409583"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "-add_course_url:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/&#x7b2c;&#x4e00;&#x9875;/my_course/my_courseTableViewController.m"
+            timestampString = "547058463.4096611"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "-add_course_url:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "source/&#x7b2c;&#x4e00;&#x9875;/my_course/my_courseTableViewController.m"
+            timestampString = "547058463.409729"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "-add_course_url:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
