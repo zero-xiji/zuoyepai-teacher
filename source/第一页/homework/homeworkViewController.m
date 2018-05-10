@@ -22,7 +22,7 @@ static int rows;
     _homework_table.tableFooterView = [[UIView alloc] init];
     _homework_table.dataSource=self;
     _homework_table.delegate=self;
-//    _homework_table.rowHeight=40;
+    [self setupRefresh];
     // Do any additional setup after loading the view.
 }
 - (void)didReceiveMemoryWarning {
@@ -31,7 +31,7 @@ static int rows;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_class_cell.class_name;
+    _my_bar_item.title=select_class_cell.class_name;
     [self initdata];
     [_homework_table reloadData];
 }
@@ -77,6 +77,30 @@ static int rows;
                                               end_time:[class_detial objectAtIndex:7]
                                               is_issue:[class_detial objectAtIndex:8]];
 }
+
+-(void)setupRefresh
+{
+    //1.添加刷新控件
+    UIRefreshControl *control=[[UIRefreshControl alloc]init];
+    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+    [_homework_table addSubview:control];
+    
+    //2.马上进入刷新状态，并不会触发UIControlEventValueChanged事件
+    [control beginRefreshing];
+    
+    // 3.加载数据
+    [self refreshStateChange:control];
+}
+/**
+ *  UIRefreshControl进入刷新状态：加载最新的数据
+ */
+-(void)refreshStateChange:(UIRefreshControl *)control
+{
+    [self initdata];
+    [_homework_table reloadData];
+    [control endRefreshing];
+}
+
 
 #pragma mark -UITableView 协议
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

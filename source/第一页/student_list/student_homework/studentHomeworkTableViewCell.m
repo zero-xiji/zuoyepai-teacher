@@ -7,9 +7,8 @@
 //
 
 #import "studentHomeworkTableViewCell.h"
-
 @implementation studentHomeworkTableViewCell
-
+homework *select_student_homework_cell;
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -24,7 +23,7 @@
 -(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
     if (highlighted == YES)
     {
-        select_homework_cell = [homework homeworkWithName:_homework_id
+        select_student_homework_cell = [homework homeworkWithName:_homework_id
                                                  class_id:_class_id
                                                class_name:_class_name
                                               course_name:_course_name
@@ -36,7 +35,7 @@
                                             is_correcting:_is_correcting
                                             student_score:_student_score
                                                     score:_score];
-        NSLog(@"homework_id = %@",select_homework_cell.homework_id);
+        NSLog(@"select_student_homework_cell = %@",select_student_homework_cell.homework_id);
     }
     else
     {

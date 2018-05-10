@@ -31,7 +31,7 @@ static NSString *this_question_answer;
 {
     if(select_type == 1)
     {
-        _my_bar_item.title=@"修改题目";
+        _my_bar_tiem.title=@"修改题目";
         _question_detail.text=select_question_cell.question_detail;
         _question_answer.text=select_question_cell.question_answer;
         _question_score.text=select_question_cell.question_score;
@@ -42,7 +42,7 @@ static NSString *this_question_answer;
     }
     else
     {
-        _my_bar_item.title=@"添加题目";
+        _my_bar_tiem.title=@"添加题目";
         _question_answer.hidden=YES;
         _btn_no.hidden=YES;
         _btn_yes.hidden=YES;
@@ -73,6 +73,13 @@ static NSString *this_question_answer;
         [alert addAction:Btn_yes];
         [self presentViewController:alert animated:true completion:nil];
     }
+    else if(![self isPureInt:_question_score.text])
+    {
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"警告" message:@"分数栏只能输入数字！" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:Btn_yes];
+        [self presentViewController:alert animated:true completion:nil];
+    }
     else
     {
         NSString *alertStr=@"";
@@ -95,7 +102,8 @@ static NSString *this_question_answer;
                     UIAlertController *alert_is_success=[UIAlertController alertControllerWithTitle:@"提示" message:@"添加成功" preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction *Yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
                                         {
-                                            [self dismissViewControllerAnimated:YES completion:nil];
+                                            [self.navigationController popViewControllerAnimated:YES];
+//                                            [self dismissViewControllerAnimated:YES completion:nil];
                                         }];
                     [alert_is_success addAction:Yes];
                     [self presentViewController:alert_is_success animated:true completion:nil];
@@ -108,11 +116,14 @@ static NSString *this_question_answer;
                     UIAlertController *alert_is_success=[UIAlertController alertControllerWithTitle:@"提示" message:@"修改成功" preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction *Yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
                                         {
-                                            [self dismissViewControllerAnimated:YES completion:nil];
+                                            [self.navigationController popViewControllerAnimated:YES];
+
+//                                            [self dismissViewControllerAnimated:YES completion:nil];
                                         }];
                     [alert_is_success addAction:Yes];
                     [self presentViewController:alert_is_success animated:true completion:nil];
-                }            }
+                }
+            }
         }];
         [alert addAction:Btn_yes];
         [alert addAction:Btn_cancel];
@@ -120,7 +131,12 @@ static NSString *this_question_answer;
         
     }
 }
-
+- (BOOL)isPureInt:(NSString*)string
+{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    int val;
+    return[scan scanInt:&val] && [scan isAtEnd];
+}
 -(BOOL)add_question_url
 {
     BOOL is_add=NO;
@@ -171,7 +187,8 @@ static NSString *this_question_answer;
 }
 
 - (IBAction)back2questionTable:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)btn_judge_yes:(id)sender {

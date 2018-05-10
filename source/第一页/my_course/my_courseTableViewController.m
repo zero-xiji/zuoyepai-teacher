@@ -225,10 +225,19 @@ static int tapCount;
         UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
         {
             UITextField *add_course = alert.textFields.firstObject;
-            NSLog(@"%@",add_course.text);
-            [self add_course_url:add_course.text];
-            [self initdata];
-            [self.tableView reloadData];
+            if(add_course.text.length == 0)
+            {
+                UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"课程名不能为空！" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *Btn_yes=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+                [alert addAction:Btn_yes];
+                [self presentViewController:alert animated:true completion:nil];
+            }
+            else
+            {
+                [self add_course_url:add_course.text];
+                [self initdata];
+                [self.tableView reloadData];
+            }
         }];
         UIAlertAction *Btn_cancle=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         [alert addAction:Btn_yes];

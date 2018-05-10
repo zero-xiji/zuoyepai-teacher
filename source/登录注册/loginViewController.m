@@ -26,7 +26,6 @@ user *this_user_;
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     tap1.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap1];
-
     // Do any additional setup after loading the view.
 }
 - (void)didReceiveMemoryWarning {
@@ -76,7 +75,8 @@ user *this_user_;
     _tips.text=@"";
 }
 - (IBAction)back:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)setUser:(NSArray *)array
 {

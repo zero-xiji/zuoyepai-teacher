@@ -8,6 +8,7 @@
 
 #import "studentQuestionViewController.h"
 #import "student_listViewController.h"
+#import "studentHomeworkViewController.h"
 @interface studentQuestionViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) NSMutableArray<student_question *> *question_dataSource;///<describe
 @property (strong, nonatomic) NSMutableArray<student_question *> *all_question_dataSource;///<describe
@@ -26,7 +27,7 @@ static student_question *this_question_message;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    if(select_homework_cell.is_time_over==NO&&[select_homework_cell.is_submit isEqual:@"0"])
+    if(select_student_homework_cell.is_time_over==NO&&[select_student_homework_cell.is_submit isEqual:@"0"])
     {
         _btn_correct_homework.title=@"";
         _btn_correct_homework.action=nil;
@@ -45,7 +46,7 @@ static student_question *this_question_message;
         {
             _my_bar.topItem.title=@"未批改题目列表";
         }
-        if([select_homework_cell.is_correcting isEqual:@"1"])
+        if([select_student_homework_cell.is_correcting isEqual:@"1"])
         {
             _btn_correct_homework.title=@"";
             _btn_correct_homework.action=nil;
@@ -61,7 +62,7 @@ static student_question *this_question_message;
 {
     _question_dataSource =[NSMutableArray new];
     _all_question_dataSource =[NSMutableArray new];
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/select-student-question?student_id=%@&homework_id=%@",select_student_cell.user_id,select_homework_cell.homework_id]];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/select-student-question?student_id=%@&homework_id=%@",select_student_cell.user_id,select_student_homework_cell.homework_id]];
 //    NSLog(@"%@",urlString);
     //2.根据ＷＥＢ路径创建一个请求
     NSData *data= [NSData dataWithContentsOfURL:url];
@@ -110,11 +111,12 @@ static student_question *this_question_message;
                            ];
 }
 
+
 - (IBAction)back:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)correct_homework:(id)sender {
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/teacher_correct_homework?student_id=%@&homework_id=%@",select_student_cell.user_id,select_homework_cell.homework_id]];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/teacher_correct_homework?student_id=%@&homework_id=%@",select_student_cell.user_id,select_student_homework_cell.homework_id]];
     NSData *data= [NSData dataWithContentsOfURL:url];
     NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:str preferredStyle:UIAlertControllerStyleAlert];
@@ -140,7 +142,7 @@ static student_question *this_question_message;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if([select_homework_cell.is_correcting isEqualToString:@"0"])
+    if([select_student_homework_cell.is_correcting isEqualToString:@"0"])
     {
         studentQuestionTableViewCell *this_cell=[tableView cellForRowAtIndexPath:indexPath];
         if([this_cell.question_type isEqualToString:@"2"])

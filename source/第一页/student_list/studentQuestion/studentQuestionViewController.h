@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "studentHomeworkViewController.h"
 #import "studentQuestionTableViewCell.h"
-
+#import "studentHomeworkViewController.h"
 @interface studentQuestionViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *main_view;
 - (IBAction)correct_homework:(id)sender;

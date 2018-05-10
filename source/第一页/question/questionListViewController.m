@@ -30,7 +30,8 @@ static int can_change;
 {
     [self initdata];
     select_type=0;
-    _my_bar.topItem.title=select_homework_cell.detail;
+    _my_bar_item.title=select_homework_cell.detail;
+    _my_bar_item.leftBarButtonItem.tintColor=[UIColor grayColor];
     if([select_homework_cell.is_issue isEqualToString:@"1"])
     {
         _btn_issue_homework.hidden=YES;
@@ -188,7 +189,8 @@ static int can_change;
 
 
 - (IBAction)back:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)issue_homework:(id)sender
 {
@@ -321,7 +323,8 @@ static int can_change;
     UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:str preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
                       {
-                          [self dismissViewControllerAnimated:YES completion:nil];
+                          [self.navigationController popToRootViewControllerAnimated:YES];
+//                          [self dismissViewControllerAnimated:YES completion:nil];
                       }]];
     [self presentViewController:alert animated:true completion:nil];
 }

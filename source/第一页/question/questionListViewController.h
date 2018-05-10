@@ -13,8 +13,8 @@
 
 @interface questionListViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *main_view;
-@property (weak, nonatomic) IBOutlet UINavigationBar *my_bar;
 - (IBAction)back:(id)sender;
+@property (strong, nonatomic) IBOutlet UINavigationItem *my_bar_item;
 @property (weak, nonatomic) IBOutlet UITableView *question_table;
 @property (weak, nonatomic) IBOutlet UILabel *question_is_null;
 - (IBAction)issue_homework:(id)sender;

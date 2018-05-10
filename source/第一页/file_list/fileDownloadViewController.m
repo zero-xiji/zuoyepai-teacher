@@ -33,7 +33,7 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"POST";
     [webView loadRequest:request];
-    [webView loadRequest:request];
+//    [webView loadRequest:request];
     // Do any additional setup after loading the view.
 }
 - (void)didReceiveMemoryWarning {
@@ -42,11 +42,12 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_file_message.file_name;
+    _my_bar_item.title=select_file_message.file_name;
     NSLog(@"this is download");
 }
 - (IBAction)back:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end
 

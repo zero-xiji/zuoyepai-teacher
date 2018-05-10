@@ -21,6 +21,8 @@ static student_in_class *this_student_message;
     _student_table.tableFooterView = [[UIView alloc] init];
     _student_table.dataSource=self;
     _student_table.delegate=self;
+    // 集成下拉刷新控件
+    [self setupRefresh];
     // Do any additional setup after loading the view.
 }
 - (void)didReceiveMemoryWarning {
@@ -29,11 +31,10 @@ static student_in_class *this_student_message;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_class_cell.class_name;
+    _my_bar_item.title=select_class_cell.class_name;
     [self initdata];
     [_student_table reloadData];
 }
-
 
 - (void)initdata
 {
@@ -75,6 +76,29 @@ static student_in_class *this_student_message;
                                                       homework_score:[student_detial objectAtIndex:3]];
 }
 
+
+-(void)setupRefresh
+{
+    //1.添加刷新控件
+    UIRefreshControl *control=[[UIRefreshControl alloc]init];
+    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+    [_student_table addSubview:control];
+    
+    //2.马上进入刷新状态，并不会触发UIControlEventValueChanged事件
+    [control beginRefreshing];
+    
+    // 3.加载数据
+    [self refreshStateChange:control];
+}
+/**
+ *  UIRefreshControl进入刷新状态：加载最新的数据
+ */
+-(void)refreshStateChange:(UIRefreshControl *)control
+{
+    [self initdata];
+    [_student_table reloadData];
+    [control endRefreshing];
+}
 
 - (IBAction)back2class:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

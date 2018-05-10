@@ -7,7 +7,6 @@
 //
 
 #import "studentHomeworkViewController.h"
-#import "studentHomeworkTableViewCell.h"
 #import "loginViewController.h"
 #import "student_listViewController.h"
 @interface studentHomeworkViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -22,17 +21,16 @@ static int rows;
     _student_homework_table.tableFooterView = [[UIView alloc] init];
     _student_homework_table.dataSource=self;
     _student_homework_table.delegate=self;
+    [self setupRefresh];
     // Do any additional setup after loading the view.
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_student_cell.user_name;
+    _my_bar_item.title=select_student_cell.user_name;
     [self initdata];
     [_student_homework_table reloadData];
 }
@@ -132,6 +130,28 @@ static int rows;
     return 0;
 }
 
+-(void)setupRefresh
+{
+    //1.添加刷新控件
+    UIRefreshControl *control=[[UIRefreshControl alloc]init];
+    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+    [_student_homework_table addSubview:control];
+    
+    //2.马上进入刷新状态，并不会触发UIControlEventValueChanged事件
+    [control beginRefreshing];
+    
+    // 3.加载数据
+    [self refreshStateChange:control];
+}
+/**
+ *  UIRefreshControl进入刷新状态：加载最新的数据
+ */
+-(void)refreshStateChange:(UIRefreshControl *)control
+{
+    [self initdata];
+    [_student_homework_table reloadData];
+    [control endRefreshing];
+}
 
 #pragma mark -UITableView 协议
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -155,11 +175,24 @@ static int rows;
     {
         select.selected=NO;
     }
-    
+    select_student_homework_cell = [homework homeworkWithName:[_student_homework_dataSource objectAtIndex:indexPath.row].homework_id
+                                                     class_id:[_student_homework_dataSource objectAtIndex:indexPath.row].class_id
+                                                   class_name:[_student_homework_dataSource objectAtIndex:indexPath.row].class_name
+                                                  course_name:[_student_homework_dataSource objectAtIndex:indexPath.row].course_name
+                                                       detail:[_student_homework_dataSource objectAtIndex:indexPath.row].detail
+                                                     end_time:[_student_homework_dataSource objectAtIndex:indexPath.row].end_time
+                                                 is_time_over:[_student_homework_dataSource objectAtIndex:indexPath.row].is_time_over
+                                                     is_issue:[_student_homework_dataSource objectAtIndex:indexPath.row].is_issue
+                                                    is_submit:[_student_homework_dataSource objectAtIndex:indexPath.row].is_submit
+                                                is_correcting:[_student_homework_dataSource objectAtIndex:indexPath.row].is_correcting
+                                                student_score:[_student_homework_dataSource objectAtIndex:indexPath.row].student_score
+                                                        score:[_student_homework_dataSource objectAtIndex:indexPath.row].score];
+    NSLog(@"select_student_homework_cell = %@",select_student_homework_cell.homework_id);
     select.homework_detail=select.detail.text;
 }
 
 - (IBAction)back2class:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

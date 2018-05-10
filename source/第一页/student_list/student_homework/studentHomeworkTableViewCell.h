@@ -27,5 +27,5 @@
 @property (strong, nonatomic) homework *model;
 @property(nonatomic,weak) NSString *class_id_in_this_cell;
 @property(nonatomic,weak) NSString *homework_detail;
-extern homework *select_homework_cell;
+extern homework *select_student_homework_cell;
 @end

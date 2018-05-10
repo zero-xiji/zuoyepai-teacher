@@ -19,6 +19,8 @@ static file_in_class *this_file_message;
     [super viewDidLoad];
     _file_table.tableFooterView = [[UIView alloc] init];
     _file_table.dataSource=self;
+    _file_table.delegate=self;
+    [self setupRefresh];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -26,32 +28,9 @@ static file_in_class *this_file_message;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    _my_bar.topItem.title=select_class_cell.class_name;
+    _my_bar_item.title=select_class_cell.class_name;
     [self initdata];
     [_file_table reloadData];
-}
-
-#pragma mark -UITableView 协议
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return _file_dataSource.count;
-}
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"this is file_in_class tableview cell in viewController set");
-    file_in_classTableViewCell *this_cell=[tableView cellForRowAtIndexPath:indexPath];
-    select_file_message.file_name=this_cell.model.file_name;
-    select_file_message.who_upload=this_cell.model.who_upload;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    file_in_classTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"file_in_class_cell" forIndexPath:indexPath];
-    cell.model=_file_dataSource[indexPath.row];
-    return cell;
 }
 
 - (void)initdata
@@ -61,7 +40,7 @@ static file_in_class *this_file_message;
     NSCharacterSet *encodeSet = [NSCharacterSet URLQueryAllowedCharacterSet];
     NSString *urlstringEncode = [urlString stringByAddingPercentEncodingWithAllowedCharacters:encodeSet];
     NSURL *url =[NSURL URLWithString:urlstringEncode];
-//    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myfile?operate=teacher_select&user_id=%@",this_user_.THIS_TEACHER_USER_ID]];
+    //    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://193.112.2.154:7079/SSHtet/myfile?operate=teacher_select&user_id=%@",this_user_.THIS_TEACHER_USER_ID]];
     //2.根据ＷＥＢ路径创建一个请求
     NSData *data= [NSData dataWithContentsOfURL:url];
     NSString *str =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
@@ -96,6 +75,52 @@ static file_in_class *this_file_message;
                                                  course_id:select_class_cell.course_id
                                                 who_upload:[file_detial objectAtIndex:2]
                                                time_upload:@""];
+}
+
+-(void)setupRefresh
+{
+    //1.添加刷新控件
+    UIRefreshControl *control=[[UIRefreshControl alloc]init];
+    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+    [_file_table addSubview:control];
+    
+    //2.马上进入刷新状态，并不会触发UIControlEventValueChanged事件
+    [control beginRefreshing];
+    
+    // 3.加载数据
+    [self refreshStateChange:control];
+}
+/**
+ *  UIRefreshControl进入刷新状态：加载最新的数据
+ */
+-(void)refreshStateChange:(UIRefreshControl *)control
+{
+    [self initdata];
+    [_file_table reloadData];
+    [control endRefreshing];
+}
+
+#pragma mark -UITableView 协议
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _file_dataSource.count;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"this is file_in_class tableview cell in viewController set");
+    file_in_classTableViewCell *this_cell=[tableView cellForRowAtIndexPath:indexPath];
+    select_file_message.file_name=this_cell.model.file_name;
+    select_file_message.who_upload=this_cell.model.who_upload;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    file_in_classTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"file_in_class_cell" forIndexPath:indexPath];
+    cell.model=_file_dataSource[indexPath.row];
+    return cell;
 }
 
 

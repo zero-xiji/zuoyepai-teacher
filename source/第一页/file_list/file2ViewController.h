@@ -14,6 +14,6 @@
 @interface file2ViewController : UIViewController
 - (IBAction)back2class:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *file_table;
-@property (weak, nonatomic) IBOutlet UINavigationBar *my_bar;
 @property (weak, nonatomic) IBOutlet UILabel *file_in_class_is_null;
+@property (strong, nonatomic) IBOutlet UINavigationItem *my_bar_item;
 @end
