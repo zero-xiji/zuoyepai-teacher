@@ -20,6 +20,7 @@ static class_belong_to_course *this_class_message;
     _this_class_belong_to_course_table.delegate=self;
     _page=[NSUserDefaults standardUserDefaults];
     _this_class_belong_to_course_table.tableFooterView = [[UIView alloc] init];
+    [self setupRefresh];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -69,6 +70,26 @@ static class_belong_to_course *this_class_message;
                                                 count_student:[class_detial objectAtIndex:7]];
 }
 
+#pragma -下拉刷新
+-(void)setupRefresh
+{
+    //1.添加刷新控件
+    UIRefreshControl *control=[[UIRefreshControl alloc]init];
+    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+    [_this_class_belong_to_course_table addSubview:control];
+    
+    //2.马上进入刷新状态，并不会触发UIControlEventValueChanged事件
+    [control beginRefreshing];
+    
+    // 3.加载数据
+    [self refreshStateChange:control];
+}
+-(void)refreshStateChange:(UIRefreshControl *)control
+{
+    [self initdata];
+    [_this_class_belong_to_course_table reloadData];
+    [control endRefreshing];
+}
 
 #pragma mark -UITableView 协议
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

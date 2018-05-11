@@ -20,7 +20,7 @@ user *this_user_;
     [super viewDidLoad];
     _touxiang.userInteractionEnabled=YES;
     _touxiang.layer.masksToBounds=YES;
-    _touxiang.layer.cornerRadius=50;
+    _touxiang.layer.cornerRadius=20;
     _page=[NSUserDefaults standardUserDefaults];
     //添加手势，为了关闭键盘的操作
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];

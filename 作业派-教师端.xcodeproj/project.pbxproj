@@ -40,6 +40,7 @@
 		DA5F0DED203F32A600F45AED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5F0DEC203F32A600F45AED /* main.m */; };
 		DA5F0DF7203F32A600F45AED /* _Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5F0DF6203F32A600F45AED /* _Tests.m */; };
 		DA5F0E02203F32A600F45AED /* _UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5F0E01203F32A600F45AED /* _UITests.m */; };
+		DA7C671C20A5EBC900855F9D /* CourseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C671B20A5EBC900855F9D /* CourseNavigationViewController.m */; };
 		DAA9E95C2042AC4A00D63C4A /* messageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA9E95B2042AC4A00D63C4A /* messageViewController.m */; };
 		DABCE4F1203FED4E006432B5 /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABCE4F0203FED4E006432B5 /* loginViewController.m */; };
 		DABCE50220400764006432B5 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABCE50120400764006432B5 /* mainViewController.m */; };
@@ -141,6 +142,8 @@
 		DA5F0DFD203F32A600F45AED /* 作业派-教师端UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "作业派-教师端UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5F0E01203F32A600F45AED /* _UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _UITests.m; sourceTree = "<group>"; };
 		DA5F0E03203F32A600F45AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA7C671A20A5EBC900855F9D /* CourseNavigationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseNavigationViewController.h; sourceTree = "<group>"; };
+		DA7C671B20A5EBC900855F9D /* CourseNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseNavigationViewController.m; sourceTree = "<group>"; };
 		DAA9E95A2042AC4A00D63C4A /* messageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = messageViewController.h; sourceTree = "<group>"; };
 		DAA9E95B2042AC4A00D63C4A /* messageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = messageViewController.m; sourceTree = "<group>"; };
 		DABCE4EF203FED4E006432B5 /* loginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loginViewController.h; sourceTree = "<group>"; };
@@ -269,6 +272,8 @@
 		26E74A122070F1C900529D32 /* my_course */ = {
 			isa = PBXGroup;
 			children = (
+				DA7C671A20A5EBC900855F9D /* CourseNavigationViewController.h */,
+				DA7C671B20A5EBC900855F9D /* CourseNavigationViewController.m */,
 				26E74A0F2070F0F400529D32 /* my_course.h */,
 				26E74A102070F0F400529D32 /* my_course.m */,
 				26E74A132070F1F300529D32 /* my_courseTableViewCell.h */,
@@ -611,6 +616,7 @@
 				DABE09522087084500141546 /* studentQuestionViewController.m in Sources */,
 				26E74A112070F0F400529D32 /* my_course.m in Sources */,
 				26E74A182070F24000529D32 /* my_courseTableViewController.m in Sources */,
+				DA7C671C20A5EBC900855F9D /* CourseNavigationViewController.m in Sources */,
 				DABCE4F1203FED4E006432B5 /* loginViewController.m in Sources */,
 				26F91A48207D071B005B619A /* file_in_class.m in Sources */,
 				265771A120763CE000AEF2F6 /* class_belong_to_course.m in Sources */,
@@ -801,6 +807,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XX677H3325;
 				INFOPLIST_FILE = "$(SRCROOT)/作业派-教师端/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ios.teacher.0409.0139;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -815,6 +822,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XX677H3325;
 				INFOPLIST_FILE = "$(SRCROOT)/作业派-教师端/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ios.teacher.0409.0139;
 				PRODUCT_NAME = "$(TARGET_NAME)";

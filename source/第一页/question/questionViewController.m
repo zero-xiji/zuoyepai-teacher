@@ -21,6 +21,10 @@ static NSString *this_question_answer;
     _question_type_datasource = [[NSArray alloc] initWithObjects:@"单选题",@"判断题",@"填空/简答题",nil];
     _question_type_picker.dataSource=self;
     _question_type_picker.delegate=self;
+    //添加手势，为了关闭键盘的操作
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+    tap1.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tap1];
     // Do any additional setup after loading the view.
 }
 - (void)didReceiveMemoryWarning {
@@ -58,6 +62,12 @@ static NSString *this_question_answer;
     }
 }
 
+
+//点击空白处的手势要实现的方法
+-(void)viewTapped:(UITapGestureRecognizer*)tap1
+{
+    [self.view endEditing:YES];
+}
 - (IBAction)add_question:(id)sender {
     if(_question_score.text.length==0||_question_detail.text.length==0||_question_answer.text.length==0)
     {

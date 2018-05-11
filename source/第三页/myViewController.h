@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "loginViewController.h"
+#import "CourseNavigationViewController.h"
 @interface myViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImageView *touxiang;
 @property (strong, nonatomic) IBOutlet UILabel *l_userName;

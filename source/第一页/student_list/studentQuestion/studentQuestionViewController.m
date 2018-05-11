@@ -17,7 +17,8 @@
 @implementation studentQuestionViewController
 static student_question *this_question_message;
 - (void)viewDidLoad {
-    [super viewDidLoad]; _question_table.tableFooterView = [[UIView alloc] init];
+    [super viewDidLoad];
+    _question_table.tableFooterView = [[UIView alloc] init];
     _question_table.dataSource=self;
     _question_table.delegate=self;
 }
@@ -41,20 +42,23 @@ static student_question *this_question_message;
         if(_question_dataSource.count==0)
         {
             _my_bar.topItem.title=@"题目列表";
+            _btn_correct_homework.title=@"完成批改";
         }
         else
         {
             _my_bar.topItem.title=@"未批改题目列表";
+            _btn_correct_homework.title=@"";
+            _btn_correct_homework.action=nil;
         }
         if([select_student_homework_cell.is_correcting isEqual:@"1"])
         {
             _btn_correct_homework.title=@"";
             _btn_correct_homework.action=nil;
         }
-        else
-        {
-            _btn_correct_homework.title=@"完成批改";
-        }
+//        else
+//        {
+//            _btn_correct_homework.title=@"完成批改";
+//        }
     }
 }
 
@@ -110,7 +114,12 @@ static student_question *this_question_message;
                                                            student_score:[question_detial objectAtIndex:7]
                            ];
 }
-
+- (BOOL)isPureInt:(NSString*)string
+{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    int val;
+    return[scan scanInt:&val] && [scan isAtEnd];
+}
 
 - (IBAction)back:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -154,7 +163,23 @@ static student_question *this_question_message;
             [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
                               {
                                   NSString *this_score=alert.textFields.firstObject.text;
-                                  if(this_score.intValue>this_cell.model.question_score.intValue||this_score.intValue<0)
+                                  if(this_score.length==0)
+                                  {
+                                      NSLog(@"teacher_set_score_url warning");
+                                      
+                                      UIAlertController *score_alert=[UIAlertController alertControllerWithTitle:@"分数不可为空!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                                      [score_alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+                                      [self presentViewController:score_alert animated:true completion:nil];
+                                  }
+                                  else if(![self isPureInt:this_score])
+                                  {
+                                      NSLog(@"teacher_set_score_url warning");
+                                      
+                                      UIAlertController *score_alert=[UIAlertController alertControllerWithTitle:@"分数只能为数字!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                                      [score_alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+                                      [self presentViewController:score_alert animated:true completion:nil];
+                                  }
+                                  else if(this_score.intValue>this_cell.model.question_score.intValue||this_score.intValue<0)
                                   {
                                       NSLog(@"teacher_set_score_url warning");
                                       

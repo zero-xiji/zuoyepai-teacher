@@ -7,7 +7,6 @@
 //
 
 #import "myViewController.h"
-#import "loginViewController.h"
 @interface myViewController ()
 
 @end
@@ -18,7 +17,7 @@ int count_how_many_time_appear=0;
     [super viewDidLoad];
     _touxiang.userInteractionEnabled=YES;
     _touxiang.layer.masksToBounds=YES;
-    _touxiang.layer.cornerRadius=70;
+    _touxiang.layer.cornerRadius=20;
     _touxiang.contentMode = UIViewContentModeScaleAspectFill;
     // Do any additional setup after loading the view.
 }
